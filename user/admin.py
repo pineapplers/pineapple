@@ -1,15 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import User
-from .models import Contact, UserProfile, UserSetting
+from .models import User, UserProfile, UserSetting
 
 # Register your models here.
 class UserProfileAdmin(admin.TabularInline):
     model = UserProfile
-
-
-class UserContactAdmin(admin.TabularInline):
-    model = Contact
 
 
 class UserSettingAdmin(admin.TabularInline):
@@ -27,9 +22,8 @@ class UserAdmin(UserAdmin):
 
     inlines = [
         UserProfileAdmin,
-        UserContactAdmin,
         UserSettingAdmin
     ]
 
 
-admin.register(User, UserAdmin)
+admin.site.register(User, UserAdmin)

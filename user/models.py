@@ -1,18 +1,20 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+from location.models import City
 
 # Create your models here.
-class Contact(models.Model):
-    user_from = models.ForeignKey(User, related_name='rel_from_set', on_delete=models.CASCADE)
-    user_to = models.ForeignKey(User, related_name='rel_to_set', on_delete=models.CASCADE)
+class User(AbstractUser):
+    following = models.ManyToManyField('self', blank=True, related_name='followers')
 
-    class Meta:
-        verbose_name = '用户联系'
-        verbose_name_plural = '用户联系'
+    def __str__(self):
+        return self.username
 
 
 class UserSetting(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, related_name='setting', on_delete=models.CASCADE)
 
     def __str__(self):
         return "{}的设置".format(self.user.username)
@@ -23,8 +25,8 @@ class UserSetting(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
-    location = models.CharField
+    user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
+    location = models.ForeignKey(City, null=True, blank=True, verbose_name='居住城市')
     introduction = models.CharField(max_length=1024, verbose_name='个人简介')
     sex = models.CharField(max_length=2, choices=[('m', '男'), ('f', '女')], null=True, blank=True, verbose_name='性别')
     date_of_birth = models.DateField(blank=True, null=True, verbose_name='出生日期')
@@ -38,8 +40,9 @@ class UserProfile(models.Model):
         verbose_name_plural = '用户档案'
 
 
-User.add_to_class('following',
-                  models.ManyToManyField('self',
-                     through=Contact,
-                     related_name='followers',
-                     symmetrical=False))
+@receiver(post_save, sender=User)
+def user_post_save_handler(sender, instance, created, **kwargs):
+    if created is True and not kwargs.get('raw', False):
+        UserSetting.objects.create(user=instance)
+        UserProfile.objects.create(user=instance)
+        instance.save()
