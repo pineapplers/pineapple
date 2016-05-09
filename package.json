@@ -1,0 +1,36 @@
+{
+  "name": "pineapple",
+  "version": "1.0.0",
+  "description": "get more",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pineapplers/pineapple.git"
+  },
+  "keywords": [
+    "bingolee"
+  ],
+  "author": "Rlilyyy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pineapplers/pineapple/issues"
+  },
+  "homepage": "https://github.com/pineapplers/pineapple#readme",
+  "devDependencies": {
+    "babel-core": "^6.8.0",
+    "babel-loader": "^6.2.4",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.16.1",
+    "less": "^2.7.0",
+    "less-loader": "^2.2.3",
+    "path": "^0.12.7",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
