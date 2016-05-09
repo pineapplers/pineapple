@@ -14,7 +14,7 @@ class User(AbstractUser):
 
 
 class UserSetting(models.Model):
-    user = models.OneToOneField(User, related_name='setting', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name='settings', on_delete=models.CASCADE)
 
     def __str__(self):
         return "{}的设置".format(self.user.username)
