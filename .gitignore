@@ -4,4 +4,4 @@ __pycache__/
 *.pyc
 .coverage
 migrations/
-/node_modules
+/node_modules/
