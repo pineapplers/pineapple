@@ -1,4 +1,61 @@
-@base: #123456;
-body {
-    background-color: @base;
+@baseColor: #eee966;
+
+@imagesDir: "/C:/Users/李滨泓/Desktop/项目/pineapple/public/static/images";
+
+.container {
+    .container-top {
+        position: relative;
+        padding-top: 100px;
+        padding-bottom: 10px;
+        background: url("@{imagesDir}/back.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+
+        .pineapple-logo {
+            width: 100%;
+            font-size: 10rem;
+            color: white;
+            text-align: center;
+        }
+
+        .container-top-back {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+
+            img {
+                vertical-align: bottom;
+            }
+        }
+    }
+}
+
+.desc {
+    .desc-main {
+        position: relative;
+        width: 350px;
+        height: 170px;
+        color: white;
+        font-size: 3rem;
+        line-height: 154px;
+        text-align: center;
+        border: 8px solid white;
+        margin: 0 auto;
+
+        .desc-main-title {
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: white;
+            font-size: 1.7rem;
+            background-color: @baseColor;
+            top: 0;
+            left: 50%;
+            margin-top: -33px;
+            margin-left: -50px;
+        }
+    }
 }
