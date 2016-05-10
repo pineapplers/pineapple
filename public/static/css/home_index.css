@@ -46,3 +46,78 @@
   margin-top: -33px;
   margin-left: -50px;
 }
+.topic-container {
+  margin: 0 auto;
+  width: 1360px;
+}
+.topic-container .topic-container-title {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+}
+.topic-container .topic-container-title h1 {
+  font-size: 3.5rem;
+  color: #5d5d5d;
+  margin: 0;
+}
+.topic-container .topic-container-title h1 .title-hr {
+  display: inline-block;
+  width: 70px;
+  height: 3px;
+  margin: auto 20px;
+  background-color: #5d5d5d;
+}
+.topic-container .topic-container-main .topic-item {
+  display: inline-block;
+  width: 393px;
+  margin: 0 28.5px 40px;
+  border-radius: 0 0 5px 5px;
+  color: #828caa;
+  background-color: white;
+  transition: box-shadow 0.3s ease;
+  -o-transition: box-shadow 0.3s ease;
+  -ms-transition: box-shadow 0.3s ease;
+  -moz-transition: box-shadow 0.3s ease;
+  -webkit-transition: box-shadow 0.3s ease;
+}
+.topic-container .topic-container-main .topic-item:hover {
+  box-shadow: 0px 3px 7px rgba(42, 42, 42, 0.5);
+}
+.topic-container .topic-container-main .topic-item .topic-item-title {
+  font-weight: 500;
+  text-align: center;
+}
+.topic-container .topic-container-main .topic-item .topic-item-img {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 188px;
+}
+.topic-container .topic-container-main .topic-item .topic-item-desc {
+  padding: 0 15px;
+}
+.topic-container .topic-container-main .topic-item .topic-item-desc .desc-title {
+  font-weight: 500;
+}
+.topic-container .topic-container-main .topic-item .topic-item-desc .desc-content {
+  margin: 0;
+  font-weight: 400;
+  min-height: 38px;
+  max-height: 38px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.topic-container .topic-container-main .topic-item .topic-item-info {
+  padding: 15px 17px 20px;
+}
+.topic-container .topic-container-main .topic-item .topic-item-info .fa {
+  color: #7aa7f2;
+  font-size: 1.7rem;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.topic-container .topic-container-main .topic-item .topic-item-info .fa .num {
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1.4rem;
+  margin-left: 3px;
+}

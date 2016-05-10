@@ -59,3 +59,108 @@
         }
     }
 }
+
+// 精选专题样式
+.topic-container {
+    margin: 0 auto;
+    width: 1360px;
+
+    .topic-container-title {
+        width: 100%;
+        margin: 20px auto;
+        text-align: center;
+
+        @topicTitleColor: #5d5d5d;
+        h1 {
+            font-size: 3.5rem;
+            color: @topicTitleColor;
+            margin: 0;
+
+            .title-hr {
+                display: inline-block;;
+                width: 70px;
+                height: 3px;
+                margin: auto 20px;
+                background-color: @topicTitleColor;
+            }
+        }
+    }
+
+    .topic-container-main {
+
+        // 专题项目字体颜色
+        @topicItemColor: rgb(130, 140, 170);
+        // 专题整体背景颜色
+        @topicItemBackColor: white;
+
+        .topic-item {
+            display: inline-block;
+            width: 393px;
+            margin: 0 28.5px 40px;
+            border-radius: 0 0 5px 5px;
+            color: @topicItemColor;
+            background-color: @topicItemBackColor;
+            transition: box-shadow .3s ease;
+            -o-transition: box-shadow .3s ease;
+            -ms-transition: box-shadow .3s ease;
+            -moz-transition: box-shadow .3s ease;
+            -webkit-transition: box-shadow .3s ease;
+
+            &:hover {
+                box-shadow: 0px 3px 7px rgba(42,42,42,0.5);
+            }
+
+            .topic-item-title {
+                font-weight: 500;
+                text-align: center;
+            }
+
+            // 专题项目图片
+            .topic-item-img {
+                // background-image: url("@{imagesDir}/back.png");
+                background-size: cover;
+                background-position: center;
+                width: 100%;
+                height: 188px;
+            }
+
+            // 专题项目简介
+            .topic-item-desc {
+                padding: 0 15px;
+
+                // 简介 title
+                .desc-title {
+                    font-weight: 500;
+                }
+
+                // 简介内容
+                .desc-content {
+                    margin: 0;
+                    font-weight: 400;
+                    min-height: 38px;
+                    max-height: 38px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            // 专题点赞、评论、分享等信息
+            .topic-item-info {
+                padding: 15px 17px 20px;
+
+                .fa {
+                    color: rgb(122, 167, 242);
+                    font-size: 1.7rem;
+                    margin-right: 10px;
+                    vertical-align: middle;
+
+                    .num {
+                        font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+                        font-size: 1.4rem;
+                        margin-left: 3px;
+                    }
+                }
+            }
+        }
+    }
+}

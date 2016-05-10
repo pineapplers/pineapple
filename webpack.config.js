@@ -111,7 +111,7 @@ module.exports = {
         //     }
         // }),
 
-        new webpack.HotModuleReplacementPlugin() //热加载
+        // new webpack.HotModuleReplacementPlugin() //热加载
     ],
     // 使用webpack-dev-server，提高开发效率
     devServer: {

@@ -10,7 +10,9 @@ html {
 body {
     font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
     font-size: 1.4rem;
+    min-width: 1360px;
     margin: 0;
+    background-color: rgb(238, 245, 255);
 }
 
 ul {
