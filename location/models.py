@@ -22,3 +22,8 @@ class City(models.Model):
     class Meta:
         verbose_name = '城市'
         verbose_name_plural = '城市'
+
+
+class Place(models.Model):
+    description = models.CharField(max_length=128, verbose_name='地点名称')
+    city = models.ForeignKey(City, verbose_name='所在城市')

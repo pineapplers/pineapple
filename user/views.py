@@ -8,6 +8,7 @@ from django.views.decorators.http import require_POST
 from .forms import LoginForm, RegisterForm
 from .models import User
 
+from utils import make_paginator
 from utils.decorators import ajax_required
 
 # 用户主页
@@ -42,13 +43,13 @@ def user_register(request):
 # 正在关注
 def user_followings(request, user_id):
     user = User.objects.get(pk=user_id)
-    followings = user.followings.all()
+    followings = make_paginator(request, user.followings.all())
     return render(request, 'user/list.tpl', users=followings)
 
 # 被关注的
 def user_followers(request, user_id):
     user = User.objects.get(pk=user_id),
-    followers = user.followers.all()
+    followers = make_paginator(request, user.followers.all())
     return render(request, 'user/list.tpl', users=followers)
 
 # 收藏夹
