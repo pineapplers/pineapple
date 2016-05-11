@@ -23,7 +23,7 @@ ul {
   width: 100%;
   height: 78px;
   opacity: 0.8;
-  background: url("/C:/Users/李滨泓/Desktop/项目/pineapple/public/static/images/home-header-bg-563ac1688e.png") repeat-x;
+  background: url("/public/static/images/home-header-bg-563ac1688e.png") repeat-x;
   z-index: 998;
 }
 .container {

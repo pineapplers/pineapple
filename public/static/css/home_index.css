@@ -2,7 +2,7 @@
   position: relative;
   padding-top: 100px;
   padding-bottom: 10px;
-  background: url("/C:/Users/李滨泓/Desktop/项目/pineapple/public/static/images/back.png");
+  background: url("/public/static/images/back.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }

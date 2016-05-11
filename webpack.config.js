@@ -26,8 +26,8 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, 'public/static'), //输出目录的配置，模板、样式、脚本、图片等资源的路径配置都相对于它
-        publicPath: '/C:/Users/李滨泓/Desktop/项目/pineapple/public/static/',                //模板、样式、脚本、图片等资源对应的server上的路径
-        // publicPath: '/static/',   // 服务器路径
+        // publicPath: '/C:/Users/李滨泓/Desktop/项目/pineapple/public/static/',                //模板、样式、脚本、图片等资源对应的server上的路径
+        publicPath: '/static/',   // 服务器路径
         filename: 'js/[name].js',            //每个页面对应的主js的生成配置
         chunkFilename: 'js/[id].chunk.js'   //chunk生成的配置
     },
@@ -76,13 +76,13 @@ module.exports = {
 
         new ExtractTextPlugin('css/[name].css'), //单独使用link标签加载css并设置路径，相对于output配置中的publickPath
 
-        // new webpack.HotModuleReplacementPlugin() //热加载
+        new webpack.HotModuleReplacementPlugin() //热加载
     ],
     // 使用webpack-dev-server，提高开发效率
     devServer: {
         contentBase: './',
         host: 'localhost',
-        port: 9090, //默认8080
+        port: 8111, //默认8080
         inline: true, //可以监控js变化
         hot: true, //热启动
     }

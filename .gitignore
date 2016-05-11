@@ -5,6 +5,7 @@ __pycache__/
 .coverage
 migrations/
 /node_modules/
+*.hot-update.js
+*.hot-update.json
 *.jpg
 *.png
-*.gif

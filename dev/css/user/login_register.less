@@ -1,0 +1,108 @@
+@baseFontFamily: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+@baseColor: rgb(122, 167, 242);
+@fontDeepColor: rgb(55, 55, 55);
+@fontLightColor: rgb(138, 138, 138);
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: white;
+    position: relative;
+}
+
+.user-container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    margin-top: -200px;
+
+    .user-container-title {
+        text-align: center;
+        padding-top: 20px;
+
+        h2 {
+            font-weight: normal;
+            margin-top: 0;
+            color: @fontDeepColor;
+        }
+
+        h3 {
+            font-weight: normal;
+            color: @fontLightColor;
+        }
+    }
+
+    .form-container {
+        width: 350px;
+        margin: 0 auto;
+
+        .form-item {
+            position: relative;
+            margin-top: 30px;
+
+            label {
+                position: absolute;
+                bottom: 6px;
+                left: 10px;
+                font-size: 1.5rem;
+                color: rgb(45, 45, 45);
+                transition: all .3s ease;
+            }
+
+            .focus-label {
+                bottom: 30px;
+                color: @baseColor;
+            }
+            .complete-input {
+                border-bottom-color: @baseColor;
+            }
+
+            input {
+                width: 350px;
+                height: 40px;
+                padding: 10px 10px 0 10px;
+                border: none;
+                border-bottom: 2px solid rgb(162, 162, 162);
+                color: rgb(70, 70, 70);
+                outline: none;
+                font-family: @baseFontFamily;
+                font-size: 1.4rem;
+
+                &:focus {
+                    border-bottom-color: @baseColor;
+                }
+            }
+
+            #login-btn, #register-btn {
+                border-bottom: none;
+                padding: 0;
+                margin-top: 35px;
+                color: white;
+                background-color: @baseColor;
+
+                &:focus {
+                    border-bottom-color: none;
+                }
+            }
+        }
+
+        .register-tab, .login-tab {
+            margin-top: 20px;
+            font-size: 1.4rem;
+            text-align: center;
+
+            a {
+                color: @baseColor;
+                text-decoration: none;
+
+                &:hover {
+                    color: @baseColor;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
