@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var glob = require('glob');
 /*
 extract-text-webpack-plugin插件，
 有了它就可以将你的样式提取到单独的css文件里，
@@ -12,18 +13,17 @@ html-webpack-plugin插件，重中之重，webpack中生成HTML的插件，
  */
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var reg = /\/[a-zA-Z0-9]+$/;
+var templateFiles = getEntry('dev/templates/**/*.html');
+var jsFiles = getEntry('dev/js/**/*.js');
+var chunks = Object.keys(templateFiles.input);
 
 console.log("------------------------------------------------------------------------------------");
 console.log("\n重新打包时间：" + new Date() + "\n");
 console.log("------------------------------------------------------------------------------------");
-
+// console.log(jsFiles.input)
 module.exports = {
-    entry: { //配置入口文件，有几个写几个
-        "home_index": './dev/js/home/index.js',
-        // list: './src/js/page/list.js',
-        // about: './src/js/page/about.js',
-    },
+    entry: jsFiles.input,
+
     output: {
         path: path.join(__dirname, 'public/static'), //输出目录的配置，模板、样式、脚本、图片等资源的路径配置都相对于它
         publicPath: '/C:/Users/李滨泓/Desktop/项目/pineapple/public/static/',                //模板、样式、脚本、图片等资源对应的server上的路径
@@ -68,50 +68,13 @@ module.exports = {
         ]
     },
     plugins: [
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'vendors', // 将公共模块提取，生成名为`vendors`的chunk
-        //     chunks: ['index','list','about'], //提取哪些模块共有的部分
-        //     minChunks: 3 // 提取至少3个模块共有的部分
-        // }),
-        new ExtractTextPlugin('css/[name].css'), //单独使用link标签加载css并设置路径，相对于output配置中的publickPath
-
-        //HtmlWebpackPlugin，模板生成相关的配置，每个对于一个页面的配置，有几个写几个
-        new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
-            // favicon: './src/img/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
-            filename: '../../home/templates/home/index.html', //生成的html存放路径，相对于path
-            template: './dev/templates/home/index.html', //html模板路径
-            inject: 'body', //js插入的位置，true/'head'/'body'/false
-            hash: true, //为静态资源生成hash值
-            chunks: ['home_index'],//需要引入的chunk，不配置就会引入所有页面的资源
-            minify: { //压缩HTML文件
-                removeComments: true, //移除HTML中的注释
-                collapseWhitespace: false //删除空白符与换行符
-            }
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendors', // 将公共模块提取，生成名为`vendors`的chunk
+            chunks: chunks, //提取哪些模块共有的部分
+            minChunks: chunks.length // 提取至少3个模块共有的部分
         }),
-        // new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
-        //     favicon: './src/img/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
-        //     filename: './view/list.html', //生成的html存放路径，相对于path
-        //     template: './src/view/list.html', //html模板路径
-        //     inject: true, //js插入的位置，true/'head'/'body'/false
-        //     hash: true, //为静态资源生成hash值
-        //     chunks: ['vendors', 'list'],//需要引入的chunk，不配置就会引入所有页面的资源
-        //     minify: { //压缩HTML文件
-        //         removeComments: true, //移除HTML中的注释
-        //         collapseWhitespace: false //删除空白符与换行符
-        //     }
-        // }),
-        // new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
-        //     favicon: './src/img/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
-        //     filename: './view/about.html', //生成的html存放路径，相对于path
-        //     template: './src/view/about.html', //html模板路径
-        //     inject: true, //js插入的位置，true/'head'/'body'/false
-        //     hash: true, //为静态资源生成hash值
-        //     chunks: ['vendors', 'about'],//需要引入的chunk，不配置就会引入所有页面的资源
-        //     minify: { //压缩HTML文件
-        //         removeComments: true, //移除HTML中的注释
-        //         collapseWhitespace: false //删除空白符与换行符
-        //     }
-        // }),
+
+        new ExtractTextPlugin('css/[name].css'), //单独使用link标签加载css并设置路径，相对于output配置中的publickPath
 
         // new webpack.HotModuleReplacementPlugin() //热加载
     ],
@@ -124,3 +87,53 @@ module.exports = {
         hot: true, //热启动
     }
 };
+
+var configNames = templateFiles.configNames;
+configNames.forEach(function(configName) {
+    var config = {};
+    //生成的html存放路径，相对于path
+    config.filename = "../../" + configName.modelName + "/templates/" + configName.modelName + "/" + configName.baseName + ".html";
+    //html模板路径
+    config.template = "./dev/templates/" + configName.modelName + "/" + configName.baseName + ".html";
+    //js插入的位置，true/'head'/'body'/false
+    config.inject = "body";
+    //为静态资源生成hash值
+    config.hash = true;
+    //需要引入的chunk，不配置就会引入所有页面的资源
+    config.chunks = ["vendors", configName.modelName + "_" + configName.baseName];
+    //压缩HTML文件
+    config.minify = {
+        removeComments: true, //移除HTML中的注释
+        collapseWhitespace: false //删除空白符与换行符
+    };
+    // console.log(config);
+
+    module.exports.plugins.push(new HtmlWebpackPlugin(config));
+});
+
+function getEntry(globPath, pathDir) {
+    var files = glob.sync(globPath);
+    var entries = {},
+        entry, dirname, basename, pathname, extname, entryname;
+    entries.input = {};
+    entries.configNames = [];
+    var reg = /[a-zA-Z0-9]+$/;
+
+    for (var i = 0; i < files.length; i++) {
+        entry = files[i];
+        dirname = path.dirname(entry);
+        extname = path.extname(entry);
+        basename = path.basename(entry, extname);
+        entryname = reg.exec(dirname)[0] + "_" + basename;
+        pathname = path.join(dirname, basename);
+        pathname = pathDir ? pathname.replace(new RegExp("^" + pathDir), "") : pathname;
+        // entries[pathname] = ['./' + entry];
+
+        entries.input[entryname] = './' + entry;
+        entries.configNames[i] = {};
+        entries.configNames[i].baseName = basename;
+        entries.configNames[i].pathName = "./" + entry;
+        entries.configNames[i].modelName = reg.exec(dirname)[0];
+    }
+    return entries;
+}
