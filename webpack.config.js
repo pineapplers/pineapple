@@ -14,7 +14,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var reg = /\/[a-zA-Z0-9]+$/;
 
-console.log(__dirname)
+console.log("------------------------------------------------------------------------------------");
+console.log("\n重新打包时间：" + new Date() + "\n");
+console.log("------------------------------------------------------------------------------------");
 
 module.exports = {
     entry: { //配置入口文件，有几个写几个

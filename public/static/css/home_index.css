@@ -8,7 +8,7 @@ html {
 body {
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.4rem;
-  min-width: 1360px;
+  min-width: 1349px;
   margin: 0;
   background-color: #eef5ff;
 }
@@ -168,7 +168,7 @@ ul {
 }
 .topic-container {
   margin: 0 auto;
-  width: 1360px;
+  max-width: 1349px;
 }
 .topic-container .topic-container-title {
   width: 100%;
@@ -190,7 +190,7 @@ ul {
 .topic-container .topic-container-main .topic-item {
   display: inline-block;
   width: 393px;
-  margin: 0 28.5px 40px;
+  margin: 0 26.5px 40px;
   border-radius: 0 0 5px 5px;
   color: #828caa;
   background-color: white;
