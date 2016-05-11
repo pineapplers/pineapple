@@ -8,6 +8,7 @@ from django.views.decorators.http import require_POST
 from .forms import LoginForm, RegisterForm
 from .models import User
 
+from actions.utils import create_action
 from utils import make_paginator
 from utils.decorators import ajax_required
 
@@ -75,4 +76,14 @@ def user_profile(request):
 def user_follow(request):
     user_id = request.POST.get('id')
     action = request.POST.get('action')
+    if user_id and action:
+        user = User.objects.get(pk=user_id)
+        if action == 'follow':
+            request.user.followings.add(user)
+            create_action(request.user, 'follow', user)
+        elif action == 'unfollow':
+            request.user.followings.remove(user)
+        else:
+            return JsonResponse({'status':'fail'})
+        return JsonResponse({'status':'ok'})
     return JsonResponse()

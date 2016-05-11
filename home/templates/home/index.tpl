@@ -6,7 +6,9 @@
         <title>首页</title>
         <link rel="stylesheet" href="{% static 'css/common.css' %}" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="{% static 'font/font-awesome-4.5.0/css/font-awesome.min.css' %}" media="screen" title="no title" charset="utf-8">
-    <link href="{% static 'css/home_index.css' %}" rel="stylesheet"></head>
+        <link href="{% static 'css/vendors.css' %}" rel="stylesheet">
+        <link href="{% static 'css/home_index.css' %}" rel="stylesheet">
+    </head>
     <body>
         <div class="container">
             <div class="mask">
@@ -156,5 +158,6 @@
                 </div>
             </div>
         </div>
+    <script src="{% static 'js/vendors.js' %}"></script></body>
     <script src="{% static 'js/home_index.js' %}"></script></body>
 </html>
