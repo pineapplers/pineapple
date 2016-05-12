@@ -7,3 +7,4 @@ migrations/
 /node_modules/
 *.hot-update.js
 *.hot-update.json
+public/static/js/main.js

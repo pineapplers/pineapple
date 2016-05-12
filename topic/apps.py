@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class TopicConfig(AppConfig):
-    name = 'topic'
+    name = '专题'
