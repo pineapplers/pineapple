@@ -46,9 +46,15 @@
   margin-top: -33px;
   margin-left: -50px;
 }
+@media screen and (min-width: 1400px) {
+  body .topic-container {
+    margin: 0 auto;
+    max-width: 1349px;
+  }
+}
 .topic-container {
   margin: 0 auto;
-  max-width: 1349px;
+  max-width: 950px;
 }
 .topic-container .topic-container-title {
   width: 100%;
