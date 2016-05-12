@@ -2,7 +2,9 @@ from django.core.urlresolvers import reverse
 from django.db import models
 
 from comments.models import Comment
+from taggit.managers import TaggableManager
 from user.models import User
+
 
 # Create your models here.
 class FoodCategory(models.Model):
@@ -31,7 +33,7 @@ class FoodItem(models.Model):
     category = models.ForeignKey(FoodCategory, related_name='foods', verbose_name='分类')
     user = models.ForeignKey(User, related_name='foods_shared', verbose_name='创建用户')
     created = models.DateTimeField(auto_now_add=True, verbose_name='添加日期')
-    # tag = 
+    tags = TaggableManager()
 
     def get_absolute_url(self):
         return reverse('food:detail', args=[self.id])
