@@ -6,8 +6,9 @@ from django.shortcuts import render
 from django.views.decorators.http import require_POST
 
 from .forms import LoginForm, RegisterForm, ProfileForm
-from .models import Action, User
+from .models import User
 
+from actions.models import Action
 from actions.utils import create_action
 from utils import make_paginator
 from utils.decorators import ajax_required

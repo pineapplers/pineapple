@@ -16,7 +16,7 @@ def food_detail(request, food_id):
     comments = food.comments
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
-        if comment_form.is_valid()
+        if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.food = food
             comment.save()

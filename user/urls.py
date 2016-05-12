@@ -3,7 +3,7 @@ from django.contrib.auth.views import (logout as user_logout, password_change, p
     password_reset, password_reset_done, password_reset_complete, password_reset_confirm)
 
 from .views import (home, user_login, user_register, user_follow, user_followers, user_followings, 
-    user_settings, user_profile, foods_collection, topics_colletions)
+    user_settings, user_profile, foods_collection, topics_collection)
 
 urlpatterns = [
     url(r'^(?P<user_id>)$', home, name='home'),

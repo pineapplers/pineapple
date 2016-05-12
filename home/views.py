@@ -1,10 +1,10 @@
 from django.shortcuts import render
 
-from search.forms import form = SearchForm()
+from search.forms import SearchForm
 
 # Create your views here.
 def home(request):
-	form = SearchForm()
+    form = SearchForm()
     if request.user.is_authenticated():
         # 
         pass

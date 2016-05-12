@@ -5,22 +5,14 @@ from .models import FoodCategory, FoodItem
 
 # Register your models here.
 class FoodCategoryAdmin(admin.ModelAdmin):
-	model = FoodCategoryAdmin
-
-
-class FoodCommentAdmin(admin.TabularInline):
-    model = Comment
+    model = FoodCategory
 
 
 class FoodItemAdmin(admin.ModelAdmin):
-	model = FoodItem
+    model = FoodItem
 
-    inlines = [
-        FoodCommentAdmin,
-    ]
-
-	class Meta:
-		ordering = ('-created',)
+    class Meta:
+        ordering = ('-created',)
 
 
 admin.site.register(FoodCategory, FoodCategoryAdmin)

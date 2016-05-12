@@ -17,7 +17,7 @@ class Action(models.Model):
     target_id = models.PositiveIntegerField(null=True,
                                             blank=True,
                                             db_index=True, verbose_name='活动对象id')
-    target = GenericForeignKey('target_ct', 'target_id', verbose_name='活动对象')
+    target = GenericForeignKey('target_ct', 'target_id')
     created = models.DateTimeField(auto_now_add=True,
                                    db_index=True, verbose_name='活动时间')
 

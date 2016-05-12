@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'home',
     'location',
     'search',
+    'taggit',
     'topic',
     'user',
     'utils',
