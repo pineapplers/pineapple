@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 
 from comments.models import Comment
@@ -14,6 +15,9 @@ class FoodTopic(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('topic:detail', args=[self.id])
 
     class Meta:
         verbose_name = '美食专题'
