@@ -3,13 +3,23 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 
-from .models import FoodItem
+from .models import FoodItem, FoodCategory
 from utils.decorators import ajax_required
+from utils import make_paginator
 
-# Create your views here.
+
 def food_detail(request, food_id):
     food = FoodItem.objects.get(pk=food_id)
-    return render(request, 'food/detail.tpl', food=food)
+    return render(request, 'food/detail.tpl', {
+            'food': food
+        })
+
+
+def food_category(request, category):
+    foods = make_paginator(request, FoodItem.objects.filter(category__name=category))
+    return render(request, 'food/list.tpl', {
+            'foods': foods
+        })
 
 
 @ajax_required

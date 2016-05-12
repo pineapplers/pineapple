@@ -3,10 +3,10 @@ from django.contrib.auth.views import (logout as user_logout, password_change, p
     password_reset, password_reset_done, password_reset_complete, password_reset_confirm)
 
 from .views import (home, user_login, user_register, user_follow, user_followers, user_followings, 
-    user_settings, user_profile)
+    user_settings, user_profile, foods_collection, topics_colletions)
 
 urlpatterns = [
-    url(r'^$', home),
+    url(r'^(?P<user_id>)$', home, name='home'),
     url(r'^login/$', user_login, name='login'),
     url(r'^logout/$', user_logout, name='logout'),
     url(r'^register/$', user_register, name='register'),
@@ -24,5 +24,8 @@ urlpatterns = [
 
     url(r'^follow/$', user_follow, name='follow'),
     url(r'^followings/$', user_followings, name='followings'),
-    url(r'^followers/$', user_followers, name='followers')
+    url(r'^followers/$', user_followers, name='followers'),
+
+    url(r'^collection/foods', foods_collection, name='foods-collection'),
+    url(r'^collection/topics', topics_collection, name='topics-collection'),
 ]

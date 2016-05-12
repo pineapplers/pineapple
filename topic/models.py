@@ -7,7 +7,8 @@ from user.models import User
 # Create your models here.
 class FoodTopic(models.Model):
     title = models.CharField(max_length=32, verbose_name='专题名称')
-    user_likes = models.ManyToManyField(User, related_name='topics_liked', blank=True, verbose_name='点赞用户')
+    users_like = models.ManyToManyField(User, related_name='topics_liked', blank=True, verbose_name='点赞用户')
+    users_collect = models.ManyToManyField(User, related_name='topics_collected', blank=True, verbose_name='收藏的用户')
     comments = models.ManyToManyField(Comment, blank=True, verbose_name='专题评论')
     foods = models.ManyToManyField(FoodItem, verbose_name='美食') 
 

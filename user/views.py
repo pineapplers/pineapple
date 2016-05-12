@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_POST
 
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm, ProfileForm
 from .models import User
 
 from actions.utils import create_action
@@ -13,8 +13,10 @@ from utils import make_paginator
 from utils.decorators import ajax_required
 
 # 用户主页
-@login_required
-def home(request):
+def home(request, user_id):
+    user = User.objects.get(pk=user_id)
+    if user.id == request.user.id:
+        pass
     return render(request, 'user/index.tpl')
 
 # 登录
@@ -27,7 +29,9 @@ def user_login(request):
             return HttpResponseRedirect(reverse('home'))
     else:
         form = LoginForm()
-    return render(request, 'user/login.tpl', form=form)
+    return render(request, 'user/login.tpl', {
+            'form': form
+        })
 
 # 注册
 def user_register(request):
@@ -39,35 +43,59 @@ def user_register(request):
             return HttpResponseRedirect(reverse('home'))
     else:
         form = RegisterForm()
-    return render(request, 'user/register.tpl', form=form)
+    return render(request, 'user/register.tpl', {
+            'form': form
+        })
 
 # 正在关注
 def user_followings(request, user_id):
     user = User.objects.get(pk=user_id)
     followings = make_paginator(request, user.followings.all())
-    return render(request, 'user/list.tpl', users=followings)
+    return render(request, 'user/list.tpl', {
+            'users': followings
+        })
 
 # 被关注的
 def user_followers(request, user_id):
     user = User.objects.get(pk=user_id),
     followers = make_paginator(request, user.followers.all())
-    return render(request, 'user/list.tpl', users=followers)
+    return render(request, 'user/list.tpl', {
+            'users': followers
+        })
 
-# 收藏夹
-def collections(request):
-    return render(request, 'user/collections.tpl')
+# Food收藏夹
+@login_required
+def foods_collection(request):
+    collections = make_paginator(request, request.user.foods_collect.all())
+    return render(request, 'user/foods_collection.tpl', {
+            'collections': collections
+        })
+
+# Topic收藏夹
+@login_required
+def topics_collection(request):
+    collections = make_paginator(request, request.user.topics_collect.all())
+    return render(request, 'user/topics_collection.tpl', {
+            'collections': collections
+        })
 
 # 个人设置
 @login_required
 def user_settings(request):
     settings = request.user.settings
-    return render(request, 'user/settings.tpl', settings=settings)
+    return render(request, 'user/settings.tpl', {
+            'settings': settings
+        })
 
 # 个人档案
 @login_required
 def user_profile(request):
     profile = request.user.profile
-    return render(request, 'user/profile.tpl', profile=profile)
+    form = ProfileForm()
+    return render(request, 'user/profile.tpl', {
+            'profile': profile,
+            'form': form
+        })
 
 # 关注/取消关注
 @ajax_required
