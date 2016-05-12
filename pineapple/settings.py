@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'food',
     'home',
     'location',
+    'search',
     'topic',
     'user',
     'utils',

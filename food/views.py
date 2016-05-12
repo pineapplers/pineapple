@@ -14,13 +14,20 @@ def food_detail(request, food_id):
             'food': food
         })
 
-
 def food_category(request, category):
     foods = make_paginator(request, FoodItem.objects.filter(category__name=category))
     return render(request, 'food/list.tpl', {
             'foods': foods
         })
 
+def food_tag(request, tag):
+    foods = make_paginator(request, FoodItem.objects.filter(tag__name=category))
+    return render(request, 'food/list.tpl', {
+            'foods': foods
+        })
+
+def foods_most_popular(request):
+    pass
 
 @ajax_required
 @require_POST
