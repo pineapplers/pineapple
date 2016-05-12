@@ -23,8 +23,8 @@ urlpatterns = [
     url(r'^profile/$', user_profile, name='profile'),
 
     url(r'^follow/$', user_follow, name='follow'),
-    url(r'^followings/$', user_followings, name='followings'),
-    url(r'^followers/$', user_followers, name='followers'),
+    url(r'^(?P<user_id>)/followings/$', user_followings, name='followings'),
+    url(r'^(?P<user_id>)/followers/$', user_followers, name='followers'),
 
     url(r'^collection/foods', foods_collection, name='foods-collection'),
     url(r'^collection/topics', topics_collection, name='topics-collection'),

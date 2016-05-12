@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_POST
 
 from .forms import LoginForm, RegisterForm, ProfileForm
-from .models import User
+from .models import Action, User
 
 from actions.utils import create_action
 from utils import make_paginator
@@ -15,9 +15,11 @@ from utils.decorators import ajax_required
 # 用户主页
 def home(request, user_id):
     user = User.objects.get(pk=user_id)
-    if user.id == request.user.id:
-        pass
-    return render(request, 'user/index.tpl')
+    recent_actions = Action.objects.filter(user=request.user).all()[:10]
+    return render(request, 'user/index.tpl', {
+            'actions': recent_actions,
+            'user': user,
+        })
 
 # 登录
 def user_login(request):
@@ -91,7 +93,7 @@ def user_settings(request):
 @login_required
 def user_profile(request):
     profile = request.user.profile
-    form = ProfileForm()
+    form = ProfileForm(initial={'user': request.user}, instance=profile)
     return render(request, 'user/profile.tpl', {
             'profile': profile,
             'form': form
