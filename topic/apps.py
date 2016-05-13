@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class TopicConfig(AppConfig):
-    name = '专题'
+    name = 'topic'
+    verbose_name = '专题'

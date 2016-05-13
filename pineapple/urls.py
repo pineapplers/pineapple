@@ -20,6 +20,9 @@ from django.contrib import admin
 
 from home.views import home
 
+admin.site.site_header = 'Pineapple'
+admin.site.site_title = 'Pineapple Admin'
+
 urlpatterns = [
     url(r'^$', home),
     url(r'^admin/', admin.site.urls),
