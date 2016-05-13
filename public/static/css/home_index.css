@@ -105,7 +105,11 @@
 .topic-container .topic-container-main .topic-item .topic-item-desc .desc-title {
   font-weight: 500;
 }
-.topic-container .topic-container-main .topic-item .topic-item-desc .desc-content {
+.topic-container .topic-container-main .topic-item .topic-item-desc a {
+  color: inherit;
+  text-decoration: none;
+}
+.topic-container .topic-container-main .topic-item .topic-item-desc a .desc-content {
   margin: 0;
   font-weight: 400;
   min-height: 38px;
