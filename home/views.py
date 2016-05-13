@@ -1,10 +1,12 @@
 from django.shortcuts import render
+from django.views.decorators.cache import cache_page
 
 from actions.models import Action
 
 from search.forms import SearchForm
 
 # 首页
+@cache_page(60)
 def home(request):
     form = SearchForm()
     actions = Action.objects.all().exclude(user=request.user)

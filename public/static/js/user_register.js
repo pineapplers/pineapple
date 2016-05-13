@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 webpackJsonp([3],{
 
 /***/ 0:
+=======
+webpackJsonp([3,4],[
+/* 0 */
+>>>>>>> alpha
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
@@ -37,8 +42,21 @@ webpackJsonp([3],{
 
 
 /***/ },
+<<<<<<< HEAD
 
 /***/ 5:
+=======
+/* 1 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */
+>>>>>>> alpha
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

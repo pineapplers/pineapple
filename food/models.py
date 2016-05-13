@@ -33,7 +33,7 @@ class Food(models.Model):
     category = models.ForeignKey(FoodCategory, related_name='foods', verbose_name='分类')
     user = models.ForeignKey(User, related_name='foods_shared', verbose_name='创建用户')
     created = models.DateTimeField(auto_now_add=True, verbose_name='添加日期')
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True, help_text='多个标签以逗号分隔', verbose_name="标签")
 
     def get_absolute_url(self):
         return reverse('food:detail', args=[self.id])

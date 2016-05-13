@@ -38,7 +38,7 @@ def topic_like(request):
 		topic = FoodTopic.objects.get(pk=topic_id)
 		if action == 'like':
 			topic.users_like.add(request.user)
-			create_action(request.user, 'like', topic)
+			create_action(request.user, '喜欢了', topic)
 		elif action == 'unlike':
 			topic.users_like.remove(request.user)
 		else:

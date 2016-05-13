@@ -88,7 +88,11 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
+<<<<<<< HEAD
 /******/ 	var hotCurrentHash = "55bac416c5364b5d5a5d"; // eslint-disable-line no-unused-vars
+=======
+/******/ 	var hotCurrentHash = "eba6b16525918e664679"; // eslint-disable-line no-unused-vars
+>>>>>>> alpha
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -629,12 +633,4 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */,
-/* 1 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ }
-/******/ ]);
+/******/ ([]);

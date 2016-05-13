@@ -121,7 +121,7 @@ def user_follow(request):
         user = User.objects.get(pk=user_id)
         if action == 'follow':
             request.user.followings.add(user)
-            create_action(request.user, 'follow', user)
+            create_action(request.user, '关注了', user)
         elif action == 'unfollow':
             request.user.followings.remove(user)
         else:
