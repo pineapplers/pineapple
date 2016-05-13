@@ -4,7 +4,6 @@
     <head>
         <meta charset="utf-8">
         <title>首页</title>
-        <link rel="stylesheet" href="{% static 'css/common.css' %}" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="{% static 'font/font-awesome-4.5.0/css/font-awesome.min.css' %}" media="screen" title="no title" charset="utf-8">
         <link href="{% static 'css/vendors.css' %}" rel="stylesheet">
         <link href="{% static 'css/home_index.css' %}" rel="stylesheet">
@@ -39,7 +38,7 @@
                             <span class="cursor"></span>
                         </li>
                     </ul>
-                    <button type="button" name="login" id="login-btn">登录</button>
+                    <button type="button" name="login" id="login-btn" href="">登录</button>
                     <button type="button" name="register" id="register-btn">注册</button>
                     <input type="text" name="search" value="寻找好物……" id="search">
                 </div>

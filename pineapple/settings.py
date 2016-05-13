@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'actions',
     'comments',
     'food',
+    'haystack',
     'home',
     'location',
     'search',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'topic',
     'user',
     'utils',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -156,15 +158,19 @@ FIXTURE_DIRS = (
 
 LOGIN_URL = reverse_lazy('login')
 
-#EMAIL_HOST = 'smtp.gmail.com'
-#EMAIL_HOST_USER = 'my_account@gmail.com'
-#EMAIL_HOST_PASSWORD = ''
-#EMAIL_PORT = 587
-#EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
-# HAYSTACK_CONNECTIONS = {
-#     'default': {
-#         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-#         'URL': 'http://127.0.0.1:8983/solr/pineapple'
-#     },
-# }
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://127.0.0.1:8983/solr/pineapple'
+    },
+}

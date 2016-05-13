@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home/', include('home.urls', namespace='home')),
     url(r'^user/', include('user.urls', namespace='user')),
+    url(r'^search/', include('search.urls', namespace='search')),
     url(r'^topic/', include('topic.urls', namespace='topic')),
     url(r'^food/', include('food.urls', namespace='food')),
 ]

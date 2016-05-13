@@ -21,7 +21,7 @@ class FoodCategory(models.Model):
         verbose_name_plural = '美食分类'
 
 
-class FoodItem(models.Model):
+class Food(models.Model):
     title = models.CharField(max_length=128, verbose_name='标题')
     description = models.TextField(verbose_name='描述')
     cover_image = models.ImageField(upload_to='items/cover/%Y/%m/%d', verbose_name='封面图片')

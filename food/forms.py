@@ -1,9 +1,9 @@
 from django import forms
 
-from .models import FoodItem
+from .models import Food
 
-class FoodItemForm(forms.ModelForm):
+class FoodForm(forms.ModelForm):
 
 	class Meta:
-		model = FoodItem
+		model = Food
 

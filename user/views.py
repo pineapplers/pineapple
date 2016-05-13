@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -51,7 +52,7 @@ def user_register(request):
         })
 
 # 正在关注
-def user_followings(request, user_id):
+def user_following(request, user_id):
     user = User.objects.get(pk=user_id)
     followings = make_paginator(request, user.followings.all())
     return render(request, 'user/list.tpl', {
@@ -94,7 +95,16 @@ def user_settings(request):
 @login_required
 def user_profile(request):
     profile = request.user.profile
-    form = ProfileForm(initial={'user': request.user}, instance=profile)
+    if request.method == 'POST':
+        form = ProfileForm(instance=profile, data=request.POST,
+                            files=request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, '资料更新成功')
+        else:
+            messages.error(request, '资料更新失败')
+    else:
+        form = ProfileForm(instance=profile)
     return render(request, 'user/profile.tpl', {
             'profile': profile,
             'form': form
