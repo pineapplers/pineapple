@@ -6,7 +6,7 @@ from actions.models import Action
 from search.forms import SearchForm
 
 # 首页
-@cache_page(60)
+# @cache_page(60)
 def home(request):
     form = SearchForm()
     if request.user.is_authenticated():

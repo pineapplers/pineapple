@@ -180,7 +180,7 @@ CACHES = {
 
 AUTHENTICATION_BACKENDS = {
     'django.contrib.auth.backends.ModelBackend',
-    'account.authentication.EmailAuthBackend',
+    'user.auth.EmailAuthBackend',
 }
 
 HAYSTACK_CONNECTIONS = {
