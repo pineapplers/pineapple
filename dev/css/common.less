@@ -16,7 +16,6 @@ body {
     font-size: 1.4rem;
     min-width: 1060px;
     margin: 0;
-    background-color: rgb(238, 245, 255);
 }
 
 ul {
@@ -38,112 +37,128 @@ ul {
 .container {
     width: 100%;
     position: relative;
+}
 
-    .navbar {
-        position: absolute;;
+.navbar {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-image: url("@{imagesDir}/home-header-bg-563ac1688e.png");
+    background-repeat: no-repeat;
+    background-size: 100% 65px;
+
+    .nav {
+        height: 100%;
         width: 100%;
-        height: 60px;
-        top: 0;
-        left: 0;
-        z-index: 999;
+        padding: 0 50px;
+        margin: 0 auto;
 
-        .nav {
+        ul {
+            display: inline-block;
+            list-style-type: none;
             height: 100%;
-            width: 100%;
-            padding: 0 50px;
-            margin: 0 auto;
 
-            ul {
-                display: inline-block;
-                list-style-type: none;
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+            li {
+                position: relative;
+                float: left;
+                width: 90px;
                 height: 100%;
+                line-height: 60px;
+                font-size: 1.6rem;
+                color: white;
+                text-align: center;
 
-                a {
-                    color: inherit;
-                    text-decoration: none;
-                }
-                li {
-                    position: relative;
-                    float: left;
-                    width: 90px;
-                    height: 100%;
-                    line-height: 60px;
-                    font-size: 1.6rem;
-                    color: white;
-                    text-align: center;
-
-                    &:hover {
-                        .cursor {
-                            width: 100%;
-                        }
-                    }
-
+                &:hover {
                     .cursor {
-                        position: absolute;
-                        display: block;
-                        bottom: 0;
-                        left: 0;
-                        width: 0;
-                        height: 3px;
-                        background-color: rgb(145, 154, 69);
-                        transition: width ease 0.3s;
-                        -o-transition: width ease 0.3s;
-                        -ms-transition: width ease 0.3s;
-                        -moz-transition: width ease 0.3s;
-                        -webkit-transition: width ease 0.3s;
+                        width: 100%;
                     }
                 }
-            }
 
-            #search {
-                float: right;
-                width: 300px;
-                height: 30px;
-                padding: 0 10px;
-                border: 1px solid white;
-                font-family: inherit;
-                outline: none;
-                color: white;
-                background-color: rgba(0,0,0,0);
-                margin: 17px 15px 0px 15px;
-            }
-
-            button {
-                float: right;
-                font-size: 1.5rem;
-                font-family: inherit;
-                border: none;
-                outline: none;
-                cursor: pointer;
-                color: white;
-                width: 60px;
-                height: 30px;
-                margin: 15px 15px 0px 10px;
-                border-radius: 3px;
-                background-color: rgba(0,0,0,0);
-
-            }
-
-            #login-btn {
-                background-color: #eee966;
-
-                &:hover {
-                    background-color: #f7f15a;
-                }
-
-                &:active {
-                    background-color: #ede855;
-                }
-            }
-
-            #register-btn {
-                border: 1px solid white;
-
-                &:hover {
-                    color: rgb(42, 42, 42);
-                    background-color: white;
+                .cursor {
+                    position: absolute;
+                    display: block;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 3px;
+                    background-color: rgb(145, 154, 69);
+                    transition: width ease 0.3s;
+                    -o-transition: width ease 0.3s;
+                    -ms-transition: width ease 0.3s;
+                    -moz-transition: width ease 0.3s;
+                    -webkit-transition: width ease 0.3s;
                 }
             }
         }
+
+        #search {
+            float: right;
+            width: 300px;
+            height: 30px;
+            padding: 0 10px;
+            border: 1px solid white;
+            font-family: inherit;
+            outline: none;
+            color: white;
+            background-color: rgba(0,0,0,0);
+            margin: 17px 15px 0px 15px;
+        }
+
+        button {
+            float: right;
+            font-size: 1.5rem;
+            font-family: inherit;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: white;
+            width: 60px;
+            height: 30px;
+            margin: 15px 15px 0px 10px;
+            border-radius: 3px;
+            background-color: rgba(0,0,0,0);
+
+        }
+
+        #login-btn {
+            background-color: #eee966;
+
+            &:hover {
+                background-color: #f7f15a;
+            }
+
+            &:active {
+                background-color: #ede855;
+            }
+        }
+
+        #register-btn {
+            border: 1px solid white;
+
+            &:hover {
+                color: rgb(42, 42, 42);
+                background-color: white;
+            }
+        }
+    }
+}
+
+.clearfix {
+    *zoom: 1;
+
+    &:before, &:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
     }
 }

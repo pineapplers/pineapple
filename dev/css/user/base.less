@@ -1,0 +1,109 @@
+@imagesDir: "/public/static/images";
+@baseFontColor: #5d5d5d;
+@baseFontLightColor: #828caa;
+@baseColor: rgb(122, 167, 242);
+@followingBtnBackColor: rgb(136, 136, 136);
+@unfollowBtnBackColor: rgb(122, 167, 242);
+
+body {
+    background-color: rgb(245, 248, 249);
+}
+
+.user-container {
+    padding: 80px 100px;
+    padding-bottom: 0;
+    background-color: white;
+    border-bottom: 1px solid rgb(203, 203, 203);
+
+    .user-portrait {
+        position: relative;
+        float: left;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-image: url("@{imagesDir}/topic1.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        .follow-btn {
+            position: absolute;
+            width: 70px;
+            height: 22px;
+            bottom: -32px;
+            left: 15px;
+            border: none;
+            color: white;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .unfollow {
+            background-color: @unfollowBtnBackColor;
+        }
+
+        .following {
+            background-color: @followingBtnBackColor;
+        }
+    }
+
+    .user-info {
+        float: left;
+        margin-left: 30px;
+
+        .user-name {
+            color: @baseFontColor;
+        }
+
+        .user-area, .user-desc {
+            color: @baseFontLightColor;
+            font-weight: normal;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .user-follower, .user-following {
+            display: none;
+        }
+    }
+
+    .user-follower, .user-following {
+        float: right;
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        color: @baseFontLightColor;
+        background-color: rgb(245, 248, 249);
+
+        .follow-num {
+            font-size: 3.5rem;
+            color: @baseFontColor;
+            margin-bottom: 15px;
+        }
+    }
+
+    .user-following {
+        margin-right: 50px;
+    }
+
+    .user-tabs {
+        width: 100%;
+        margin-top: 30px;
+
+        .tab-item {
+            float: left;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 35px;
+            text-align: center;
+            color: @baseFontLightColor;
+        }
+
+        .current-tab {
+            background-color: rgb(245, 248, 249);
+            border-top: 2px solid @baseColor;
+            color: @baseColor;
+        }
+    }
+}
