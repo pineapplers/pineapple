@@ -51,6 +51,13 @@ def user_register(request):
             'form': form
         })
 
+# 用户博客
+def user_posts(request):
+    posts = request.user.posts
+    return render(request, 'user/posts.tpl', {
+            'posts': posts
+        })
+
 # 正在关注
 def user_following(request, user_id):
     user = User.objects.get(pk=user_id)
