@@ -27,7 +27,6 @@ def food_detail(request, food_id):
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
-            comment.food = food
             comment.user = request.user
             comment.save()
             messages.success(request, '评论成功')

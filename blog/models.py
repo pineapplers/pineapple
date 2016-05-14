@@ -1,5 +1,7 @@
 from django.db import models
 
+from user.models import User
+
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=128, verbose_name='标题')
