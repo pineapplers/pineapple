@@ -106,3 +106,61 @@ body {
   border-top: 2px solid #7aa7f2;
   color: #7aa7f2;
 }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+@media screen and (max-width: 1335px) {
+  .tab-container .user-item-container {
+    max-width: 1144px !important;
+  }
+}
+@media screen and (max-width: 1160px) {
+  .tab-container .user-item-container {
+    max-width: 970px !important;
+  }
+}
+.tab-container .user-item-container {
+  margin: 0 auto;
+  padding: 20px 50px;
+  max-width: 1318px;
+}
+.tab-container .user-item-container .user-item {
+  float: left;
+  width: 150px;
+  background-color: white;
+  text-align: center;
+  box-shadow: 0 0 3px #cfcfcf;
+  margin: 12px;
+}
+.tab-container .user-item-container .user-item .user-item-portrait {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  margin: 30px auto 20px auto;
+  background-image: url("/public/static/images/topic1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.tab-container .user-item-container .user-item .user-item-info {
+  display: block;
+  color: #828caa;
+  margin-bottom: 5px;
+}
+.tab-container .user-item-container .user-item .user-item-follow-btn {
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  border: none;
+  border-top: 1px solid #e2e2e2;
+  background-color: white;
+  color: #5d5d5d;
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1.5rem;
+  outline: none;
+  cursor: pointer;
+}
+.tab-container .user-item-container .user-item .has-follow {
+  color: #828caa !important;
+}

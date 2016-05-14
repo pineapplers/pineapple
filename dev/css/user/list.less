@@ -1,0 +1,75 @@
+@imagesDir: "/public/static/images";
+@baseFontColor: #5d5d5d;
+@baseFontLightColor: #828caa;
+@baseFontFamily: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.tab-container {
+
+    @media screen and (max-width: 1335px) {
+        .user-item-container {
+            max-width: 1144px !important;
+        }
+    }
+
+    @media screen and (max-width: 1160px) {
+        .user-item-container {
+            max-width: 970px !important;
+        }
+    }
+
+    .user-item-container {
+        margin: 0 auto;
+        padding: 20px 50px;
+        max-width: 1318px;
+
+        .user-item {
+            float: left;
+            width: 150px;
+            background-color: white;
+            text-align: center;
+            box-shadow: 0 0 3px rgb(207, 207, 207);
+            margin: 12px;
+
+            .user-item-portrait {
+                width: 65px;
+                height: 65px;
+                border-radius: 50%;
+                margin: 30px auto 20px auto;
+                background-image: url("@{imagesDir}/topic1.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .user-item-info {
+                display: block;
+                color: @baseFontLightColor;
+                margin-bottom: 5px;
+            }
+
+            .user-item-follow-btn {
+                width: 100%;
+                height: 40px;
+                margin-top: 20px;
+                border: none;
+                border-top: 1px solid rgb(226, 226, 226);
+                background-color: white;
+                color: @baseFontColor;
+                font-family: @baseFontFamily;
+                font-size: 1.5rem;
+                outline: none;
+                cursor: pointer;
+            }
+
+            .has-follow {
+                color: @baseFontLightColor !important;
+            }
+
+        }
+    }
+}

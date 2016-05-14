@@ -2,6 +2,7 @@
 @baseFontColor: #5d5d5d;
 @baseFontLightColor: #828caa;
 @baseColor: rgb(122, 167, 242);
+@venusFontColor: rgb(242, 102, 237);
 @followingBtnBackColor: rgb(136, 136, 136);
 @unfollowBtnBackColor: rgb(122, 167, 242);
 
@@ -53,6 +54,26 @@ body {
 
         .user-name {
             color: @baseFontColor;
+
+            .fa {
+                margin-right: 10px;
+                font-weight: bold;
+            }
+
+            .fa-mars {
+                color: @baseColor;
+            }
+
+            .fa-venus {
+                color: @venusFontColor;
+            }
+
+            .sex-icon {
+                margin-right: 5px;
+                width: 22px;
+                height: 22px;
+                vertical-align: bottom;
+            }
         }
 
         .user-area, .user-desc {
@@ -75,9 +96,10 @@ body {
         border-radius: 5px;
         color: @baseFontLightColor;
         background-color: rgb(245, 248, 249);
+        font-size: 2rem;
 
         .follow-num {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             color: @baseFontColor;
             margin-bottom: 15px;
         }
