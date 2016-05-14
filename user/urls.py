@@ -6,7 +6,7 @@ from .views import (home, user_login, user_register, user_follow, user_followers
     user_settings, user_profile, foods_collection, topics_collection)
 
 urlpatterns = [
-    url(r'^(?P<user_id>)$', home, name='home'),
+    url(r'^(?P<user_id>[\d]+)$', home, name='home'),
     url(r'^login/$', user_login, name='login'),
     url(r'^logout/$', user_logout, name='logout'),
     url(r'^register/$', user_register, name='register'),
@@ -23,9 +23,9 @@ urlpatterns = [
     url(r'^profile/$', user_profile, name='profile'),
 
     url(r'^follow/$', user_follow, name='follow'),
-    url(r'^(?P<user_id>)/following/$', user_following, name='following'),
-    url(r'^(?P<user_id>)/followers/$', user_followers, name='followers'),
-    url(r'^(?P<user_id>)/posts/$', user_posts, name='posts'),
+    url(r'^(?P<user_id>[\d]+)/following/$', user_following, name='following'),
+    url(r'^(?P<user_id>[\d]+)/followers/$', user_followers, name='followers'),
+    url(r'^(?P<user_id>[\d]+)/posts/$', user_posts, name='posts'),
 
     url(r'^collection/foods', foods_collection, name='foods-collection'),
     url(r'^collection/topics', topics_collection, name='topics-collection'),
