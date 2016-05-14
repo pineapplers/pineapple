@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_POST
 
-from .forms import LoginForm, RegisterForm, ProfileForm
+from .forms import LoginForm, RegisterForm, ProfileForm, SettingForm
 from .models import User
 
 from actions.models import Action
@@ -30,7 +30,7 @@ def user_login(request):
         if form.is_valid():
             user = form.get_authenticated_user()
             login(request, user)
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('home:index'))
     else:
         form = LoginForm()
     return render(request, 'user/login.tpl', {
@@ -44,7 +44,7 @@ def user_register(request):
         if form.is_valid():
             user = form.get_authenticated_user()
             login(request, user)
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('home:index'))
     else:
         form = RegisterForm()
     return render(request, 'user/register.tpl', {
@@ -61,7 +61,7 @@ def user_posts(request):
 # 正在关注
 def user_following(request, user_id):
     user = User.objects.get(pk=user_id)
-    followings = make_paginator(request, user.followings.all())
+    followings = make_paginator(request, user.following.all())
     return render(request, 'user/list.tpl', {
             'users': followings
         })
@@ -94,8 +94,19 @@ def topics_collection(request):
 @login_required
 def user_settings(request):
     settings = request.user.settings
+    if request.method == 'POST':
+        form = SettingForm(instance=settings, data=request.POST,
+                            files=request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, '设置更新成功')
+        else:
+            messages.error(request, '设置更新失败')
+    else:
+        form = SettingForm(instance=settings)
     return render(request, 'user/settings.tpl', {
             'settings': settings
+            'form': form
         })
 
 # 个人档案

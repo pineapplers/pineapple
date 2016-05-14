@@ -28,9 +28,9 @@ def topic_detail(request, topic_id):
     	})
 
 # 点赞
+@login_required
 @require_POST
 @ajax_required
-@login_required
 def topic_like(request):
 	topic_id = request.POST.get('id') 
 	action = request.POST.get('action')

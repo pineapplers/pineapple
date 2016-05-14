@@ -13,7 +13,7 @@ class FoodCategory(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('food:category', args=[self.name])
+        return reverse('food:category', kwargs={'category': self.name})
 
     class Meta:
         verbose_name = '美食分类'
@@ -34,7 +34,7 @@ class Food(models.Model):
     tags = TaggableManager(blank=True, help_text='多个标签以逗号分隔', verbose_name="标签")
 
     def get_absolute_url(self):
-        return reverse('food:detail', args=[self.id])
+        return reverse('food:detail', kwargs={'food_id': self.id})
 
     def __str__(self):
         return self.title

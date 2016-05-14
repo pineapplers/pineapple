@@ -17,7 +17,7 @@ class FoodTopic(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('topic:detail', args=[self.id])
+        return reverse('topic:detail', kwargs={'topic_id': self.id})
 
     class Meta:
         verbose_name = '美食专题'

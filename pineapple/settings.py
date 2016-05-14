@@ -157,7 +157,7 @@ FIXTURE_DIRS = (
    os.path.join(BASE_DIR, 'fixtures'),
 )
 
-LOGIN_URL = reverse_lazy('login')
+LOGIN_URL = reverse_lazy('user:login')
 
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
