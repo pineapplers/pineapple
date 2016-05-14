@@ -1,5 +1,7 @@
 from django.db import models
 
+from user.models import User
+
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=128, verbose_name='标题')
@@ -8,5 +10,5 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='创建日期')
 
     class Meta:
-        verbose_name = '博客'
-        verbose_name_plural = '博客'
+        verbose_name = '帖子'
+        verbose_name_plural = '帖子'

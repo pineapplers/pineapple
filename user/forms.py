@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import PermissionDenied
 
-from .models import User, UserProfile
+from .models import User, UserProfile, UserSetting
 
 from utils.form import RegexPassWordField
 
@@ -58,6 +58,13 @@ class RegisterForm(forms.ModelForm, UserCacheMixin):
     class Meta:
         model = User
         fields = ('username', 'email', 'password', 'confirm_password')
+
+
+class SettingForm(forms.ModelForm):
+
+    class Meta:
+        model = UserSetting
+        exclude = ()
 
 
 class ProfileForm(forms.ModelForm):

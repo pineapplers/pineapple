@@ -19,6 +19,7 @@ class User(AbstractUser):
 
 class UserSetting(models.Model):
     user = models.OneToOneField(User, related_name='settings', on_delete=models.CASCADE)
+    background_img = models.ImageField(upload_to='users/background/%Y/%m/%d', blank=True, verbose_name='主页背景')
 
     def __str__(self):
         return "{}的设置".format(self.user.username)

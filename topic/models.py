@@ -1,7 +1,6 @@
 from django.core.urlresolvers import reverse
 from django.db import models
 
-from comments.models import Comment
 from food.models import Food
 from taggit.managers import TaggableManager
 from user.models import User
@@ -11,7 +10,6 @@ class FoodTopic(models.Model):
     title = models.CharField(max_length=32, verbose_name='专题名称')
     users_like = models.ManyToManyField(User, related_name='topics_liked', blank=True, verbose_name='点赞用户')
     users_collect = models.ManyToManyField(User, related_name='topics_collected', blank=True, verbose_name='收藏的用户')
-    comments = models.ManyToManyField(Comment, blank=True, verbose_name='专题评论')
     foods = models.ManyToManyField(Food, verbose_name='美食') 
     tags = TaggableManager(blank=True, help_text='多个标签以逗号分隔', verbose_name="标签")
 
