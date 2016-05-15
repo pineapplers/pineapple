@@ -16,31 +16,32 @@ def topic_list(request):
         return render(request, 'topic/list_ajax.tpl',
                       {'topics': topics})
     return render(request, 'topic/list.tpl', {
-    		'topics': topics
-    	})
+            'topics': topics
+        })
 
 # 专题详情
 def topic_detail(request, topic_id):
     topic = FoodTopic.objects.get(pk=topic_id)
     foods = make_paginator(request, topic.foods.all())
     return render(request, 'topic/detail.tpl', {
-    		'foods': foods
-    	})
+            'foods': foods
+        })
 
-# 点赞
+# 收藏
 @login_required
 @require_POST
 @ajax_required
-def topic_like(request):
-	topic_id = request.POST.get('id') 
-	action = request.POST.get('action')
-	if topic_id and action:
-		topic = FoodTopic.objects.get(pk=topic_id)
-		if action == 'like':
-			topic.users_like.add(request.user)
-			create_action(request.user, '喜欢了', topic)
-		elif action == 'unlike':
-			topic.users_like.remove(request.user)
-		else:
-			return JsonResponse()
-	return JsonResponse({'status': 'no'})
+def topic_collect(request):
+    topic_id = request.POST.get('id') 
+    action = request.POST.get('action')
+    if topic_id and action:
+        topic = FoodTopic.objects.get(pk=topic_id)
+        if action == 'collect':
+            topic.users_collect.add(request.user)
+            create_action(request.user, '收藏了', topic)
+        elif action == 'uncollect':
+            topic.users_collect.remove(request.user)
+        else:
+            return JsonResponse({'status': False})
+        return JsonResponse({'status': True})
+    return JsonResponse({'status': False}, status=400)
