@@ -1,16 +1,18 @@
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 
 from .models import Food, FoodCategory
 
+from actions.utils import create_action
 from comments.models import Comment
 from comments.forms import CommentForm
-from utils.decorators import ajax_required
 from utils import make_paginator
+from utils.decorators import ajax_required
 
 import redis
 
@@ -34,11 +36,10 @@ def food_detail(request, food_id):
             messages.error(request, '评论失败')
     else:
         comment_form = CommentForm()
-    food_tags_ids = food.tags.objects.values_list('id')
-    similar_foods = Food.objects.filter(tags__in=food.tags).exclude(id=food_tags_ids)
-    similar_foods = similar_foods.annotate(same_tags=Count('tags')).order_by('-same_tags',
-                                                                             '-publish')[:4]
-    total_views = r.incr('food:{}:views'.format(image.id))
+    food_tags_ids = food.tags.values_list('id')
+    similar_foods = Food.objects.filter(tags__in=food.tags.all()).exclude(id=food_tags_ids)
+    similar_foods = similar_foods.annotate(same_tags=Count('tags')).order_by('-same_tags')[:4]
+    total_views = r.incr('food:{}:views'.format(food.id))
     r.zincrby('food_ranking', food.id, 1)
     return render(request, 'food/detail.tpl', {
             'food': food,
@@ -55,18 +56,19 @@ def food_category(request, category):
         })
 
 def food_tag(request, tag):
-    foods = make_paginator(request, Food.objects.filter(tag__name=category))
+    foods = make_paginator(request, Food.objects.filter(tags__name=tag))
     return render(request, 'food/list.tpl', {
             'foods': foods
         })
 
-def foods_most_popular(request):
+def explore(request):
     food_ranking = r.zrange('food_ranking', 0, -1, desc=True)[:10]
     food_ranking_ids = [int(id) for id in food_ranking]
 
     most_viewed = list(Food.objects.filter(id__in=food_ranking_ids))
     most_viewed.sort(key=lambda x: food_ranking_ids.index(x.id))
-    return render(request, 'food/ranking.tpl', {
+
+    return render(request, 'food/explore.tpl', {
                    'most_viewed': most_viewed
                 })
 
@@ -84,7 +86,7 @@ def food_like(request):
             create_action(request.user, '喜欢了', food)
         elif action == 'dislike':
             request.user.foods_disliked.add(food)
-            request.user.food_like.add(food)
+            request.user.foods_liked.remove(food)
         else:
             return JsonResponse({'status': False})
         return JsonResponse({'status': True})
@@ -98,7 +100,7 @@ def food_wta(request):
     if food_id:
         food = Food.objects.get(pk=food_id)
         food.users_wta.add(request.user)
-        fodd.users_ate.remove(request.user)
+        food.users_ate.remove(request.user)
         return JsonResponse({'status': 'yes'})
     return JsonResponse({'status': False}, status=400)
 
@@ -110,6 +112,6 @@ def food_ate(request):
     if food_id:
         food = Food.objects.get(pk=food_id)
         food.users_ate.add(request.user)
-        fodd.users_wta.remove(request.user)
+        food.users_wta.remove(request.user)
         return JsonResponse({'status': 'yes'})
     return JsonResponse({'status': False}, status=400)
