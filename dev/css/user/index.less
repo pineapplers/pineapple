@@ -1,0 +1,98 @@
+@baseFontColor: #5d5d5d;
+@baseFontLightColor: #828caa;
+.tab-container {
+    .timeline-container {
+        margin: 50px 150px 0 150px;
+        padding-bottom: 100px;
+
+        .timeline-item-main {
+            position: relative;
+            padding: 20px 0 0 0;
+            border-left: 3px solid rgb(231, 231, 231);
+
+            .timeline-item-year {
+                position: absolute;
+                font-size: 2rem;
+                color: @baseFontColor;
+                top: -35px;
+                left: -50%;
+
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                top: -7px;
+                left: -7px;
+                background-color: rgb(231, 231, 231);
+            }
+
+            .timeline-item {
+                position: relative;
+                margin-top: 25px;
+                margin-left: -13px;
+
+                .fa {
+                    width: 25px;
+                    height: 25px;
+                    line-height: 25px;
+                    font-size: 1.5rem;
+                    text-align: center;
+                    color: white;
+                    border-radius: 50%;
+                }
+
+                .fa-share-alt {
+                    background-color: rgb(7, 193, 92);
+                }
+
+                .fa-thumbs-up {
+                    background-color: rgb(62, 209, 223);
+                }
+
+                .fa-bookmark {
+                    background-color: rgb(150, 99, 0);
+                }
+
+                .fa-eye {
+                    background-color: rgb(78, 85, 185);
+                }
+
+                .fa-comment {
+                    background-color: rgb(155, 80, 186);
+                }
+
+                .fa-cutlery {
+                    background-color: rgb(214, 72, 93);
+                }
+
+                .fa-hand-peace-o {
+                    background-color: rgb(199, 73, 205);
+                }
+
+                .timeline-item-username {
+                    margin: 0 5px;
+                    color: @baseFontLightColor;
+                }
+
+                .timeline-item-action {
+                    color: @baseFontColor;
+                }
+
+                .timeline-item-theme {
+                    margin: 0 5px;
+                    color: @baseFontLightColor;
+                }
+
+                .timeline-item-time {
+                    float: right;
+                    color: @baseFontColor;
+                }
+            }
+        }
+    }
+}

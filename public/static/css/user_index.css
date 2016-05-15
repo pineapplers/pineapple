@@ -1,0 +1,185 @@
+body {
+  background-color: #f5f8f9;
+}
+.user-container {
+  padding: 80px 100px;
+  padding-bottom: 0;
+  background-color: white;
+  border-bottom: 1px solid #cbcbcb;
+}
+.user-container .user-portrait {
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-image: url("/public/static/images/topic1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.user-container .user-portrait .follow-btn {
+  position: absolute;
+  width: 70px;
+  height: 22px;
+  bottom: -32px;
+  left: 15px;
+  border: none;
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+.user-container .user-portrait .unfollow {
+  background-color: #7aa7f2;
+}
+.user-container .user-portrait .following {
+  background-color: #888888;
+}
+.user-container .user-info {
+  float: left;
+  margin-left: 30px;
+}
+.user-container .user-info .user-name {
+  color: #5d5d5d;
+}
+.user-container .user-info .user-name .fa {
+  margin-right: 10px;
+  font-weight: bold;
+}
+.user-container .user-info .user-name .fa-mars {
+  color: #7aa7f2;
+}
+.user-container .user-info .user-name .fa-venus {
+  color: #f266ed;
+}
+.user-container .user-info .user-name .sex-icon {
+  margin-right: 5px;
+  width: 22px;
+  height: 22px;
+  vertical-align: bottom;
+}
+.user-container .user-info .user-area,
+.user-container .user-info .user-desc {
+  color: #828caa;
+  font-weight: normal;
+}
+@media screen and (max-width: 1200px) {
+  .user-container .user-follower,
+  .user-container .user-following {
+    display: none;
+  }
+}
+.user-container .user-follower,
+.user-container .user-following {
+  float: right;
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #828caa;
+  background-color: #f5f8f9;
+  font-size: 2rem;
+}
+.user-container .user-follower .follow-num,
+.user-container .user-following .follow-num {
+  font-size: 2.5rem;
+  color: #5d5d5d;
+  margin-bottom: 15px;
+}
+.user-container .user-following {
+  margin-right: 50px;
+}
+.user-container .user-tabs {
+  width: 100%;
+  margin-top: 30px;
+}
+.user-container .user-tabs .tab-item {
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 35px;
+  text-align: center;
+  color: #828caa;
+}
+.user-container .user-tabs .current-tab {
+  background-color: #f5f8f9;
+  border-top: 2px solid #7aa7f2;
+  color: #7aa7f2;
+}
+.tab-container .timeline-container {
+  margin: 50px 150px 0 150px;
+  padding-bottom: 100px;
+}
+.tab-container .timeline-container .timeline-item-main {
+  position: relative;
+  padding: 20px 0 0 0;
+  border-left: 3px solid #e7e7e7;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item-year {
+  position: absolute;
+  font-size: 2rem;
+  color: #5d5d5d;
+  top: -35px;
+  left: -50%;
+}
+.tab-container .timeline-container .timeline-item-main:before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  top: -7px;
+  left: -7px;
+  background-color: #e7e7e7;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item {
+  position: relative;
+  margin-top: 25px;
+  margin-left: -13px;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item .fa {
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: white;
+  border-radius: 50%;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item .fa-share-alt {
+  background-color: #07c15c;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item .fa-thumbs-up {
+  background-color: #3ed1df;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item .fa-bookmark {
+  background-color: #966300;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item .fa-eye {
+  background-color: #4e55b9;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item .fa-comment {
+  background-color: #9b50ba;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item .fa-cutlery {
+  background-color: #d6485d;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item .fa-hand-peace-o {
+  background-color: #c749cd;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item .timeline-item-username {
+  margin: 0 5px;
+  color: #828caa;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item .timeline-item-action {
+  color: #5d5d5d;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item .timeline-item-theme {
+  margin: 0 5px;
+  color: #828caa;
+}
+.tab-container .timeline-container .timeline-item-main .timeline-item .timeline-item-time {
+  float: right;
+  color: #5d5d5d;
+}
