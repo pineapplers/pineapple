@@ -52,8 +52,9 @@ def user_register(request):
         })
 
 # 用户博客
-def user_posts(request):
-    posts = request.user.posts
+def user_posts(request, user_id):
+    user = User.objects.get(pk=user_id)
+    posts = user.posts
     return render(request, 'user/posts.tpl', {
             'posts': posts
         })
@@ -62,7 +63,7 @@ def user_posts(request):
 def user_following(request, user_id):
     user = User.objects.get(pk=user_id)
     followings = make_paginator(request, user.following.all())
-    return render(request, 'user/list.tpl', {
+    return render(request, 'user/user_list.tpl', {
             'users': followings
         })
 
@@ -70,23 +71,39 @@ def user_following(request, user_id):
 def user_followers(request, user_id):
     user = User.objects.get(pk=user_id),
     followers = make_paginator(request, user.followers.all())
-    return render(request, 'user/list.tpl', {
+    return render(request, 'user/user_list.tpl', {
             'users': followers
         })
 
-# Food收藏夹
-@login_required
-def foods_collection(request):
-    collections = make_paginator(request, request.user.foods_collect.all())
-    return render(request, 'user/foods_collection.tpl', {
-            'collections': collections
+# 分享
+def user_shared(request, user_id):
+    user = User.objects.get(pk=user_id)
+    foods_shared = make_paginator(request, user.foods_shared.all())
+    return render(request, 'user/food_list.tpl', {
+            'foods': foods_shared
+        })
+
+# 想吃的
+def user_wants_to_eat(request, user_id):
+    user = User.objects.get(pk=user_id),
+    foods = make_paginator(request, user.foods_wta.all())
+    return render(request, 'user/food_list.tpl', {
+            'foods': foods
+        })
+
+# 吃过的
+def user_ate(request, user_id):
+    user = User.objects.get(pk=user_id),
+    foods = make_paginator(request, user.foods_ate.all())
+    return render(request, 'user/food_list.tpl', {
+            'foods': foods
         })
 
 # Topic收藏夹
 @login_required
 def topics_collection(request):
     collections = make_paginator(request, request.user.topics_collect.all())
-    return render(request, 'user/topics_collection.tpl', {
+    return render(request, 'user/topic_collection.tpl', {
             'collections': collections
         })
 
@@ -105,7 +122,7 @@ def user_settings(request):
     else:
         form = SettingForm(instance=settings)
     return render(request, 'user/settings.tpl', {
-            'settings': settings
+            'settings': settings,
             'form': form
         })
 

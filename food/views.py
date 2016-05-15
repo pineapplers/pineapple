@@ -86,6 +86,30 @@ def food_like(request):
             request.user.foods_disliked.add(food)
             request.user.food_like.add(food)
         else:
-            return JsonResponse({'status': 'no'})
+            return JsonResponse({'status': False})
+        return JsonResponse({'status': True})
+    return JsonResponse({'status': False}, status=400)
+
+@ajax_required
+@require_POST
+@login_required
+def food_wta(request):
+    food_id = request.POST.get('id')
+    if food_id:
+        food = Food.objects.get(pk=food_id)
+        food.users_wta.add(request.user)
+        fodd.users_ate.remove(request.user)
         return JsonResponse({'status': 'yes'})
-    return JsonResponse()
+    return JsonResponse({'status': False}, status=400)
+
+@ajax_required
+@require_POST
+@login_required
+def food_ate(request):
+    food_id = request.POST.get('id')
+    if food_id:
+        food = Food.objects.get(pk=food_id)
+        food.users_ate.add(request.user)
+        fodd.users_wta.remove(request.user)
+        return JsonResponse({'status': 'yes'})
+    return JsonResponse({'status': False}, status=400)
