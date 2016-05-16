@@ -46,13 +46,14 @@ class RegisterForm(forms.ModelForm, UserCacheMixin):
         password = self.cleaned_data.get('password')
         confirm_password = self.cleaned_data.get('confirm_password')
 
-        if password != confirm_password:
-            raise forms.ValidationError('两次输入的密码不一致')
-        elif User.objects.filter(username=username).exists():
-            raise forms.ValidationError('该用户已经存在')
+        if username and email and password and confirm_password:
+            if password != confirm_password:
+                raise forms.ValidationError('两次输入的密码不一致')
+            elif User.objects.filter(username=username).exists():
+                raise forms.ValidationError('该用户已经存在')
 
-        User.objects.create_user(username=username, email=email, password=password)
-        self.user_cache = authenticate(username=username, password=password)
+            User.objects.create_user(username=username, email=email, password=password)
+            self.user_cache = authenticate(username=username, password=password)
 
         return self.cleaned_data
 

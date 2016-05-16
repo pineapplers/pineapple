@@ -19,22 +19,23 @@
                 <h3>注册，加入我们的大家庭</h3>
             </div>
             <div class="form-container" id="form-container">
-                <form class="" action="" method="post" autocomplete="off">
+                <form class="" action="." method="post" autocomplete="off">
+                    {% csrf_token %}
                     <div class="form-item">
                         <label for="username">账号 | USERNAME</label>
-                        <input type="username" name="username" id="username" placeholder="">
+                        {{ form.username }}
                     </div>
                     <div class="form-item">
                         <label for="email">邮箱 | EMAIL</label>
-                        <input type="email" name="email" id="email" placeholder="">
+                        {{ form.email }}
                     </div>
                     <div class="form-item">
                         <label for="password">密码 | PASSWORD</label>
-                        <input type="password" name="password" id="password" placeholder="">
+                        {{ form.password }}
                     </div>
                     <div class="form-item">
                         <label for="confirmPassword">确认密码 | CONFIRM</label>
-                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="">
+                        {{ form.confirm_password }}
                     </div>
 
                     <div class="form-item">

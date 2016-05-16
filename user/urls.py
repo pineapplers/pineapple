@@ -6,7 +6,7 @@ from .views import (home, user_login, user_register, user_follow, user_followers
     user_settings, user_profile, user_shared, user_wants_to_eat, user_ate, topics_collection)
 
 urlpatterns = [
-    url(r'^(?P<user_id>[\d]+)$', home, name='home'),
+    url(r'^(?P<user_id>[\d]+)/$', home, name='home'),
 
     url(r'^login/$', user_login, name='login'),
     url(r'^logout/$', user_logout, name='logout'),
@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^(?P<user_id>[\d]+)/wta/$', user_wants_to_eat, name='wta'),
     url(r'^(?P<user_id>[\d]+)/ate/$', user_ate, name='ate'),
     url(r'^(?P<user_id>[\d]+)/posts/$', user_posts, name='posts'),
+    url(r'^(?P<user_id>[\d]+)/topic-collection', topics_collection, name='topic-collection'),
 
-    url(r'^collection/topics', topics_collection, name='topics-collection'),
     url(r'^follow/$', user_follow, name='follow'),
 ]

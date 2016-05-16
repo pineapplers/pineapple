@@ -1,42 +1,16 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>用户头部基础</title>
-        <link rel="stylesheet" href="/public/static/font/font-awesome-4.5.0/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
-    <link href="/public/static/css/vendors.css?6d10e254a086eff27071" rel="stylesheet"><link href="/public/static/css/user_base.css?6d10e254a086eff27071" rel="stylesheet"></head>
+        <link rel="stylesheet" href="{% static 'font/font-awesome-4.5.0/css/font-awesome.min.css' %}" media="screen" title="no title" charset="utf-8">
+        <link href="{% static 'css/vendors.css' %}" rel="stylesheet">
+        <title>{{ user.username }}的主页</title>
+        {% block head %}
+        {% endblock head %}
+        </head>
     <body>
-        
-        <div class="navbar">
-
-            <div class="nav">
-                <ul>
-                    <li>
-                        <a href="#">首页</a>
-                        <span class="cursor"></span>
-                    </li>
-                    <li>
-                        <a href="#">专题</a>
-                        <span class="cursor"></span>
-                    </li>
-                    <li>
-                        <a href="#">发现</a>
-                        <span class="cursor"></span>
-                    </li>
-                    <li>
-                        <a href="#">吃</a>
-                        <span class="cursor"></span>
-                    </li>
-                    <li>
-                        <a href="#">旅</a>
-                        <span class="cursor"></span>
-                    </li>
-                </ul>
-                <a href="#"><button type="button" name="login" id="login-btn">登录</button></a>
-                <a href="#"><button type="button" name="register" id="register-btn">注册</button></a>
-                <input type="text" name="search" value="寻找好物……" id="search">
-            </div>
-        </div>
+        {% include 'home/navbar.tpl' %}
         <div class="user-container clearfix">
             <div class="user-main clearfix">
                 <div class="user-portrait">
@@ -59,31 +33,55 @@
             </div>
 
             <div class="user-tabs clearfix">
-                <div class="tab-item current-tab">
-                    主页
-                </div>
-                <div class="tab-item">
-                    分享
-                </div>
-                <div class="tab-item">
-                    专题收藏
-                </div>
-                <div class="tab-item">
-                    吃过的
-                </div>
-                <div class="tab-item">
-                    想吃的
-                </div>
-                <div class="tab-item">
-                    关注
-                </div>
-                <div class="tab-item">
-                    粉丝
-                </div>
-                <div class="tab-item">
-                    设置
-                </div>
+                <a href="{% url 'user:home' user.id %}">
+                    <div class="tab-item current-tab">
+                        主页
+                    </div>
+                </a>
+                <a href="{% url 'user:share' user.id %}">
+                    <div class="tab-item">
+                        分享
+                    </div>
+                </a>
+                <a href="{% url 'user:topic-collection' user.id %}">
+                    <div class="tab-item">
+                        专题收藏
+                    </div>
+                </a>
+                <a href="{% url 'user:ate' user.id %}">
+                    <div class="tab-item">
+                        吃过的
+                    </div>
+                </a>
+                <a href="{% url 'user:wta' user.id %}">
+                    <div class="tab-item">
+                        想吃的
+                    </div>
+                </a>
+                <a href="{% url 'user:following' user.id %}">
+                    <div class="tab-item">
+                        关注
+                    </div>
+                </a>
+                <a href="{% url 'user:followers' user.id %}">
+                    <div class="tab-item">
+                        粉丝
+                    </div>
+                </a>
+                {% if request.user.id == user.id %}
+                <a href="{% url 'user:settings' %}">
+                    <div class="tab-item">
+                        设置
+                    </div>
+                </a>
+                {% endif %}
             </div>
+            {% block content %}
+            {% endblock content %}
         </div>
-    <script src="/public/static/js/vendors.js?6d10e254a086eff27071"></script><script src="/public/static/js/user_base.js?6d10e254a086eff27071"></script></body>
+    <script src="{% static 'js/vendors.js' %}"></script>
+    <script src="{% static 'js/user_base.js' %}"></script>
+    {% block js %}
+    {% endblock js %}
+</body>
 </html>
