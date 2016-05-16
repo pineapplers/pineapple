@@ -1,0 +1,84 @@
+@baseFontColor: #5d5d5d;
+@baseFontLightColor: #828caa;
+@baseFontFamily: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+
+.tab-container {
+
+    @media screen and (max-width: 1150px) {
+        .eat-container {
+            width: 748px !important;
+        }
+    }
+
+    .eat-container {
+        margin: 30px auto;
+        width: 1122px;
+
+        .eat-item {
+            width: 334px;
+            float: left;
+            padding: 5px;
+            margin: 20px;
+            background-color: white;
+            box-shadow: 0 0 3px rgb(207, 207, 207);
+
+            .food-image {
+                float: left;
+                width: 80px;
+                height: 80px;
+                margin-right: 10px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .eat-item-main {
+                float: left;
+                width: 230px;
+
+
+                .food-title {
+                    margin: 0;
+                    margin-bottom: 5px;
+                    -o-text-overflow: ellipsis;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    color: @baseFontColor;
+                    font-weight: 400;
+
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+                }
+
+                .food-desc {
+                    margin: 0;
+                    -o-text-overflow: ellipsis;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    color: @baseFontLightColor;
+                }
+
+                .eat-item-icons {
+                    margin-top: 15px;
+                    margin-right: 5px;
+                    float: right;
+
+                    .fa, a {
+                        color: @baseFontLightColor;
+                        margin-left: 5px;
+                        vertical-align: bottom;
+
+                        .num {
+                            margin-left: 3px;
+                            font-family: @baseFontFamily;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
