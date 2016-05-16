@@ -75,7 +75,7 @@ ul {
   left: 0;
   width: 0;
   height: 3px;
-  background-color: #919a45;
+  background-color: #7aa7f2;
   transition: width ease 0.3s;
   -o-transition: width ease 0.3s;
   -ms-transition: width ease 0.3s;
@@ -109,13 +109,13 @@ ul {
   background-color: rgba(0, 0, 0, 0);
 }
 .navbar .nav #login-btn {
-  background-color: #eee966;
+  background-color: #7aa7f2;
 }
 .navbar .nav #login-btn:hover {
-  background-color: #f7f15a;
+  background-color: #7199da;
 }
 .navbar .nav #login-btn:active {
-  background-color: #ede855;
+  background-color: #6388c4;
 }
 .navbar .nav #register-btn {
   border: 1px solid white;

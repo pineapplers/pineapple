@@ -1,6 +1,9 @@
 // @imagesDir: "/C:/Users/李滨泓/Desktop/项目/pineapple/public/static/images";
 @imagesDir: "/public/static/images";
 @baseFontFamily: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+@baseColor: rgb(122, 167, 242);
+@baseDeepColor: rgb(113, 153, 218);
+@baseDeeperColor: rgb(99, 136, 196);
 
 * {
     box-sizing: border-box;
@@ -88,7 +91,7 @@ ul {
                     left: 0;
                     width: 0;
                     height: 3px;
-                    background-color: rgb(145, 154, 69);
+                    background-color: @baseColor;
                     transition: width ease 0.3s;
                     -o-transition: width ease 0.3s;
                     -ms-transition: width ease 0.3s;
@@ -128,14 +131,14 @@ ul {
         }
 
         #login-btn {
-            background-color: #eee966;
+            background-color: @baseColor;
 
             &:hover {
-                background-color: #f7f15a;
+                background-color: @baseDeepColor;
             }
 
             &:active {
-                background-color: #ede855;
+                background-color: @baseDeeperColor;
             }
         }
 

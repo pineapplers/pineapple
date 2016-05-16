@@ -1,0 +1,89 @@
+@baseFontColor: #5d5d5d;
+@baseFontLightColor: #828caa;
+@baseFontLighterColor: rgb(191, 191, 191);
+@baseFontFamily: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+@baseColor: rgb(122, 167, 242);
+
+@media screen and (max-width: 1150px) {
+    .topic-container {
+        width: 840px !important;
+    }
+}
+
+.tab-container {
+    .topic-container {
+        margin: 30px auto;
+        width: 1120px;
+
+        .topic-item {
+            margin: 0 20px 20px 20px;
+            width: 240px;
+            padding-bottom: 10px;
+            background-color: white;
+            box-shadow: 0 0 3px rgb(207, 207, 207);
+            color: @baseFontLighterColor;
+            float: left;
+
+            .topic-item-image-container {
+                width: 220px;
+                height: 130px;
+                margin: 10px auto;
+                overflow: hidden;
+
+                .topic-item-image {
+                    width: 220px;
+                    height: 130px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    transition: transform .3s ease;
+
+                    &:hover {
+                        transform: scale(1.1, 1.1);
+                    }
+                }
+            }
+
+
+            .collect-time {
+                float: left;
+                margin-left: 10px;
+            }
+
+            .topic-item-title {
+                font-weight: normal;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                color: @baseFontLightColor;
+                width: 100%;
+                padding: 0 10px;
+                margin-top: 0;
+                margin-bottom: 0;
+                text-align: center;
+
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                }
+            }
+
+            .topic-item-icons {
+                margin-right: 20px;
+                text-align: center;
+                font-size: 1.5rem;
+                color: @baseFontLightColor;
+
+                .fa {
+                    margin-left: 5px;
+                    .num {
+                        margin-left: 10px;
+                        font-family: @baseFontFamily;
+                    }
+                }
+
+            }
+        }
+    }
+}
