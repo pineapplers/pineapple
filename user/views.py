@@ -17,7 +17,7 @@ from utils.decorators import ajax_required
 # 用户主页
 def home(request, user_id):
     user = User.objects.get(pk=user_id)
-    recent_actions = Action.objects.filter(user=request.user).all()[:10]
+    recent_actions = Action.objects.filter(user=user).all()[:10]
     return render(request, 'user/index.tpl', {
             'actions': recent_actions,
             'user': user,
@@ -56,7 +56,8 @@ def user_posts(request, user_id):
     user = User.objects.get(pk=user_id)
     posts = user.posts
     return render(request, 'user/posts.tpl', {
-            'posts': posts
+            'posts': posts,
+            'user': user,
         })
 
 # 正在关注
@@ -64,47 +65,53 @@ def user_following(request, user_id):
     user = User.objects.get(pk=user_id)
     followings = make_paginator(request, user.following.all())
     return render(request, 'user/user_list.tpl', {
-            'users': followings
+            'users': followings,
+            'user': user,
         })
 
 # 被关注的
 def user_followers(request, user_id):
-    user = User.objects.get(pk=user_id),
+    user = User.objects.get(pk=user_id)
     followers = make_paginator(request, user.followers.all())
     return render(request, 'user/user_list.tpl', {
-            'users': followers
+            'users': followers,
+            'user': user,
         })
 
 # 分享
 def user_shared(request, user_id):
     user = User.objects.get(pk=user_id)
     foods_shared = make_paginator(request, user.foods_shared.all())
-    return render(request, 'user/food_list.tpl', {
-            'foods': foods_shared
+    return render(request, 'user/share.tpl', {
+            'foods': foods_shared,
+            'user': user,
         })
 
 # 想吃的
 def user_wants_to_eat(request, user_id):
-    user = User.objects.get(pk=user_id),
+    user = User.objects.get(pk=user_id)
     foods = make_paginator(request, user.foods_wta.all())
     return render(request, 'user/food_list.tpl', {
-            'foods': foods
+            'foods': foods,
+            'user': user,
         })
 
 # 吃过的
 def user_ate(request, user_id):
-    user = User.objects.get(pk=user_id),
+    user = User.objects.get(pk=user_id)
     foods = make_paginator(request, user.foods_ate.all())
     return render(request, 'user/food_list.tpl', {
-            'foods': foods
+            'foods': foods,
+            'user': user,
         })
 
 # Topic收藏夹
-@login_required
-def topics_collection(request):
-    collections = make_paginator(request, request.user.topics_collect.all())
+def topics_collection(request, user_id):
+    user = User.objects.get(pk=user_id)
+    collections = make_paginator(request, user.topics_collected.all())
     return render(request, 'user/topic_collection.tpl', {
-            'collections': collections
+            'collections': collections,
+            'user': user,
         })
 
 # 个人设置

@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,13 +16,14 @@
             </div>
             <div class="form-container" id="form-container">
                 <form class="" action="" method="post" autocomplete="off">
+                    {% csrf_token %}
                     <div class="form-item">
                         <label for="email">账号 | USERNAME</label>
-                        <input type="email" name="email" id="email" placeholder="">
+                        {{ form.username }}
                     </div>
                     <div class="form-item">
                         <label for="password">密码 | PASSWORD</label>
-                        <input type="password" name="password" id="password" placeholder="">
+                        {{ form.password }}
                     </div>
                     <div class="form-item">
                         <input type="submit" name="login" id="login-btn" value="登录">
