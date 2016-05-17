@@ -2,11 +2,10 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>用户头部基础</title>
-        <link rel="stylesheet" href="/public/static/font/font-awesome-4.5.0/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
-    <link href="/public/static/css/vendors.css?871d4b4fd7455456edc9" rel="stylesheet"><link href="/public/static/css/user_base.css?871d4b4fd7455456edc9" rel="stylesheet"></head>
+        <title>分享</title>
+        <script src="http://localhost:8111/webpack-dev-server.js"></script>
+    </head>
     <body>
-        
         <div class="navbar">
 
             <div class="nav">
@@ -40,7 +39,7 @@
         <div class="user-container clearfix">
             <div class="user-main clearfix">
                 <div class="user-portrait">
-                    
+                    <!-- 去掉 unfollow 即为已关注样式 -->
                     <a href="#"><button type="button" name="button" class="follow-btn unfollow">关注</button></a>
                 </div>
                 <div class="user-info">
@@ -59,10 +58,10 @@
             </div>
 
             <div class="user-tabs clearfix">
-                <div class="tab-item current-tab">
+                <div class="tab-item">
                     主页
                 </div>
-                <div class="tab-item">
+                <div class="tab-item current-tab">
                     分享
                 </div>
                 <div class="tab-item">
@@ -85,5 +84,54 @@
                 </div>
             </div>
         </div>
-    <script src="/public/static/js/vendors.js?871d4b4fd7455456edc9"></script><script src="/public/static/js/user_base.js?871d4b4fd7455456edc9"></script></body>
+
+        <div class="tab-container">
+            <div class="share-container">
+                <ul class="share-container-ul">
+                    <li class="share-container-item clearfix">
+                        <span class="share-time">分享于 6 小时前</span>
+                        <div class="item-index">
+                            1.
+                        </div>
+                        <div class="images-item" style="background-image: url('/public/static/images/topic1.jpg');"></div>
+                        <div class="item-main">
+                            <h3 class="item-title"><a href="#">「送男友」10款格调手机壳</a></h3>
+                            <p class="item-desc">
+                                给男友买百元以上手机壳的姑娘，都是真~爱~啊！毕竟对于一买就是三五个，
+                                手机壳随着心情换的女生而言，廉价
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="share-container-item">
+                        <span class="share-time">分享于 2 天前</span>
+                        <div class="item-index">
+                            2.
+                        </div>
+                        <div class="images-item" style="background-image: url('/public/static/images/topic2.jpg');"></div>
+                        <div class="item-main">
+                            <h3 class="item-title"><a href="#">家庭个护小能手，健康携手到白头</a></h3>
+                            <p class="item-desc">
+                                怀揣着对生活细节更高的要求，个人护理小家电已经成为了提高生活品质的一部分。现在市面上众多个性突出、功
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="share-container-item">
+                        <span class="share-time">分享于 1 年前</span>
+                        <div class="item-index">
+                            3.
+                        </div>
+                        <div class="images-item" style="background-image: url('/public/static/images/topic3.jpg');"></div>
+                        <div class="item-main">
+                            <h3 class="item-title"><a href="#">Take Care Of Your Teeth</a></h3>
+                            <p class="item-desc">
+                                No matter what your age,you need to take care of your teeth and mouth.When your mouth is...
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
 </html>
