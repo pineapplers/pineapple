@@ -1,44 +1,17 @@
-webpackJsonp([5],{
+webpackJsonp([6],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	__webpack_require__(8);
-
-	(function() {
-	    var loginContainer = document.getElementById("form-container");
-	    var inputs = loginContainer.getElementsByTagName("input")
-
-	    for(var idx=0;idx<inputs.length;idx++) {
-	        inputs[idx].addEventListener("focus", function(event) {
-	            var e = window.event || event;
-	            var target = e.srcElement || e.target;
-	            if(target.name === "button") {
-	                return;
-	            }
-	            var label = target.parentNode.firstElementChild;
-	            label.className = "focus-label";
-	        }, false);
-
-	        inputs[idx].addEventListener("blur", function(event) {
-	            var e = window.event || event;
-	            var target = e.srcElement || e.target;
-	            if(target.value === "") {
-	                var label = target.parentNode.firstElementChild;
-	                label.className = "";
-	                target.className = "";
-	            }else {
-	                target.className = "compvare-input";
-	            }
-	        }, false);
-	    }
-	})();
+	__webpack_require__(9);
+	var formAnimate = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../../commonJSFile/user/form.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	formAnimate();
 
 
 /***/ },
 
-/***/ 8:
+/***/ 9:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
