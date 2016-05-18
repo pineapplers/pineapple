@@ -18,15 +18,12 @@ from utils.decorators import ajax_required
 def home(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     profile = user.profile
-    following = user.following.count()
-    followers = user.followers.count()
     recent_actions = Action.objects.filter(user=user).all()[:10]
     return render(request, 'user/index.tpl', {
             'actions': recent_actions,
             'user': user,
             'profile': profile,
-            'following_num': following,
-            'followers_num': followers
+            'section': 'home',
         })
 
 # 登录
@@ -37,10 +34,11 @@ def user_login(request):
             user = form.get_authenticated_user()
             login(request, user)
             return HttpResponseRedirect(reverse('home:index'))
+        print(form.errors)
     else:
         form = LoginForm()
     return render(request, 'user/login.tpl', {
-            'form': form
+            'form': form,
         })
 
 # 注册
@@ -73,6 +71,7 @@ def user_following(request, user_id):
     return render(request, 'user/user_list.tpl', {
             'users': followings,
             'user': user,
+            'section': 'following'
         })
 
 # 被关注的
@@ -82,6 +81,7 @@ def user_followers(request, user_id):
     return render(request, 'user/user_list.tpl', {
             'users': followers,
             'user': user,
+            'section': 'followers'
         })
 
 # 分享
@@ -91,6 +91,7 @@ def user_shared(request, user_id):
     return render(request, 'user/share.tpl', {
             'foods': foods_shared,
             'user': user,
+            'section': 'share'
         })
 
 # 想吃的
@@ -100,6 +101,7 @@ def user_wants_to_eat(request, user_id):
     return render(request, 'user/food_list.tpl', {
             'foods': foods,
             'user': user,
+            'section': 'wta'
         })
 
 # 吃过的
@@ -109,6 +111,7 @@ def user_ate(request, user_id):
     return render(request, 'user/food_list.tpl', {
             'foods': foods,
             'user': user,
+            'section': 'ate'
         })
 
 # Topic收藏夹
@@ -118,6 +121,7 @@ def topics_collection(request, user_id):
     return render(request, 'user/topic_collection.tpl', {
             'collections': collections,
             'user': user,
+            'section': 'collection'
         })
 
 # 个人设置
@@ -136,7 +140,8 @@ def user_settings(request):
         form = SettingForm(instance=settings)
     return render(request, 'user/settings.tpl', {
             'settings': settings,
-            'form': form
+            'form': form,
+            'section': 'settings'
         })
 
 # 个人档案
