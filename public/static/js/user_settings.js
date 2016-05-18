@@ -1,31 +1,35 @@
-webpackJsonp([8],{
-
-/***/ 0:
+webpackJsonp([8],[
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
 	__webpack_require__(4);
 	__webpack_require__(10);
-	__webpack_require__(13)();
+	__webpack_require__(11)();
 
 
 /***/ },
-
-/***/ 4:
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-
-/***/ 10:
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-
-/***/ 13:
+/* 11 */
 /***/ function(module, exports) {
 
 	module.exports = function() {
@@ -51,5 +55,4 @@ webpackJsonp([8],{
 
 
 /***/ }
-
-});
+]);

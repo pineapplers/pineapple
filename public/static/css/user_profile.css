@@ -106,6 +106,9 @@ body {
   border-top: 2px solid #7aa7f2;
   color: #7aa7f2;
 }
+body {
+  background-color: #f7f7f7;
+}
 .tab-container {
   margin-top: 50px;
 }
@@ -190,15 +193,12 @@ body {
   overflow: hidden;
   margin: 10px 0;
   text-align: center;
-  padding: 5px;
-  border: 1px solid #bbbaba;
   border-radius: 3px;
 }
 .tab-container .form-container .form .form-item .img-preview .table-vertical {
   display: table-cell;
   vertical-align: middle;
   border-radius: 3px;
-  border: 1px solid #bbbaba;
 }
 .tab-container .form-container .form .form-item .img-preview .table-vertical img {
   max-width: 100%;
