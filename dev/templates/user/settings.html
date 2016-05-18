@@ -59,7 +59,7 @@
             </div>
 
             <div class="user-tabs clearfix">
-                <div class="tab-item current-tab">
+                <div class="tab-item">
                     主页
                 </div>
                 <div class="tab-item">
@@ -80,10 +80,58 @@
                 <div class="tab-item">
                     粉丝
                 </div>
-                <div class="tab-item">
+                <div class="tab-item current-tab">
                     设置
                 </div>
             </div>
         </div>
+
+        <div class="tab-container">
+            <div class="form-container">
+
+                <form class="form" action="index.html" method="get">
+                    <div class="form-item">
+                        <label class="form-item-label" for="">设置背景：</label>
+                        <div class="img-preview">
+                            <span class="table-vertical" id="preview-span"><img src="/public/static/images/topic1.jpg" alt="背景预览" /></span>
+                        </div>
+                        <input class="form-item-file" id="preview-input" type="file" name="newBack" value="" >
+                    </div>
+
+                    <div class="form-item">
+                        <div class="form-item-btn">
+                            <input type="submit" name="submit" value="保存" id="submit">
+                            <input type="submit" name="logout" value="注销" id="logout">
+                            <!-- <a href="#"><button type="button" name="logout" id="logout">注销</button></a> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            (function() {
+                function preview(file) {
+                    console.log(file)
+                    var prevDiv = document.getElementById('preview-span');
+                    var file = this;
+                    if (file.files && file.files[0])
+                    {
+                        var reader = new FileReader();
+                        reader.onload = function(evt){
+                            prevDiv.innerHTML = '<img src="' + evt.target.result + '" />';
+                        }
+                        reader.readAsDataURL(file.files[0]);
+                    }
+                    else
+                    {
+                        prevDiv.innerHTML = '<img src="' + file.value + '" />';
+                    }
+                }
+
+                document.getElementById("preview-input").addEventListener("change", preview, false)
+            })();
+
+        </script>
     </body>
 </html>

@@ -106,3 +106,67 @@ body {
   border-top: 2px solid #7aa7f2;
   color: #7aa7f2;
 }
+.tab-container {
+  margin-top: 50px;
+}
+.tab-container .form-container {
+  width: 950px;
+  margin: 0 auto;
+}
+.tab-container .form-container .form .form-item {
+  margin-bottom: 25px;
+}
+.tab-container .form-container .form .form-item .form-item-label {
+  font-size: 1.7rem;
+  color: #5d5d5d;
+}
+.tab-container .form-container .form .form-item .form-item-btn {
+  text-align: center;
+}
+.tab-container .form-container .form .form-item .form-item-btn input,
+.tab-container .form-container .form .form-item .form-item-btn button {
+  border: none;
+  width: 100px;
+  height: 45px;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1.6rem;
+  color: white;
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  cursor: pointer;
+}
+.tab-container .form-container .form .form-item .form-item-btn #submit {
+  background-color: #7aa7f2;
+}
+.tab-container .form-container .form .form-item .form-item-btn #submit:hover {
+  background-color: #588ada;
+}
+.tab-container .form-container .form .form-item .form-item-btn #logout {
+  background-color: #e04a4a;
+}
+.tab-container .form-container .form .form-item .form-item-btn #logout:hover {
+  background-color: #bb3b3b;
+}
+.tab-container .form-container .form .form-item .img-preview {
+  display: table;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  margin: 10px 0;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #bbbaba;
+  border-radius: 3px;
+}
+.tab-container .form-container .form .form-item .img-preview .table-vertical {
+  display: table-cell;
+  vertical-align: middle;
+  border-radius: 3px;
+  border: 1px solid #bbbaba;
+}
+.tab-container .form-container .form .form-item .img-preview .table-vertical img {
+  max-width: 100%;
+  max-height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}

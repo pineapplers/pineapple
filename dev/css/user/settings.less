@@ -1,0 +1,88 @@
+@baseFontColor: #5d5d5d;
+@baseFontLightColor: #828caa;
+@baseColor: rgb(122, 167, 242);
+@baseDeepColor: rgb(88, 138, 218);
+@baseFontFamily: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+
+.tab-container {
+    margin-top: 50px;
+
+    .form-container {
+        width: 950px;
+        margin: 0 auto;
+
+        .form {
+            .form-item {
+                margin-bottom: 25px;
+
+                .form-item-label {
+                    font-size: 1.7rem;
+                    color: @baseFontColor;
+                }
+
+                .form-item-btn {
+                    text-align: center;
+
+                    input, button {
+                        border: none;
+                        width: 100px;
+                        height: 45px;
+                        outline: none;
+                        border-radius: 5px;
+                        font-size: 1.6rem;
+                        color: white;
+                        font-family: @baseFontFamily;
+                        cursor: pointer;
+                    }
+
+                    #submit {
+                        background-color: @baseColor;
+
+                        &:hover {
+                            background-color: @baseDeepColor;
+                        }
+                    }
+
+                    #logout {
+                        background-color: rgb(224, 74, 74);
+
+                        &:hover {
+                            background-color: rgb(187, 59, 59);
+                        }
+                    }
+                }
+
+                .img-preview {
+                    display: table;
+                    width: 250px;
+                    height: 250px;
+                    overflow: hidden;
+                    margin: 10px 0;
+                    text-align: center;
+                    padding: 5px;
+                    border: 1px solid rgb(187, 186, 186);
+                    border-radius: 3px;
+
+                    .table-vertical {
+                        display: table-cell;
+                        vertical-align: middle;
+                        border-radius: 3px;
+                        border: 1px solid rgb(187, 186, 186);
+
+
+                        img {
+                            max-width: 100%;
+                            max-height: 100%;
+                            display: table-cell;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+
+                .form-item-file {
+
+                }
+            }
+        }
+    }
+}
