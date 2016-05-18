@@ -1,8 +1,8 @@
-{% extends 'user/base.html' %}
+{% extends 'user/base.tpl' %}
 {% load staticfiles %}
 {% block head %}
 <title>想吃的</title>
-<link href="{% static 'css/user_eat_wanted.css' %}" rel="stylesheet">
+<link href="{% static 'css/user_food_list.css' %}" rel="stylesheet">
 {% endblock head %}
 {% block content %}
  <div class="tab-container">
@@ -90,5 +90,5 @@
 </div>
 {% endblock content %}
 {% block js %}
-<script src="{% static 'js/user_eat_wanted.js' %}"></script>
+<script src="{% static 'js/user_food_list.js' %}"></script>
 {% endblock js %}

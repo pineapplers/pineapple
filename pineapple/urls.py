@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls import url, include
+from django.conf.urls import url, include, handler404, handler500
 from django.conf.urls.static import static
 from django.contrib import admin
 
@@ -22,6 +22,9 @@ from home.views import home
 
 admin.site.site_header = 'Pineapple'
 admin.site.site_title = 'Pineapple Admin'
+
+handler404 = 'pineapple.views.page_not_found'
+handler500 = 'pineapple.views.server_err'
 
 urlpatterns = [
     url(r'^$', home),
@@ -31,5 +34,5 @@ urlpatterns = [
     url(r'^search/', include('search.urls', namespace='search')),
     url(r'^topic/', include('topic.urls', namespace='topic')),
     url(r'^food/', include('food.urls', namespace='food')),
-]
-# + static('public/static', document_root=settings.STATIC_ROOT)
+] + static('public/static', document_root=settings.STATIC_ROOT)
+

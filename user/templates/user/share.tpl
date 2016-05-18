@@ -1,4 +1,4 @@
-{% extends 'user/base.html' %}
+{% extends 'user/base.tpl' %}
 {% load staticfiles %}
 {% block head %}
 <link href="{% static 'css/user_share.css' %}" rel="stylesheet">

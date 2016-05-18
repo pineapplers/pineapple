@@ -1,4 +1,4 @@
-{% extends 'user/base.html' %}
+{% extends 'user/base.tpl' %}
 {% load staticfiles %}
 {% block head %}
 <title>用户首页</title>

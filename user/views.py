@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_POST
 
 from .forms import LoginForm, RegisterForm, ProfileForm, SettingForm
@@ -16,11 +16,17 @@ from utils.decorators import ajax_required
 
 # 用户主页
 def home(request, user_id):
-    user = User.objects.get(pk=user_id)
+    user = get_object_or_404(User, pk=user_id)
+    profile = user.profile
+    following = user.following.count()
+    followers = user.followers.count()
     recent_actions = Action.objects.filter(user=user).all()[:10]
     return render(request, 'user/index.tpl', {
             'actions': recent_actions,
             'user': user,
+            'profile': profile,
+            'following_num': following,
+            'followers_num': followers
         })
 
 # 登录
@@ -53,7 +59,7 @@ def user_register(request):
 
 # 用户博客
 def user_posts(request, user_id):
-    user = User.objects.get(pk=user_id)
+    user = get_object_or_404(User, pk=user_id)
     posts = user.posts
     return render(request, 'user/posts.tpl', {
             'posts': posts,
@@ -62,7 +68,7 @@ def user_posts(request, user_id):
 
 # 正在关注
 def user_following(request, user_id):
-    user = User.objects.get(pk=user_id)
+    user = get_object_or_404(User, pk=user_id)
     followings = make_paginator(request, user.following.all())
     return render(request, 'user/user_list.tpl', {
             'users': followings,
@@ -71,7 +77,7 @@ def user_following(request, user_id):
 
 # 被关注的
 def user_followers(request, user_id):
-    user = User.objects.get(pk=user_id)
+    user = get_object_or_404(User, pk=user_id)
     followers = make_paginator(request, user.followers.all())
     return render(request, 'user/user_list.tpl', {
             'users': followers,
@@ -80,7 +86,7 @@ def user_followers(request, user_id):
 
 # 分享
 def user_shared(request, user_id):
-    user = User.objects.get(pk=user_id)
+    user = get_object_or_404(User, pk=user_id)
     foods_shared = make_paginator(request, user.foods_shared.all())
     return render(request, 'user/share.tpl', {
             'foods': foods_shared,
@@ -89,7 +95,7 @@ def user_shared(request, user_id):
 
 # 想吃的
 def user_wants_to_eat(request, user_id):
-    user = User.objects.get(pk=user_id)
+    user = get_object_or_404(User, pk=user_id)
     foods = make_paginator(request, user.foods_wta.all())
     return render(request, 'user/food_list.tpl', {
             'foods': foods,
@@ -98,7 +104,7 @@ def user_wants_to_eat(request, user_id):
 
 # 吃过的
 def user_ate(request, user_id):
-    user = User.objects.get(pk=user_id)
+    user = get_object_or_404(User, pk=user_id)
     foods = make_paginator(request, user.foods_ate.all())
     return render(request, 'user/food_list.tpl', {
             'foods': foods,
@@ -107,7 +113,7 @@ def user_ate(request, user_id):
 
 # Topic收藏夹
 def topics_collection(request, user_id):
-    user = User.objects.get(pk=user_id)
+    user = get_object_or_404(User, pk=user_id)
     collections = make_paginator(request, user.topics_collected.all())
     return render(request, 'user/topic_collection.tpl', {
             'collections': collections,
