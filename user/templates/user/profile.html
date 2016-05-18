@@ -2,10 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>设置</title>
-        <script src="http://localhost:8111/webpack-dev-server.js"></script>
-        <link rel="stylesheet" href="/public/static/font/font-awesome-4.5.0/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
-    <link href="/public/static/css/vendors.css?bd9dedce2266a2ecab62" rel="stylesheet"><link href="/public/static/css/user_settings.css?bd9dedce2266a2ecab62" rel="stylesheet"></head>
+        <title>个人资料</title>
+    <link href="/public/static/css/vendors.css?bd9dedce2266a2ecab62" rel="stylesheet"><link href="/public/static/css/user_profile.css?bd9dedce2266a2ecab62" rel="stylesheet"></head>
     <body>
         <div class="navbar">
 
@@ -88,14 +86,60 @@
 
         <div class="tab-container">
             <div class="form-container">
-
                 <form class="form" action="index.html" method="post">
                     <div class="form-item">
-                        <label class="form-item-label" for="">设置背景：</label>
+                        <label class="form-item-label" for="">设置头像</label>
                         <div class="img-preview">
                             <span class="table-vertical" id="preview-span"><img src="/public/static/images/topic1.jpg" alt="背景预览"></span>
                         </div>
-                        <input class="form-item-file" id="preview-input" type="file" name="newBack" value="">
+                        <input class="form-item-file" id="preview-input" type="file" name="newPortrait" value="">
+                    </div>
+
+                    <div class="form-item">
+                        <label class="form-item-label">居住城市</label>
+                        <select class="selections" name="province">
+                            <option value="广东">广东</option>
+                            <option value="北京">北京</option>
+                        </select>
+                        <span class="form-span">省</span>
+                        <select class="selections" name="city">
+                            <option value="珠海">珠海</option>
+                            <option value="广州">广州</option>
+                        </select>
+                        <span class="form-span">市</span>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="form-item-label">出生日期</label>
+                        <select class="selections" name="year">
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                        </select>
+                        <span class="form-span">年</span>
+                        <select class="selections" name="month">
+                            <option value="06">06</option>
+                            <option value="05">05</option>
+                        </select>
+                        <span class="form-span">月</span>
+                        <select class="selections" name="day">
+                            <option value="21">21</option>
+                            <option value="20">20</option>
+                        </select>
+                        <span class="form-span">日</span>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="form-item-label">性别</label>
+                        <input class="radio" type="radio" name="sex" value="male" id="male">
+                        <label class="form-radio-label" for="male">男</label>
+
+                        <input class="radio" type="radio" name="sex" value="male" id="female" style="margin-left: 10px">
+                        <label class="form-radio-label" for="female">女</label>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="form-item-label">个人简介</label>
+                        <textarea class="form-textarea" name="personalDesc" rows="8" cols="50"></textarea>
                     </div>
 
                     <div class="form-item">
@@ -108,6 +152,5 @@
                 </form>
             </div>
         </div>
-
-    <script src="/public/static/js/vendors.js?bd9dedce2266a2ecab62"></script><script src="/public/static/js/user_settings.js?bd9dedce2266a2ecab62"></script></body>
+    <script src="/public/static/js/vendors.js?bd9dedce2266a2ecab62"></script><script src="/public/static/js/user_profile.js?bd9dedce2266a2ecab62"></script></body>
 </html>

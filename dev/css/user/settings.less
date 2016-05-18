@@ -15,9 +15,49 @@
             .form-item {
                 margin-bottom: 25px;
 
+                input, textarea {
+                    vertical-align: middle;
+                }
+
                 .form-item-label {
-                    font-size: 1.7rem;
-                    color: @baseFontColor;
+                    display: inline-block;
+                    font-size: 1.5rem;
+                    color: @baseFontLightColor;
+                    vertical-align: middle;
+                    width: 60px;
+                    margin-right: 25px;
+                    text-align: right;
+                }
+
+                .form-radio-label {
+                    font-size: 1.5rem;
+                    color: @baseFontLightColor;
+                    vertical-align: middle;
+                }
+
+                .selections, text-input {
+                    width: 100px;
+                    height: 28px;
+                    border: 1px solid #c7dceb;
+                    border-radius: 3px;
+                    font-family: @baseFontFamily;
+                }
+
+                .form-textarea {
+                    border: 1px solid #c7dceb;
+                    border-radius: 3px;
+                    font-family: @baseFontFamily;
+                    resize: none;
+                }
+
+                .radio {
+                    margin: 0;
+                }
+
+                .form-span {
+                    font-size: 1.5rem;
+                    color: @baseFontLightColor;
+                    margin: 0 3px;
                 }
 
                 .form-item-btn {
