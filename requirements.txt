@@ -3,6 +3,7 @@ anyjson==0.3.3
 billiard==3.3.0.23
 celery==3.1.23
 Django==1.9.6
+django-celery==3.1.17
 django-haystack==2.4.1
 django-redis==4.4.2
 django-taggit==0.18.2

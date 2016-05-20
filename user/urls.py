@@ -3,7 +3,7 @@ from django.contrib.auth.views import (logout as user_logout, password_change, p
     password_reset, password_reset_done, password_reset_complete, password_reset_confirm)
 
 from .views import (home, user_login, user_register, user_follow, user_followers, user_following, user_posts,
-    user_settings, user_profile, user_shared, user_wants_to_eat, user_ate, topics_collection)
+    user_confirm, user_settings, user_profile, user_shared, user_wants_to_eat, user_ate, topics_collection)
 
 urlpatterns = [
     url(r'^(?P<user_id>[\d]+)/$', home, name='home'),
@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^login/$', user_login, name='login'),
     url(r'^logout/$', user_logout, name='logout'),
     url(r'^register/$', user_register, name='register'),
+    url(r'^confirm/(?P<token>.+)/$', user_confirm, name='confirm'),
 
     url(r'^password-change/$', password_change, name='password_change'),
     url(r'^password-change/done/$', password_change_done, name='password_change_done'),

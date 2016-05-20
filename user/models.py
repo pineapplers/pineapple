@@ -14,7 +14,7 @@ class User(AbstractUser):
         return self.username
 
     def get_absolute_url(self):
-        return reverse('user:home', args=[self.id])
+        return reverse('user:home', kwargs={'user_id': self.id})
 
 
 class UserSetting(models.Model):

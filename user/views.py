@@ -8,6 +8,7 @@ from django.views.decorators.http import require_POST
 
 from .forms import LoginForm, RegisterForm, ProfileForm, SettingForm
 from .models import User
+from .tasks import confirm_user
 
 from actions.models import Action
 from actions.utils import create_action
@@ -16,6 +17,8 @@ from utils.decorators import ajax_required
 
 # 用户主页
 def home(request, user_id):
+    u = User.objects.get(pk=user_id)
+    confirm_user.delay(u.id, u.username)
     user = get_object_or_404(User, pk=user_id)
     profile = user.profile
     recent_actions = Action.objects.filter(user=user).all()[:10]
@@ -34,7 +37,6 @@ def user_login(request):
             user = form.get_authenticated_user()
             login(request, user)
             return HttpResponseRedirect(reverse('home:index'))
-        print(form.errors)
     else:
         form = LoginForm()
     return render(request, 'user/login.tpl', {
@@ -54,6 +56,16 @@ def user_register(request):
     return render(request, 'user/register.tpl', {
             'form': form
         })
+
+# 用户验证
+@login_required
+def user_confirm(request, token):
+    from django.core import signing
+    tk = signing.loads({'user_id': request.user.id}, max_age=24 * 3600)
+    print(tk, token)
+    if tk == token:
+        return HttpResponseRedirect(reverse('home:index'))
+
 
 # 用户博客
 def user_posts(request, user_id):
