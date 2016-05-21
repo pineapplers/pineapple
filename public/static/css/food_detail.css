@@ -47,12 +47,17 @@ body {
   display: inline-block;
   text-align: center;
   margin: 0 5px;
-  padding: 5px 10px;
   border-radius: 5px;
   border: 1px solid #777777;
   color: #777777;
   background-color: white;
   vertical-align: bottom;
+}
+.detail-container .main-container .food-left .food-left-container .food-img .food-img-shadow .shadow-icons .icon a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
 }
 .detail-container .main-container .food-left .food-left-container .food-img .food-img-shadow .shadow-icons .icon:hover {
   background-color: #7aa7f2;
@@ -73,6 +78,7 @@ body {
 }
 .detail-container .main-container .food-left .food-left-container .food-like-share .circle {
   display: inline-block;
+  cursor: pointer;
   margin: 10px;
   width: 65px;
   height: 65px;
@@ -124,6 +130,33 @@ body {
 .detail-container .main-container .food-left .comments-container .comments-wraaper .send-btn:active {
   background-color: #6996e1;
 }
+.detail-container .main-container .food-left .comments-container .comments-main .comments-item {
+  border-bottom: 1px solid #cfcfcf;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.detail-container .main-container .food-left .comments-container .comments-main .comments-item .comments-user-img {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.detail-container .main-container .food-left .comments-container .comments-main .comments-item .comments-user-name {
+  color: #7aa7f2;
+}
+.detail-container .main-container .food-left .comments-container .comments-main .comments-item .comments-user-name .comments-time {
+  float: right;
+  color: #828caa;
+}
+.detail-container .main-container .food-left .comments-container .comments-main .comments-item .comments-item-content {
+  overflow: auto;
+  margin-top: 5px;
+  color: #5d5d5d;
+  line-height: 1.8rem;
+}
 .detail-container .main-container .food-right {
   width: 498px;
   margin-left: -498px;
@@ -171,6 +204,11 @@ body {
   background-color: #7aa7f2;
   margin: 0 auto;
   margin-top: 35px;
+}
+.detail-container .main-container .food-right .food-buy a {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .detail-container .main-container .food-right .tags {
   margin-top: 14px;
