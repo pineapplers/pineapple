@@ -1,0 +1,209 @@
+body {
+  margin-top: 80px;
+}
+.detail-container a {
+  color: inherit;
+  text-decoration: none;
+}
+.detail-container .fl {
+  float: left;
+}
+.detail-container .main-container {
+  width: 1050px;
+  margin: 0 auto;
+}
+.detail-container .main-container .food-left .food-left-container,
+.detail-container .main-container .food-left .comments-container {
+  width: 552px;
+  margin-right: 498px;
+}
+.detail-container .main-container .food-left .food-left-container {
+  border-right: 2px solid #dfdfdf;
+}
+.detail-container .main-container .food-left .food-left-container .food-img {
+  box-sizing: content-box;
+  padding-right: 60px;
+  position: relative;
+}
+.detail-container .main-container .food-left .food-left-container .food-img img {
+  vertical-align: middle;
+}
+.detail-container .main-container .food-left .food-left-container .food-img .food-img-shadow {
+  position: absolute;
+  top: 10px;
+  right: 60px;
+  background-color: rgba(0, 0, 0, 0);
+}
+.detail-container .main-container .food-left .food-left-container .food-img .food-img-shadow .shadow-icons {
+  padding: 10px;
+  text-align: center;
+}
+.detail-container .main-container .food-left .food-left-container .food-img .food-img-shadow .shadow-icons .clicked {
+  background-color: #7aa7f2 !important;
+  border-color: #7aa7f2 !important;
+  color: white !important;
+}
+.detail-container .main-container .food-left .food-left-container .food-img .food-img-shadow .shadow-icons .icon {
+  display: inline-block;
+  text-align: center;
+  margin: 0 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #777777;
+  color: #777777;
+  background-color: white;
+  vertical-align: bottom;
+}
+.detail-container .main-container .food-left .food-left-container .food-img .food-img-shadow .shadow-icons .icon:hover {
+  background-color: #7aa7f2;
+  border-color: #7aa7f2;
+  color: white;
+}
+.detail-container .main-container .food-left .food-left-container .food-img .food-img-shadow .shadow-icons .icon .fa {
+  font-size: 1.7rem;
+}
+.detail-container .main-container .food-left .food-left-container .food-img .food-img-shadow .shadow-icons .icon .fa .fa-margin {
+  margin-left: 5px;
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.detail-container .main-container .food-left .food-left-container .food-like-share {
+  text-align: center;
+  padding-right: 60px;
+  margin: 20px auto;
+}
+.detail-container .main-container .food-left .food-left-container .food-like-share .circle {
+  display: inline-block;
+  margin: 10px;
+  width: 65px;
+  height: 65px;
+  line-height: 62px;
+  font-size: 3rem;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #5d5d5d;
+  color: #5d5d5d;
+}
+.detail-container .main-container .food-left .food-left-container .liked {
+  border-color: #e84949 !important;
+  color: #e84949 !important;
+}
+.detail-container .main-container .food-left .comments-container .comments-title {
+  color: #5d5d5d;
+  font-weight: 400;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cfcfcf;
+}
+.detail-container .main-container .food-left .comments-container .comments-wraaper {
+  padding-right: 20px;
+  margin-bottom: 35px;
+}
+.detail-container .main-container .food-left .comments-container .comments-wraaper .comments-area {
+  width: 100%;
+  resize: none;
+  border: 1px solid #cfcfcf;
+  padding: 20px;
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #5d5d5d;
+  font-size: 1.5rem;
+}
+.detail-container .main-container .food-left .comments-container .comments-wraaper .send-btn {
+  float: right;
+  border: none;
+  width: 100px;
+  height: 30px;
+  background-color: #7aa7f2;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  outline: none;
+}
+.detail-container .main-container .food-left .comments-container .comments-wraaper .send-btn:hover {
+  background-color: #8bb8ff;
+}
+.detail-container .main-container .food-left .comments-container .comments-wraaper .send-btn:active {
+  background-color: #6996e1;
+}
+.detail-container .main-container .food-right {
+  width: 498px;
+  margin-left: -498px;
+  padding: 10px 27px 10px 60px;
+}
+.detail-container .main-container .food-right .food-title {
+  text-align: center;
+  color: #5d5d5d;
+  font-weight: 400;
+}
+.detail-container .main-container .food-right .food-item-title {
+  font-size: 1.8rem;
+  margin-top: 35px;
+  color: #5d5d5d;
+}
+.detail-container .main-container .food-right .desc {
+  padding-left: 6px;
+  color: #828caa;
+}
+.detail-container .main-container .food-right .food-sharer {
+  text-align: right;
+  color: #828caa;
+}
+.detail-container .main-container .food-right .food-sharer .sharer-img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.detail-container .main-container .food-right .food-sharer .share-text {
+  margin: 0 5px;
+  color: #5d5d5d;
+}
+.detail-container .main-container .food-right .food-buy {
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.7rem;
+  color: white;
+  text-align: center;
+  background-color: #7aa7f2;
+  margin: 0 auto;
+  margin-top: 35px;
+}
+.detail-container .main-container .food-right .tags {
+  margin-top: 14px;
+}
+.detail-container .main-container .food-right .tags .tag-item {
+  display: inline-block;
+  margin: 4px;
+  padding: 3px 13px;
+  border-radius: 12px;
+  border: 1px solid #d2d2d2;
+  color: #5d5d5d;
+}
+.detail-container .main-container .food-right .tags .tag-item:hover {
+  background-color: #7aa7f2;
+  border-color: #7aa7f2;
+  color: white;
+}
+.detail-container .main-container .food-right .similar-container {
+  margin-top: 14px;
+}
+.detail-container .main-container .food-right .similar-container .similar-item {
+  float: left;
+  width: 185px;
+  height: 205px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.detail-container .main-container .food-right .similar-container .similar-item .similar-title {
+  display: block;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #5d5d5d;
+  text-align: center;
+}
