@@ -17,9 +17,7 @@ from utils.decorators import ajax_required
 
 # 用户主页
 def home(request, user_id):
-    u = User.objects.get(pk=user_id)
-    confirm_user.delay(u.id, u.username)
-    user = get_object_or_404(User, pk=user_id)
+    user = get_object_or_404(User.objects.select_related('profile'), pk=user_id)
     profile = user.profile
     recent_actions = Action.objects.filter(user=user).all()[:10]
     return render(request, 'user/index.tpl', {

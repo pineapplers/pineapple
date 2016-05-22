@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'taggit',
     'topic',
     'user',
+    'updown',
     'utils',
     'widget_tweaks'
 ]
@@ -69,13 +70,18 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
-        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+            ],
+            'loaders': [
+                ('django.template.loaders.cached.Loader', [
+                    'django.template.loaders.filesystem.Loader',
+                    'django.template.loaders.app_directories.Loader',
+                ]),
             ],
         },
     },
@@ -196,4 +202,3 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json'] 
 CELERY_TASK_SERIALIZER = 'json' 
 CELERY_RESULT_SERIALIZER = 'json' 
-CELERY_TIMEZONE = 'Africa/Nairobi'

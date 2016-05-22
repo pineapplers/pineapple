@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_POST
 
 from .models import FoodTopic
@@ -11,7 +11,7 @@ from utils.decorators import ajax_required
 
 # 专题列表
 def topic_list(request):
-    topics = make_paginator(request, topic.objects.all())
+    topics = make_paginator(request, FoodTopic.objects.all())
     if request.is_ajax():
         return render(request, 'topic/list_ajax.tpl',
                       {'topics': topics})
@@ -21,7 +21,7 @@ def topic_list(request):
 
 # 专题详情
 def topic_detail(request, topic_id):
-    topic = FoodTopic.objects.get(pk=topic_id)
+    topic = get_object_or_404(FoodTopic, pk=topic_id)
     foods = make_paginator(request, topic.foods.all())
     return render(request, 'topic/detail.tpl', {
             'foods': foods
@@ -38,10 +38,13 @@ def topic_collect(request):
         topic = FoodTopic.objects.get(pk=topic_id)
         if action == 'collect':
             topic.users_collect.add(request.user)
+            topic.total_collects += 1
             create_action(request.user, '收藏了', topic)
         elif action == 'uncollect':
             topic.users_collect.remove(request.user)
+            topic.total_collects -= 1
         else:
             return JsonResponse({'status': False})
+        topic.save()
         return JsonResponse({'status': True})
     return JsonResponse({'status': False}, status=400)

@@ -1,10 +1,11 @@
 from django.conf.urls import url
 
-from .views import food_detail, food_like, food_category, food_tag, explore, food_wta, food_ate
+from .views import food_latest, food_detail, food_rate, food_category, food_tag, explore, food_wta, food_ate
 
 urlpatterns = [
+    url(r'^$', food_latest, name='list'),
     url(r'^(?P<food_id>[\d]+)/$', food_detail, name='detail'),
-    url(r'^food_like/$', food_like, name='like'),
+    url(r'^rate/$', food_rate, name='rate'),
     url(r'^food_wta/$', food_wta, name='wta'),
     url(r'^food_ate/$', food_ate, name='ate'),
     url(r'^category/(?P<category>[\w]+)/$', food_category, name='category'),

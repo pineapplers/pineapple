@@ -9,6 +9,7 @@ from user.models import User
 class FoodTopic(models.Model):
     title = models.CharField(max_length=32, verbose_name='专题名称')
     users_collect = models.ManyToManyField(User, related_name='topics_collected', blank=True, verbose_name='收藏的用户')
+    total_collects = models.PositiveIntegerField(db_index=True, default=0, verbose_name='收藏数')
     foods = models.ManyToManyField(Food, related_name='topics_belong', verbose_name='美食') 
     tags = TaggableManager(blank=True, help_text='多个标签以逗号分隔', verbose_name="标签")
 
