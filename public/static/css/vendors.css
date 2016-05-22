@@ -32,6 +32,7 @@ ul {
 .navbar {
   position: fixed;
   width: 100%;
+  min-width: 1060px;
   height: 60px;
   top: 0;
   left: 0;

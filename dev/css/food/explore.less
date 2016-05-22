@@ -1,0 +1,63 @@
+@baseColor: rgb(122, 167, 242);
+@baseFontColor: #5d5d5d;
+@baseFontLightColor: #828caa;
+@baseFontDeepColor: rgb(55, 55, 55);
+@iconColor: rgb(119, 119, 119);
+@textareaBorderColor: rgb(207, 207, 207);
+@baseFontFamily: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+
+body {
+    margin-top: 80px;
+}
+
+
+.explore-container {
+    width: 1020px;
+    margin: 0 auto;
+
+    .explore-tab-container {
+        width: 100%;
+        padding: 0 15px;
+        padding-bottom: 35px;
+
+        .tab-ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            .tab-ul-item {
+                float: left;
+                display: block;
+                width: 90px;
+                height: 70px;
+                line-height: 70px;
+                font-size: 1.6rem;
+                text-align: center;
+                color: @baseFontColor + #333;
+            }
+
+            .current-item {
+                color: @baseFontColor;
+                border-bottom: 2px solid @baseColor;
+            }
+        }
+    }
+
+    .explore-main-container {
+
+        .item {
+            width: 300px;
+            margin: 20px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            overflow: hidden;
+
+            .item-img {
+                height: 200px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+    }
+}

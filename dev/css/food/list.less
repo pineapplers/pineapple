@@ -1,0 +1,108 @@
+@baseColor: rgb(122, 167, 242);
+@baseFontColor: #5d5d5d;
+@baseFontLightColor: #828caa;
+@baseFontDeepColor: rgb(55, 55, 55);
+@iconColor: rgb(119, 119, 119);
+@textareaBorderColor: rgb(207, 207, 207);
+@baseFontFamily: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+
+body {
+    margin-top: 80px;
+    min-width: 1100px;
+    background-color: rgb(241, 241, 241);
+}
+
+
+.explore-container {
+    width: 1020px;
+    margin: 0 auto;
+
+    .explore-tab-container {
+        width: 100%;
+        padding: 0 15px;
+        padding-bottom: 35px;
+
+        .tab-ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            .tab-ul-item {
+                float: left;
+                display: block;
+                width: 90px;
+                height: 70px;
+                line-height: 70px;
+                font-size: 1.6rem;
+                text-align: center;
+                color: @baseFontColor + #333;
+            }
+
+            .current-item {
+                color: @baseFontColor;
+                border-bottom: 2px solid @baseColor;
+            }
+        }
+    }
+
+    .explore-main-container {
+
+        .item {
+            float: left;
+            width: 300px;
+            margin: 20px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            background-color: white;
+            transition: box-shadow ease .3s;
+            -o-transition: box-shadow ease .3s;
+            -ms-transition: box-shadow ease .3s;
+            -moz-transition: box-shadow ease .3s;
+            -webkit-transition: box-shadow ease .3s;
+            overflow: hidden;
+
+            &:hover {
+                box-shadow: 0 0 8px rgb(147, 147, 147);
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .item-img {
+                height: 200px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .item-main {
+                // border: 1px solid rgb(210, 210, 210);
+                padding-bottom: 20px;
+
+                .item-title {
+                    margin: 0;
+                    padding: 12px 0;
+                    text-align: center;
+                    font-weight: normal;
+                    color: @baseColor;
+                }
+            }
+
+            .item-tags {
+                height: 22px;
+                overflow: hidden;
+                padding: 0px 15px;
+                color: @baseColor;
+                font-size: 1.6rem;
+
+                .tag {
+                    display: inline-block;
+                    font-size: 1.4rem;
+                    margin: 0 8px 5px 8px;
+                }
+            }
+        }
+    }
+}
