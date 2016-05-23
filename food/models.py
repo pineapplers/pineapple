@@ -3,6 +3,7 @@ from django.db import models
 
 from taggit.managers import TaggableManager
 from user.models import User
+from updown.fields import RatingField
 
 
 # Create your models here.
@@ -24,8 +25,7 @@ class Food(models.Model):
     title = models.CharField(max_length=128, verbose_name='标题')
     description = models.TextField(verbose_name='描述')
     cover_image = models.ImageField(upload_to='foods/cover/%Y/%m/%d', verbose_name='封面图片')
-    users_like = models.ManyToManyField(User, related_name='foods_liked', blank=True, verbose_name='喜欢的用户')
-    users_dislike = models.ManyToManyField(User, related_name='foods_disliked', blank=True, verbose_name='不喜欢的用户')
+    rating = RatingField(can_change_vote=True)
     users_wta = models.ManyToManyField(User, related_name='foods_wta', blank=True, verbose_name='想吃的用户')
     users_ate = models.ManyToManyField(User, related_name='foods_ate', blank=True, verbose_name='吃过的用户')
     link = models.URLField(blank=True, verbose_name='相关链接')
@@ -43,3 +43,4 @@ class Food(models.Model):
     class Meta:
         verbose_name = '食品'
         verbose_name_plural = '食品'
+

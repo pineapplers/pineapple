@@ -9,13 +9,10 @@
         {% endblock head %}
         </head>
     <body>
-        <div class="mask"></div>
         {% include 'home/navbar.tpl' %}
-
         {% block content %}
         {% endblock content %}
     <script src="{% static 'js/vendors.js' %}"></script>
-    <script src="{% static 'js/user_base.js' %}"></script>
     {% block js %}
     {% endblock js %}
 </body>

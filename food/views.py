@@ -2,9 +2,10 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Food, FoodCategory
 
@@ -22,8 +23,12 @@ r = redis.StrictRedis(host=settings.REDIS_HOST,
                       db=settings.REDIS_DB)
 
 
+def food_latest(request):
+    return render(request, 'food/list.tpl')
+
+
 def food_detail(request, food_id):
-    food = Food.objects.get(pk=food_id)
+    food = get_object_or_404(Food, pk=food_id)
     comments = food.comments
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
@@ -75,22 +80,18 @@ def explore(request):
 @ajax_required
 @require_POST
 @login_required
-def food_like(request):
+def food_rate(request):
     food_id = request.POST.get('id')
     action = request.POST.get('action')
-    if food_id and action:
-        food = Food.objects.get(pk=food_id)
-        if action == 'like':
-            request.user.foods_liked.add(food)
-            request.user.foods_disliked.remove(food)
-            create_action(request.user, '喜欢了', food)
-        elif action == 'dislike':
-            request.user.foods_disliked.add(food)
-            request.user.foods_liked.remove(food)
-        else:
-            return JsonResponse({'status': False})
-        return JsonResponse({'status': True})
-    return JsonResponse({'status': False}, status=400)
+    view = AddRatingFromModel()
+    resp = view(request,
+        app_label='food',
+        model='Food',
+        field_name='rating',
+        object_id=int(food_id),
+        score=1 if action=='like' else -1
+    )
+    return JsonResponse({'status': resp.status_code==200}, status=resp.status_code)
 
 @ajax_required
 @require_POST
