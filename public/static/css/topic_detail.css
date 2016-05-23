@@ -1,0 +1,109 @@
+body {
+  min-width: 1048px;
+}
+.details-container {
+  width: 1048px;
+  margin: 80px auto 0 auto;
+}
+.details-container .topic-content {
+  position: relative;
+  overflow: hidden;
+}
+.details-container .topic-content:hover .topic-img {
+  -webkit-filter: blur(0px);
+  /* Chrome, Opera */
+  -moz-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+}
+.details-container .topic-content .topic-img {
+  position: relative;
+  height: 350px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-filter: blur(5px);
+  /* Chrome, Opera */
+  -moz-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  transition: 1s filter linear;
+  -webkit-transition: 0.3s -webkit-filter linear;
+  -moz-transition: 0.3s -moz-filter linear;
+  -ms-transition: 0.3s -ms-filter linear;
+  -o-transition: 0.3s -o-filter linear;
+  overflow: hidden;
+}
+.details-container .topic-content .topic-info {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  left: 0;
+}
+.details-container .topic-content .topic-info .topic-title {
+  text-align: center;
+  color: #2a2a2a;
+}
+.details-container .topic-content .topic-info .topic-desc {
+  width: 550px;
+  margin: 50px auto 0 auto;
+  color: #3b3b3b;
+}
+.details-container .detail-item {
+  position: relative;
+  margin: 30px 0;
+  border: 1px solid #ebebeb;
+  overflow: hidden;
+}
+.details-container .detail-item .detail-img-left {
+  float: left;
+  width: 250px;
+  height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 30px;
+}
+.details-container .detail-item .detail-content {
+  padding: 20px 35px;
+}
+.details-container .detail-item .detail-content .detail-title {
+  font-weight: 400;
+  color: #3c3c3c;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+.details-container .detail-item .detail-content .detail-desc-wrapper {
+  position: relative;
+}
+.details-container .detail-item .detail-content .detail-desc-wrapper .detail-desc {
+  height: 40px;
+  margin: 10px 0 11px 0;
+  overflow: hidden;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  color: #a4a4a4;
+}
+.details-container .detail-item .detail-content .detail-bottom {
+  color: #a4a4a4;
+  font-size: 1.3rem;
+}
+.details-container .detail-item .detail-content .detail-bottom .detail-tags .tags-tip {
+  vertical-align: baseline;
+}
+.details-container .detail-item .detail-content .detail-bottom .detail-tags .tag {
+  display: inline-block;
+  margin: 0 5px;
+}
+.details-container .detail-item .detail-content .detail-bottom .detail-tags .like {
+  float: right;
+  vertical-align: middle;
+}
+.details-container .detail-item .detail-content .detail-bottom .detail-tags .like .like-count {
+  color: #3c3c3c;
+  font-size: 1.5rem;
+}
+.details-container .detail-item .detail-content .detail-bottom .detail-tags .like .fa {
+  color: #ec4444;
+  font-size: 1.8rem;
+}
