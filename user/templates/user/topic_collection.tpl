@@ -6,77 +6,19 @@
 {% block content %}
  <div class="tab-container">
     <div class="topic-container clearfix">
+        {% for topic in collections %}
         <div class="topic-item clearfix">
             <div class="topic-item-image-container">
-                <a href="#"><div class="topic-item-image" style="background-image: url('/public/static/images/topic1.jpg')"></div></a>
+                <a href="{{ topic.get_absolute_url }}"><div class="topic-item-image" style="background-image: url('{{ MEDIA_URL }}{{ topic.cover_image }}')"></div></a>
             </div>
             <h4 class="topic-item-title">
-                <a href="#">家庭个护小能手，健康携手到白头</a>
+                <a href="#">{{ topic.title }}</a>
             </h4>
             <div class="topic-item-icons">
-                <i class="fa fa-bookmark"><span class="num">97</span></i>
+                <i class="fa fa-bookmark"><span class="num">{{ topic.total_collects }}</span></i>
             </div>
         </div>
-
-        <div class="topic-item clearfix">
-            <div class="topic-item-image-container">
-                <a href="#"><div class="topic-item-image" style="background-image: url('/public/static/images/topic1.jpg')"></div></a>
-            </div>
-            <h4 class="topic-item-title">
-                <a href="#">家庭个护小能手，健康携手到白头</a>
-            </h4>
-            <div class="topic-item-icons">
-                <i class="fa fa-bookmark"><span class="num">97</span></i>
-            </div>
-        </div>
-
-        <div class="topic-item clearfix">
-            <div class="topic-item-image-container">
-                <a href="#"><div class="topic-item-image" style="background-image: url('/public/static/images/topic1.jpg')"></div></a>
-            </div>
-            <h4 class="topic-item-title">
-                <a href="#">家庭个护小能手，健康携手到白头</a>
-            </h4>
-            <div class="topic-item-icons">
-                <i class="fa fa-bookmark"><span class="num">97</span></i>
-            </div>
-        </div>
-
-        <div class="topic-item clearfix">
-            <div class="topic-item-image-container">
-                <a href="#"><div class="topic-item-image" style="background-image: url('/public/static/images/topic1.jpg')"></div></a>
-            </div>
-            <h4 class="topic-item-title">
-                <a href="#">家庭个护小能手，健康携手到白头</a>
-            </h4>
-            <div class="topic-item-icons">
-                <i class="fa fa-bookmark"><span class="num">97</span></i>
-            </div>
-        </div>
-
-        <div class="topic-item clearfix">
-            <div class="topic-item-image-container">
-                <a href="#"><div class="topic-item-image" style="background-image: url('/public/static/images/topic1.jpg')"></div></a>
-            </div>
-            <h4 class="topic-item-title">
-                <a href="#">家庭个护小能手，健康携手到白头</a>
-            </h4>
-            <div class="topic-item-icons">
-                <i class="fa fa-bookmark"><span class="num">97</span></i>
-            </div>
-        </div>
-
-        <div class="topic-item clearfix">
-            <div class="topic-item-image-container">
-                <a href="#"><div class="topic-item-image" style="background-image: url('/public/static/images/topic1.jpg')"></div></a>
-            </div>
-            <h4 class="topic-item-title">
-                <a href="#">家庭个护小能手，健康携手到白头</a>
-            </h4>
-            <div class="topic-item-icons">
-                <i class="fa fa-bookmark"><span class="num">97</span></i>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock content %}

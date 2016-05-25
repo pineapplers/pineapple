@@ -13,9 +13,10 @@ from .tasks import confirm_user
 from actions.models import Action
 from actions.utils import create_action
 from utils import make_paginator
-from utils.decorators import ajax_required
+from utils.decorators import ajax_required, tab
 
 # 用户主页
+@tab('home')
 def home(request, user_id):
     user = get_object_or_404(User.objects.select_related('profile'), pk=user_id)
     profile = user.profile
@@ -24,7 +25,6 @@ def home(request, user_id):
             'actions': recent_actions,
             'user': user,
             'profile': profile,
-            'section': 'home',
         })
 
 # 登录
@@ -85,57 +85,58 @@ def user_following(request, user_id):
         })
 
 # 被关注的
+@tab('followers')
 def user_followers(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     followers = make_paginator(request, user.followers.all())
     return render(request, 'user/user_list.tpl', {
             'users': followers,
             'user': user,
-            'section': 'followers'
         })
 
 # 分享
+@tab('share')
 def user_shared(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     foods_shared = make_paginator(request, user.foods_shared.all())
     return render(request, 'user/share.tpl', {
             'foods': foods_shared,
             'user': user,
-            'section': 'share'
         })
 
 # 想吃的
+@tab('wta')
 def user_wants_to_eat(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     foods = make_paginator(request, user.foods_wta.all())
     return render(request, 'user/food_list.tpl', {
             'foods': foods,
             'user': user,
-            'section': 'wta'
         })
 
 # 吃过的
+@tab('ate')
 def user_ate(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     foods = make_paginator(request, user.foods_ate.all())
     return render(request, 'user/food_list.tpl', {
             'foods': foods,
             'user': user,
-            'section': 'ate'
         })
 
 # Topic收藏夹
+@tab('collection')
 def topics_collection(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     collections = make_paginator(request, user.topics_collected.all())
     return render(request, 'user/topic_collection.tpl', {
             'collections': collections,
             'user': user,
-            'section': 'collection'
         })
 
 # 个人设置
 @login_required
+@tab('settings')
 def user_settings(request):
     settings = request.user.settings
     if request.method == 'POST':
@@ -151,7 +152,6 @@ def user_settings(request):
     return render(request, 'user/settings.tpl', {
             'settings': settings,
             'form': form,
-            'section': 'settings'
         })
 
 # 个人档案

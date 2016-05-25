@@ -35,37 +35,37 @@
 
             <div class="user-tabs clearfix">
                 <a href="{% url 'user:home' user.id %}">
-                    <div class="tab-item {% if section == "home" %}current-tab{% endif %}">
+                    <div class="tab-item {% if request.TAB == "home" %}current-tab{% endif %}">
                         主页
                     </div>
                 </a>
                 <a href="{% url 'user:share' user.id %}">
-                    <div class="tab-item {% if section == "share" %}current-tab{% endif %}">
+                    <div class="tab-item {% if request.TAB == "share" %}current-tab{% endif %}">
                         分享
                     </div>
                 </a>
                 <a href="{% url 'user:topic-collection' user.id %}">
-                    <div class="tab-item {% if section == "collection" %}current-tab{% endif %}">
+                    <div class="tab-item {% if request.TAB == "collection" %}current-tab{% endif %}">
                         专题收藏
                     </div>
                 </a>
                 <a href="{% url 'user:ate' user.id %}">
-                    <div class="tab-item {% if section == "ate" %}current-tab{% endif %}">
+                    <div class="tab-item {% if request.TAB == "ate" %}current-tab{% endif %}">
                         吃过的
                     </div>
                 </a>
                 <a href="{% url 'user:wta' user.id %}">
-                    <div class="tab-item {% if section == "wta" %}current-tab{% endif %}">
+                    <div class="tab-item {% if request.TAB == "wta" %}current-tab{% endif %}">
                         想吃的
                     </div>
                 </a>
                 <a href="{% url 'user:following' user.id %}">
-                    <div class="tab-item {% if section == "following" %}current-tab{% endif %}">
+                    <div class="tab-item {% if request.TAB == "following" %}current-tab{% endif %}">
                         关注
                     </div>
                 </a>
                 <a href="{% url 'user:followers' user.id %}">
-                    <div class="tab-item {% if section == "followers" %}current-tab{% endif %}">
+                    <div class="tab-item {% if request.TAB == "followers" %}current-tab{% endif %}">
                         粉丝
                     </div>
                 </a>

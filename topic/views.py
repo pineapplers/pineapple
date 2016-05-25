@@ -24,6 +24,7 @@ def topic_detail(request, topic_id):
     topic = get_object_or_404(FoodTopic, pk=topic_id)
     foods = make_paginator(request, topic.foods.all())
     return render(request, 'topic/detail.tpl', {
+            'topic': topic,
             'foods': foods
         })
 

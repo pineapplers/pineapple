@@ -34,5 +34,5 @@ urlpatterns = [
     url(r'^search/', include('search.urls', namespace='search')),
     url(r'^topic/', include('topic.urls', namespace='topic')),
     url(r'^food/', include('food.urls', namespace='food')),
-] + static('public/static', document_root=settings.STATIC_ROOT)
+] + static('public/static', document_root=settings.STATIC_ROOT) + static('media/', document_root=settings.MEDIA_ROOT)
 

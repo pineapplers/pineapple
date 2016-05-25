@@ -19,7 +19,7 @@
             </li>
         </ul>
         {% if request.user.is_authenticated %}
-            <a href="{% url 'user:home' request.user.id %}"><button>{{ request.user.username }}</button></a>
+            <a href="{% url 'user:home' user_id=request.user.id %}"><button>{{ request.user.username }}</button></a>
         {% else %}
             <a href="{% url 'user:login' %}"><button type="button" name="login" id="login-btn">登录</button></a>
             <a href="{% url 'user:register' %}"><button type="button" name="register" id="register-btn">注册</button></a>

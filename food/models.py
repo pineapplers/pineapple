@@ -43,4 +43,5 @@ class Food(models.Model):
     class Meta:
         verbose_name = '食品'
         verbose_name_plural = '食品'
+        ordering = ('-created', )
 

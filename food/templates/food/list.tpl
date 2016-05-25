@@ -5,116 +5,33 @@
 <link href="{% static 'css/food_list.css' %}" rel="stylesheet">
 {% endblock head %}
 {% block content %}
-<div class="explore-container">
-    <div class="explore-tab-container">
+<div class="list-container">
+    <div class="list-tab-container">
         <ul class="tab-ul clearfix">
-            
-            <li class="tab-ul-item current-item">最近热门</li>
-            <li class="tab-ul-item">精选</li>
-            <li class="tab-ul-item">零食</li>
-            <li class="tab-ul-item">小吃</li>
-            <li class="tab-ul-item">高档</li>
-            <li class="tab-ul-item">发现</li>
+            <a href="{% url 'food:list' %}"><li class="tab-ul-item current-item">全部</li></a>
+            {% for category in categorys %}
+                <a href="{{ category.get_absolute_url }}"><li class="tab-ul-item">{{ category }}</li></a>
+            {% endfor %}
         </ul>
     </div>
 
-    <div class="explore-main-container clearfix">
-        
+    <div class="list-main-container clearfix">
+        {% for food in foods %}
         <div class="item">
-            <a href="#">
-                <div class="item-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
+            <a href="{{ food.get_absolute_url }}">
+                <div class="item-img" style="background-image: url('{{ MEDIA_URL }}{{ food.cover_image }}')"></div>
             </a>
             <div class="item-main">
-                <a href="#"><h3 class="item-title">苏格格巴登巴登小蛋糕</h3></a>
+                <a href="#"><h3 class="item-title">{{ food.title }}</h3></a>
                 <div class="item-tags">
                     <i class="fa fa-tags"></i>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
+                    {% for tag in food.tags.all %}
+                        <span class="tag"><a href="#">{{ tag.name }}</a></span>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-
-        
-        <div class="item">
-            <a href="#">
-                <div class="item-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
-            </a>
-            <div class="item-main">
-                <a href="#"><h3 class="item-title">苏格格巴登巴登小蛋糕</h3></a>
-                <div class="item-tags">
-                    <i class="fa fa-tags"></i>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="item">
-            <a href="#">
-                <div class="item-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
-            </a>
-            <div class="item-main">
-                <a href="#"><h3 class="item-title">苏格格巴登巴登小蛋糕</h3></a>
-                <div class="item-tags">
-                    <i class="fa fa-tags"></i>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="item">
-            <a href="#">
-                <div class="item-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
-            </a>
-            <div class="item-main">
-                <a href="#"><h3 class="item-title">苏格格巴登巴登小蛋糕</h3></a>
-                <div class="item-tags">
-                    <i class="fa fa-tags"></i>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="item">
-            <a href="#">
-                <div class="item-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
-            </a>
-            <div class="item-main">
-                <a href="#"><h3 class="item-title">苏格格巴登巴登小蛋糕</h3></a>
-                <div class="item-tags">
-                    <i class="fa fa-tags"></i>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                    <span class="tag"><a href="#">傻逼</a></span>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock content %}

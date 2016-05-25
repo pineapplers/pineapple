@@ -13,7 +13,7 @@ from actions.utils import create_action
 from comments.models import Comment
 from comments.forms import CommentForm
 from utils import make_paginator
-from utils.decorators import ajax_required
+from utils.decorators import ajax_required, tab
 
 import redis
 
@@ -22,14 +22,20 @@ r = redis.StrictRedis(host=settings.REDIS_HOST,
                       port=settings.REDIS_PORT,
                       db=settings.REDIS_DB)
 
+categorys = FoodCategory.objects.all()
+
 
 def food_latest(request):
-    return render(request, 'food/list.tpl')
+    foods = Food.objects.all()
+    return render(request, 'food/list.tpl', {
+            'foods': foods,
+            'categorys': categorys
+        })
 
 
 def food_detail(request, food_id):
     food = get_object_or_404(Food, pk=food_id)
-    comments = food.comments
+    comments = make_paginator(request, food.comments.all())
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
@@ -45,7 +51,7 @@ def food_detail(request, food_id):
     similar_foods = Food.objects.filter(tags__in=food.tags.all()).exclude(id=food_tags_ids)
     similar_foods = similar_foods.annotate(same_tags=Count('tags')).order_by('-same_tags')[:4]
     total_views = r.incr('food:{}:views'.format(food.id))
-    r.zincrby('food_ranking', food.id, 1)
+    # r.zincrby('food_ranking', food.id, 1)
     return render(request, 'food/detail.tpl', {
             'food': food,
             'comments': comments,
@@ -57,16 +63,26 @@ def food_detail(request, food_id):
 def food_category(request, category):
     foods = make_paginator(request, Food.objects.filter(category__name=category))
     return render(request, 'food/list.tpl', {
-            'foods': foods
+            'foods': foods,
+            'categorys': categorys
         })
 
 def food_tag(request, tag):
     foods = make_paginator(request, Food.objects.filter(tags__name=tag))
     return render(request, 'food/list.tpl', {
-            'foods': foods
+            'foods': foods,
+            'categorys': categorys
         })
 
+@tab('explore', sub_tab='new')
 def explore(request):
+    foods = make_paginator(request, Food.objects.all())
+    return render(request, 'food/explore.tpl', {
+                   'foods': foods
+                })
+
+@tab('explore', sub_tab='hot')
+def hot(request):
     food_ranking = r.zrange('food_ranking', 0, -1, desc=True)[:10]
     food_ranking_ids = [int(id) for id in food_ranking]
 
@@ -74,7 +90,7 @@ def explore(request):
     most_viewed.sort(key=lambda x: food_ranking_ids.index(x.id))
 
     return render(request, 'food/explore.tpl', {
-                   'most_viewed': most_viewed
+                   'foods': most_viewed
                 })
 
 @ajax_required

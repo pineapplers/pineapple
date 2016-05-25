@@ -4,6 +4,7 @@ __pycache__/
 *.pyc
 .coverage
 migrations/
+media/
 /node_modules/
 *.hot-update.js
 *.hot-update.json
