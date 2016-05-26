@@ -1,3 +1,5 @@
 ﻿参考https://www.flickr.com/explore
 波浪形
 标题，创建用户，喜欢数不喜欢数
+关注数量删除
+item只保留图片a标签
