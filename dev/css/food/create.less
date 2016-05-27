@@ -1,0 +1,166 @@
+@baseColor: rgb(122, 167, 242);
+@baseFontColor: #333333;
+@baseFontLightColor: #828caa;
+@baseFontDeepColor: rgb(55, 55, 55);
+@iconColor: rgb(119, 119, 119);
+@textareaBorderColor: rgb(207, 207, 207);
+@baseFontFamily: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+
+.navbar {
+    background-color: @baseColor;
+}
+
+.cursor {
+    background-color: white !important;
+}
+
+.create-container {
+    padding: 0 100px;
+    padding-top: 80px;
+    width: 950px;
+    height: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 0 5px rgb(143, 143, 143);
+
+    .title {
+        text-align: center;
+        font-size: 3rem;
+        color: @baseFontColor;
+    }
+
+    .create-form {
+        color: @baseFontColor;
+        .form-item {
+            margin-top: 20px;
+            .form-label {
+                padding-left: 10px;
+                font-size: 1.5rem;
+                color: @baseColor;
+            }
+
+            .preview-main {
+                margin-top: 15px;
+                .preview-img {
+                    display: inline-block;
+                    width: 300px;
+                    height: 150px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    vertical-align: bottom;
+                }
+
+                .upload {
+                    display: inline-block;
+                    width: 80px;
+                    height: 35px;
+                    margin-left: 15px;
+                    text-align: center;
+                    line-height: 35px;
+                    background-color: @baseColor;
+                    color: white;
+                    cursor: pointer;
+                    vertical-align: bottom;
+
+                    &:hover {
+                        background-color: darken(@baseColor, 5%);
+                    }
+                    &:active {
+                        background-color: darken(@baseColor, 10%);
+                    }
+                }
+
+                #upload {
+                    display: none;
+                }
+            }
+
+            .item-input {
+                margin-top: 10px;
+
+                .input {
+                    width: 350px;
+                    padding: 0 10px;
+                    border: none;
+                    border-bottom: 2px solid #a2a2a2;
+                    font-family: @baseFontFamily;
+                    font-size: 1.5rem;
+                    outline: none;
+                    color: @baseFontColor;
+                    transition: border-color ease .5s;
+
+                    &:focus {
+                        border-bottom-color: @baseColor;
+                    }
+                }
+
+                .add-tag {
+                    display: inline-block;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                    text-align: center;
+                    line-height: 23px;
+                    font-size: 1.8rem;
+                    vertical-align: middle;
+                    background-color: @baseColor;
+                    color: white;
+                    cursor: pointer;
+                }
+
+                .tag-preview {
+                    margin-top: 10px;
+
+                    .tag {
+                        display: inline-block;
+                        padding: 3px 8px;
+                        background-color: @baseColor;
+                        border-radius: 15px;
+                        color: white;
+                        margin-right: 5px;
+                    }
+
+                    .tag-delete {
+                        margin-left: 10px;
+                        color: rgb(74, 74, 74);
+                        cursor: pointer;
+                    }
+                }
+
+                .textarea {
+                    width: 545px;
+                    height: 155px;
+                    padding: 10px;
+                    border: 2px solid #a2a2a2;
+                    font-family: @baseFontFamily;
+                    font-size: 1.4rem;
+                    outline: none;
+                    color: @baseFontColor;
+                    resize: none;
+                    transition: border-color ease .5s;
+
+                    &:focus {
+                        border-color: @baseColor;
+                    }
+                }
+            }
+
+            .selections {
+                margin-top: 10px;
+
+                .types {
+                    min-width: 80px;
+                    height: 35px;
+                    outline: none;
+                    border: 1px solid #a2a2a2;
+                    font-family: @baseFontFamily;
+                    font-size: 1.5rem;
+
+                    &:focus {
+                        border-color: @baseColor;
+                    }
+                }
+            }
+        }
+    }
+}

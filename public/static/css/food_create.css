@@ -1,0 +1,138 @@
+.navbar {
+  background-color: #7aa7f2;
+}
+.cursor {
+  background-color: white !important;
+}
+.create-container {
+  padding: 0 100px;
+  padding-top: 80px;
+  width: 950px;
+  height: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 0 5px #8f8f8f;
+}
+.create-container .title {
+  text-align: center;
+  font-size: 3rem;
+  color: #333333;
+}
+.create-container .create-form {
+  color: #333333;
+}
+.create-container .create-form .form-item {
+  margin-top: 20px;
+}
+.create-container .create-form .form-item .form-label {
+  padding-left: 10px;
+  font-size: 1.5rem;
+  color: #7aa7f2;
+}
+.create-container .create-form .form-item .preview-main {
+  margin-top: 15px;
+}
+.create-container .create-form .form-item .preview-main .preview-img {
+  display: inline-block;
+  width: 300px;
+  height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  vertical-align: bottom;
+}
+.create-container .create-form .form-item .preview-main .upload {
+  display: inline-block;
+  width: 80px;
+  height: 35px;
+  margin-left: 15px;
+  text-align: center;
+  line-height: 35px;
+  background-color: #7aa7f2;
+  color: white;
+  cursor: pointer;
+  vertical-align: bottom;
+}
+.create-container .create-form .form-item .preview-main .upload:hover {
+  background-color: #6398f0;
+}
+.create-container .create-form .form-item .preview-main .upload:active {
+  background-color: #4c88ed;
+}
+.create-container .create-form .form-item .preview-main #upload {
+  display: none;
+}
+.create-container .create-form .form-item .item-input {
+  margin-top: 10px;
+}
+.create-container .create-form .form-item .item-input .input {
+  width: 350px;
+  padding: 0 10px;
+  border: none;
+  border-bottom: 2px solid #a2a2a2;
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1.5rem;
+  outline: none;
+  color: #333333;
+  transition: border-color ease 0.5s;
+}
+.create-container .create-form .form-item .item-input .input:focus {
+  border-bottom-color: #7aa7f2;
+}
+.create-container .create-form .form-item .item-input .add-tag {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 23px;
+  font-size: 1.8rem;
+  vertical-align: middle;
+  background-color: #7aa7f2;
+  color: white;
+  cursor: pointer;
+}
+.create-container .create-form .form-item .item-input .tag-preview {
+  margin-top: 10px;
+}
+.create-container .create-form .form-item .item-input .tag-preview .tag {
+  display: inline-block;
+  padding: 3px 8px;
+  background-color: #7aa7f2;
+  border-radius: 15px;
+  color: white;
+  margin-right: 5px;
+}
+.create-container .create-form .form-item .item-input .tag-preview .tag-delete {
+  margin-left: 10px;
+  color: #4a4a4a;
+  cursor: pointer;
+}
+.create-container .create-form .form-item .item-input .textarea {
+  width: 545px;
+  height: 155px;
+  padding: 10px;
+  border: 2px solid #a2a2a2;
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1.4rem;
+  outline: none;
+  color: #333333;
+  resize: none;
+  transition: border-color ease 0.5s;
+}
+.create-container .create-form .form-item .item-input .textarea:focus {
+  border-color: #7aa7f2;
+}
+.create-container .create-form .form-item .selections {
+  margin-top: 10px;
+}
+.create-container .create-form .form-item .selections .types {
+  min-width: 80px;
+  height: 35px;
+  outline: none;
+  border: 1px solid #a2a2a2;
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1.5rem;
+}
+.create-container .create-form .form-item .selections .types:focus {
+  border-color: #7aa7f2;
+}
