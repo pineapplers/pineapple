@@ -1,6 +1,12 @@
 body {
   background-color: #f1f1f1;
 }
+.navbar {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+.navbar .cursor {
+  background-color: #7aa7f2 !important;
+}
 .container .container-top {
   position: relative;
   padding-top: 100px;

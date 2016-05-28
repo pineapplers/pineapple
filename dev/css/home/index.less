@@ -1,5 +1,5 @@
-@baseColor: #eee966;
 
+@baseColor: rgb(122, 167, 242);
 // @imagesDir: "/C:/Users/李滨泓/Desktop/项目/pineapple/public/static/images";
 @imagesDir: "/public/static/images";
 
@@ -7,6 +7,14 @@
 
 body {
     background-color: rgb(241, 241, 241);
+}
+
+.navbar {
+    background-color: rgba(255,255,255,0) !important;
+
+    .cursor {
+        background-color: @baseColor !important;
+    }
 }
 
 .container {
@@ -58,7 +66,7 @@ body {
             text-align: center;
             color: white;
             font-size: 1.7rem;
-            background-color: @baseColor;
+            background-color: #eee966;
             top: 0;
             left: 50%;
             margin-top: -33px;

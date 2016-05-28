@@ -37,6 +37,7 @@ ul {
   top: 0;
   left: 0;
   z-index: 999;
+  background-color: #7aa7f2;
   background-image: url("/public/static/images/home-header-bg-563ac1688e.png");
   background-repeat: no-repeat;
   background-size: 100% 65px;
@@ -76,7 +77,7 @@ ul {
   left: 0;
   width: 0;
   height: 3px;
-  background-color: #7aa7f2;
+  background-color: white;
   transition: width ease 0.3s;
   -o-transition: width ease 0.3s;
   -ms-transition: width ease 0.3s;
