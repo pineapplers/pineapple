@@ -22,12 +22,12 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  -webkit-filter: blur(10px);
+  -webkit-filter: blur(5px);
   /* Chrome, Opera */
-  -moz-filter: blur(10px);
-  -ms-filter: blur(10px);
-  filter: blur(10px);
-  transition: 1s filter linear;
+  -moz-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  transition: .3s filter linear;
   -webkit-transition: 0.3s -webkit-filter linear;
   -moz-transition: 0.3s -moz-filter linear;
   -ms-transition: 0.3s -ms-filter linear;
@@ -43,6 +43,7 @@ body {
 .details-container .topic-content .topic-info .topic-title {
   text-align: center;
   color: #2a2a2a;
+  font-size: 4.5rem;
 }
 .details-container .topic-content .topic-info .topic-desc {
   width: 550px;

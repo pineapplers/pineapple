@@ -142,3 +142,9 @@ body {
 .topic-container {
   margin-top: 80px;
 }
+html body .navbar {
+  background-color: #7aa7f2 !important;
+}
+html body .navbar .cursor {
+  background-color: white !important;
+}
