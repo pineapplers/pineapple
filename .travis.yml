@@ -8,7 +8,7 @@ env:
   - DJANGO_VERSION=1.9.6
 
 install:
-  - pip install -r requirements..txt
+  - pip install -r requirements.txt
 
 script:
   - python3 manage.py test
