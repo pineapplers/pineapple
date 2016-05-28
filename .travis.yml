@@ -1,0 +1,24 @@
+language: python
+
+python:
+  - "3.4"
+
+services: 
+  - mysql
+
+env:
+  - DJANGO_VERSION=1.9.6
+
+before_install:
+  - mysql -e "create database IF NOT EXISTS test;" -uroot
+
+install:
+  - pip install -r requirements.txt
+
+before_script:
+  - mysql -e 'create database pineapple;'
+  - python3 manage.py makemigrations
+  - python3 manage.py migrate
+
+script:
+  - python3 manage.py test

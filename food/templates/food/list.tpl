@@ -1,5 +1,6 @@
 {% extends 'home/base.tpl' %}
 {% load staticfiles %}
+{% load thumbnail %}
 {% block head %}
 <title>好吃</title>
 <link href="{% static 'css/food_list.css' %}" rel="stylesheet">
@@ -8,9 +9,9 @@
 <div class="list-container">
     <div class="list-tab-container">
         <ul class="tab-ul clearfix">
-            <a href="{% url 'food:list' %}"><li class="tab-ul-item current-item">全部</li></a>
+            <a href="{% url 'food:list' %}"><li class="tab-ul-item">全部</li></a>
             {% for category in categorys %}
-                <a href="{{ category.get_absolute_url }}"><li class="tab-ul-item">{{ category }}</li></a>
+                <a href="{{ category.get_absolute_url }}"><li class="tab-ul-item {% if category.name == section %}current-item{% endif %}">{{ category }}</li></a>
             {% endfor %}
         </ul>
     </div>
@@ -19,14 +20,16 @@
         {% for food in foods %}
         <div class="item">
             <a href="{{ food.get_absolute_url }}">
-                <div class="item-img" style="background-image: url('{{ MEDIA_URL }}{{ food.cover_image }}')"></div>
+                {% thumbnail food.cover_image "300x200" crop="center" as im %}
+                    <div class="item-img" style="background-image: url('{{ im.url }}')"></div>
+                {% endthumbnail %}
             </a>
             <div class="item-main">
                 <a href="#"><h3 class="item-title">{{ food.title }}</h3></a>
                 <div class="item-tags">
                     <i class="fa fa-tags"></i>
                     {% for tag in food.tags.all %}
-                        <span class="tag"><a href="#">{{ tag.name }}</a></span>
+                        <span class="tag"><a href="{% url 'food:tag' tag=tag.name %}">{{ tag.name }}</a></span>
                     {% endfor %}
                 </div>
             </div>

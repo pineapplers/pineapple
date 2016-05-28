@@ -1,5 +1,6 @@
 {% extends 'user/base.tpl' %}
 {% load staticfiles %}
+{% load humanize %}
 {% block head %}
 <title>用户首页</title>
 <link href="{% static 'css/user_index.css' %}" rel="stylesheet">
@@ -7,65 +8,23 @@
 {% block content %}
     <div class="tab-container">
         <div class="timeline-container">
-            <div class="timeline-item-main">
-                
-                <div class="timeline-item">
-                    <i class="fa fa-share-alt"></i>
-                    <span class="timeline-item-username">滨滨和泓泓</span>
-                    <span class="timeline-item-action">分享了</span>
-                    <span class="timeline-item-theme">《奥利奥油条新品》</span>
-                    <span class="timeline-item-time">6小时前</span>
+            {% with actions=actions %}
+            {% if actions %}
+                <div class="timeline-item-main">
+                    {% for action in actions %}
+                    <div class="timeline-item">
+                        <i class="fa {{ action.get_action_class }}"></i>
+                        <span class="timeline-item-username">{{ action.user }}</span>
+                        <span class="timeline-item-action">{{ action.verb }}</span>
+                        <span class="timeline-item-theme">{{ action.target }}</span>
+                        <span class="timeline-item-time">{{ action.created | naturaltime}}</span>
+                    </div>
+                    {% endfor %}
                 </div>
-
-                <div class="timeline-item">
-                    <i class="fa fa-thumbs-up"></i>
-                    <span class="timeline-item-username">滨滨和泓泓</span>
-                    <span class="timeline-item-action">喜欢</span>
-                    <span class="timeline-item-theme">《奥利奥油条新品》</span>
-                    <span class="timeline-item-time">6小时前</span>
-                </div>
-
-                <div class="timeline-item">
-                    <i class="fa fa-bookmark"></i>
-                    <span class="timeline-item-username">滨滨和泓泓</span>
-                    <span class="timeline-item-action">收藏了</span>
-                    <span class="timeline-item-theme">《奥利奥油条新品》</span>
-                    <span class="timeline-item-time">6小时前</span>
-                </div>
-
-                <div class="timeline-item">
-                    <i class="fa fa-eye"></i>
-                    <span class="timeline-item-username">tonnie</span>
-                    <span class="timeline-item-action">关注了</span>
-                    <span class="timeline-item-theme">你</span>
-                    <span class="timeline-item-time">6小时前</span>
-                </div>
-
-                <div class="timeline-item">
-                    <i class="fa fa-comment"></i>
-                    <span class="timeline-item-username">滨滨和泓泓</span>
-                    <span class="timeline-item-action">评论了</span>
-                    <span class="timeline-item-theme">《奥利奥油条新品》</span>
-                    <span class="timeline-item-time">6小时前</span>
-                </div>
-
-                <div class="timeline-item">
-                    <i class="fa fa-cutlery"></i>
-                    <span class="timeline-item-username">滨滨和泓泓</span>
-                    <span class="timeline-item-action">想吃</span>
-                    <span class="timeline-item-theme">《奥利奥油条新品》</span>
-                    <span class="timeline-item-time">6小时前</span>
-                </div>
-
-                <div class="timeline-item">
-                    <i class="fa fa-hand-peace-o"></i>
-                    <span class="timeline-item-username">滨滨和泓泓</span>
-                    <span class="timeline-item-action">吃过</span>
-                    <span class="timeline-item-theme">《奥利奥油条新品》</span>
-                    <span class="timeline-item-time">6小时前</span>
-                </div>
-            </div>
-
+            {% else %}
+                <p>ta最近还没有个人动态</p>
+            {% endif %}
+            {% endwith %}
         </div>
     </div>
 {% endblock content %}

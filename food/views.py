@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
+from .forms import FoodForm
 from .models import Food, FoodCategory
 
 from actions.utils import create_action
@@ -23,6 +24,18 @@ r = redis.StrictRedis(host=settings.REDIS_HOST,
                       db=settings.REDIS_DB)
 
 categorys = FoodCategory.objects.all()
+
+
+def food_create(request):
+    if request.method == 'POST':
+        form = FoodForm(request.POST)
+        if form.is_valid():
+            print("ok")
+    else:
+        form = FoodForm()
+    return render(request, 'food/create.tpl', {
+            'form': form
+        })
 
 
 def food_latest(request):
@@ -64,7 +77,8 @@ def food_category(request, category):
     foods = make_paginator(request, Food.objects.filter(category__name=category))
     return render(request, 'food/list.tpl', {
             'foods': foods,
-            'categorys': categorys
+            'categorys': categorys,
+            'section': category
         })
 
 def food_tag(request, tag):
@@ -117,7 +131,6 @@ def food_wta(request):
     if food_id:
         food = Food.objects.get(pk=food_id)
         food.users_wta.add(request.user)
-        food.users_ate.remove(request.user)
         return JsonResponse({'status': 'yes'})
     return JsonResponse({'status': False}, status=400)
 
@@ -129,6 +142,5 @@ def food_ate(request):
     if food_id:
         food = Food.objects.get(pk=food_id)
         food.users_ate.add(request.user)
-        food.users_wta.remove(request.user)
         return JsonResponse({'status': 'yes'})
     return JsonResponse({'status': False}, status=400)

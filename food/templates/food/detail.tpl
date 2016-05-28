@@ -1,6 +1,7 @@
 {% extends 'home/base.tpl' %}
 {% load staticfiles %}
 {% load widget_tweaks %}
+{% load thumbnail %}
 {% block head %}
 <title>发现</title>
 <link href="{% static 'css/food_detail.css' %}" rel="stylesheet">
@@ -11,7 +12,9 @@
         <div class="food-left fl">
             <div class="food-left-container">
                 <div class="food-img">
-                    <img src="{{ MEDIA_URL }}{{ food.cover_image }}" alt="商品图片" width="100%" height="100%">
+                    {% thumbnail food.cover_image "490x367" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="商品图片" width="100%" height="100%">
+                    {% endthumbnail %}
                     <div class="food-img-shadow">
                         <div class="shadow-icons">
                             <div class="icon clicked">
@@ -48,7 +51,7 @@
                 <div class="comments-wraaper clearfix">
                     <form method="post" action=".">
                         {% csrf_token %}
-                        {{ comment_form.content | add_class:"comments-area" }}
+                        {{ comment_form.content | add_class:"comments-area" | attr:"rows:5"}}
                         <button type="button" name="sendBtn" class="send-btn">发表评论</button>
                     </form>
                 </div>
