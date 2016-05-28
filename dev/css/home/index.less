@@ -10,12 +10,20 @@ body {
 }
 
 .navbar {
-    background-color: rgba(255,255,255,0) !important;
-
-    .cursor {
-        background-color: @baseColor !important;
-    }
+    background-color: transparent;
+    transition: background-color ease-in-out 0.2s;
+    -o-transition: background-color ease-in-out 0.2s;
+    -ms-transition: background-color ease-in-out 0.2s;
+    -moz-transition: background-color ease-in-out 0.2s;
+    -webkit-transition: background-color ease-in-out 0.2s;
+    box-shadow: 0 0 4px rgba(0,0,0,0);
 }
+
+body .over-navbar {
+    background-color: @baseColor;
+    box-shadow: 0 0 4px rgba(0,0,0,.2);
+}
+
 
 .container {
     .container-top {

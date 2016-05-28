@@ -41,6 +41,7 @@ ul {
   background-image: url("/public/static/images/home-header-bg-563ac1688e.png");
   background-repeat: no-repeat;
   background-size: 100% 65px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 .navbar .nav {
   height: 100%;
