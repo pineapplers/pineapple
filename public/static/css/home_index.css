@@ -2,6 +2,7 @@ body {
   background-color: #f6f6f6;
 }
 .navbar {
+  background-image: url("/public/static/images/home-header-bg-563ac1688e.png");
   background-color: transparent;
   transition: background-color ease-in-out 0.2s;
   -o-transition: background-color ease-in-out 0.2s;
@@ -11,6 +12,7 @@ body {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0);
 }
 body .over-navbar {
+  background-image: none;
   background-color: #7aa7f2;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }

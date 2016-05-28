@@ -11,6 +11,10 @@ body {
     height: 100%;
     background-color: white;
     position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .user-container {
@@ -70,6 +74,7 @@ body {
                 outline: none;
                 font-family: @baseFontFamily;
                 font-size: 1.4rem;
+                background-color: transparent;
 
                 &:focus {
                     border-bottom-color: @baseColor;
@@ -82,6 +87,15 @@ body {
                 margin-top: 35px;
                 color: white;
                 background-color: @baseColor;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: darken(@baseColor, 5%);
+                }
+
+                &:active {
+                    background-color: darken(@baseColor, 10%);
+                }
 
                 &:focus {
                     border-bottom-color: none;

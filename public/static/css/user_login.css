@@ -5,6 +5,10 @@ body {
   height: 100%;
   background-color: white;
   position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 .user-container {
   position: absolute;
@@ -58,6 +62,7 @@ body {
   outline: none;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.4rem;
+  background-color: transparent;
 }
 .user-container .form-container .form-item input:focus {
   border-bottom-color: #7aa7f2;
@@ -69,6 +74,15 @@ body {
   margin-top: 35px;
   color: white;
   background-color: #7aa7f2;
+  cursor: pointer;
+}
+.user-container .form-container .form-item #login-btn:hover,
+.user-container .form-container .form-item #register-btn:hover {
+  background-color: #6398f0;
+}
+.user-container .form-container .form-item #login-btn:active,
+.user-container .form-container .form-item #register-btn:active {
+  background-color: #4c88ed;
 }
 .user-container .form-container .form-item #login-btn:focus,
 .user-container .form-container .form-item #register-btn:focus {

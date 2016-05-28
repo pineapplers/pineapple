@@ -38,7 +38,6 @@ ul {
   left: 0;
   z-index: 999;
   background-color: #7aa7f2;
-  background-image: url("/public/static/images/home-header-bg-563ac1688e.png");
   background-repeat: no-repeat;
   background-size: 100% 65px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
@@ -112,13 +111,13 @@ ul {
   background-color: rgba(0, 0, 0, 0);
 }
 .navbar .nav #login-btn {
-  background-color: #7aa7f2;
+  background-color: #4c88ed;
 }
 .navbar .nav #login-btn:hover {
-  background-color: #7199da;
+  background-color: #3479eb;
 }
 .navbar .nav #login-btn:active {
-  background-color: #6388c4;
+  background-color: #1d6ae9;
 }
 .navbar .nav #register-btn {
   border: 1px solid white;
@@ -126,6 +125,11 @@ ul {
 .navbar .nav #register-btn:hover {
   color: #2a2a2a;
   background-color: white;
+}
+.navbar .nav #register-btn:active {
+  color: #2a2a2a;
+  border: 1px solid #f2f2f2;
+  background-color: #f2f2f2;
 }
 .clearfix {
   *zoom: 1;

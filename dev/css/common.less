@@ -51,7 +51,6 @@ ul {
     left: 0;
     z-index: 999;
     background-color: @baseColor;
-    background-image: url("@{imagesDir}/home-header-bg-563ac1688e.png");
     background-repeat: no-repeat;
     background-size: 100% 65px;
     box-shadow: 0 0 4px rgba(0,0,0,.2);
@@ -134,14 +133,14 @@ ul {
         }
 
         #login-btn {
-            background-color: @baseColor;
+            background-color: darken(@baseColor, 10%);
 
             &:hover {
-                background-color: @baseDeepColor;
+                background-color: darken(@baseColor, 15%);
             }
 
             &:active {
-                background-color: @baseDeeperColor;
+                background-color: darken(@baseColor, 20%);
             }
         }
 
@@ -151,6 +150,11 @@ ul {
             &:hover {
                 color: rgb(42, 42, 42);
                 background-color: white;
+            }
+            &:active {
+                color: rgb(42, 42, 42);
+                border: 1px solid darken(rgb(255,255,255), 5%);
+                background-color: darken(rgb(255,255,255), 5%);
             }
         }
     }
