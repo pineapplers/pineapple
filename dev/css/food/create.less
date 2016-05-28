@@ -17,8 +17,8 @@
 .create-container {
     padding: 0 100px;
     padding-top: 80px;
+    padding-bottom: 80px;
     width: 950px;
-    height: 1000px;
     margin: 0 auto;
     box-shadow: 0 0 5px rgb(143, 143, 143);
 
@@ -35,7 +35,7 @@
             .form-label {
                 padding-left: 10px;
                 font-size: 1.5rem;
-                color: @baseColor;
+                color: @baseFontColor;
             }
 
             .preview-main {
@@ -81,8 +81,9 @@
                 .input {
                     width: 350px;
                     padding: 0 10px;
+                    padding-bottom: 5px;
                     border: none;
-                    border-bottom: 2px solid #a2a2a2;
+                    border-bottom: 2px solid @baseColor;
                     font-family: @baseFontFamily;
                     font-size: 1.5rem;
                     outline: none;
@@ -106,6 +107,13 @@
                     background-color: @baseColor;
                     color: white;
                     cursor: pointer;
+
+                    &:hover {
+                        background-color: darken(@baseColor, 5%);
+                    }
+                    &:active {
+                        background-color: darken(@baseColor, 10%);
+                    }
                 }
 
                 .tag-preview {
@@ -131,7 +139,7 @@
                     width: 545px;
                     height: 155px;
                     padding: 10px;
-                    border: 2px solid #a2a2a2;
+                    border: 2px solid @baseColor;
                     font-family: @baseFontFamily;
                     font-size: 1.4rem;
                     outline: none;
@@ -161,6 +169,37 @@
                     }
                 }
             }
+
+            .form-btn {
+                border: none;
+                width: 80px;
+                height: 35px;
+                font-family: @baseFontFamily;
+                font-size: 1.5rem;
+                outline: none;
+                cursor: pointer;
+            }
+            .share-btn {
+                background-color: @baseColor;
+                color: white;
+
+                &:hover {
+                    background-color: darken(@baseColor, 5%);
+                }
+
+                &:active {
+                    background-color: darken(@baseColor, 10%);
+                }
+            }
+
+            .cancel-btn {
+                background-color: white;
+                color: @baseColor;
+            }
+        }
+        .btn-item {
+            text-align: center;
+            margin-top: 35px;
         }
     }
 }

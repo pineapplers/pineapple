@@ -28,10 +28,22 @@ webpackJsonp([0],[
 	    var tag_input = document.getElementById("create-tag");
 	    var tag_add_btn = document.getElementById("add-tag");
 	    var tagContainer = document.getElementById("tag-preview");
+	    var tags = [];
+	    var tagsFlag = {};
+	    var tagCount = 0;
 
 	    tag_add_btn.addEventListener("click", function(event) {
 	        if(tag_input.value !== "") {
-	            tagContainer.innerHTML += "<div class=\"tag\">" + tag_input.value + "<span class=\"tag-delete\">x</span></div>";
+	            // 标签输入处理
+	            var val_result = tag_input.value.split(/[,|，]/);
+	            for(var i=0;i<val_result.length;i++) {
+	                if(!tagsFlag[val_result[i]] && val_result[i] !== "") {
+	                    tagContainer.innerHTML += "<div class=\"tag\"><span>" + val_result[i] + "</span><span class=\"tag-delete\">x</span></div>";
+	                    tags.push(val_result[i]);
+	                    tagsFlag[val_result[i]] = true;
+	                }
+	            }
+	            console.log(tags)
 	            tag_input.value = "";
 	            tag_input.focus();
 	        }
@@ -42,9 +54,27 @@ webpackJsonp([0],[
 	        var target = e.srcElement || e.target;
 
 	        if(target.className === "tag-delete") {
+	            var val = target.previousElementSibling.innerHTML;
+	            for(var idx=0;idx<tags.length;idx++) {
+	                if(tags[idx] === val) {
+	                    tags.splice(idx, 1);
+	                    tagsFlag[val] = false;
+	                    break;
+	                }
+	            }
 	            this.removeChild(target.parentNode);
 	        }
 	    }, false);
+
+	    // 表单提交前拦截处理
+	    (function formFilter() {
+	        var form = document.getElementById("create-form");
+
+	        form.addEventListener("submit", function() {
+	            tag_input.value = tags.join(",");
+	            return true;
+	        });
+	    })();
 	})();
 
 

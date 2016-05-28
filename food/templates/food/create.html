@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>创建分享</title>
-    <link href="/public/static/css/vendors.css?93d4e6ed22b2a15b5abc" rel="stylesheet"><link href="/public/static/css/food_create.css?93d4e6ed22b2a15b5abc" rel="stylesheet"></head>
+    <link href="/public/static/css/vendors.css?f7b5787046bfc6707bf7" rel="stylesheet"><link href="/public/static/css/food_create.css?f7b5787046bfc6707bf7" rel="stylesheet"></head>
     <body>
         <div class="navbar">
             <div class="nav">
@@ -34,7 +34,7 @@
                 分享 | Share
             </div>
 
-            <form class="create-form" action="index.html" method="post">
+            <form class="create-form" id="create-form" action="index.html" method="get" autocomplete="off">
                 <div class="form-item">
                     <label class="form-label">Yummy 图片</label>
                     <div class="preview-main clearfix">
@@ -67,7 +67,7 @@
                 <div class="form-item">
                     <label class="form-label" for="create-tag">标签</label>
                     <div class="item-input">
-                        <input type="text" name="tag" class="input" id="create-tag" placeholder="请输入标签">
+                        <input type="text" name="tag" class="input" id="create-tag" placeholder="请输入标签，多个标签可用“,”隔开">
                         <div class="add-tag" id="add-tag">
                             +
                         </div>
@@ -90,8 +90,13 @@
                         <textarea name="desc" rows="8" cols="40" id="desc" class="textarea"></textarea>
                     </div>
                 </div>
+
+                <div class="form-item btn-item">
+                    <button type="submit" name="share" class="form-btn share-btn">分享</button>
+                    <a href="#"><button type="button" name="cancel" class="form-btn cancel-btn">取消</button></a>
+                </div>
             </form>
 
         </div>
-    <script src="/public/static/js/vendors.js?93d4e6ed22b2a15b5abc"></script><script src="/public/static/js/food_create.js?93d4e6ed22b2a15b5abc"></script></body>
+    <script src="/public/static/js/vendors.js?f7b5787046bfc6707bf7"></script><script src="/public/static/js/food_create.js?f7b5787046bfc6707bf7"></script></body>
 </html>

@@ -7,8 +7,8 @@
 .create-container {
   padding: 0 100px;
   padding-top: 80px;
+  padding-bottom: 80px;
   width: 950px;
-  height: 1000px;
   margin: 0 auto;
   box-shadow: 0 0 5px #8f8f8f;
 }
@@ -26,7 +26,7 @@
 .create-container .create-form .form-item .form-label {
   padding-left: 10px;
   font-size: 1.5rem;
-  color: #7aa7f2;
+  color: #333333;
 }
 .create-container .create-form .form-item .preview-main {
   margin-top: 15px;
@@ -67,8 +67,9 @@
 .create-container .create-form .form-item .item-input .input {
   width: 350px;
   padding: 0 10px;
+  padding-bottom: 5px;
   border: none;
-  border-bottom: 2px solid #a2a2a2;
+  border-bottom: 2px solid #7aa7f2;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.5rem;
   outline: none;
@@ -91,6 +92,12 @@
   color: white;
   cursor: pointer;
 }
+.create-container .create-form .form-item .item-input .add-tag:hover {
+  background-color: #6398f0;
+}
+.create-container .create-form .form-item .item-input .add-tag:active {
+  background-color: #4c88ed;
+}
 .create-container .create-form .form-item .item-input .tag-preview {
   margin-top: 10px;
 }
@@ -111,7 +118,7 @@
   width: 545px;
   height: 155px;
   padding: 10px;
-  border: 2px solid #a2a2a2;
+  border: 2px solid #7aa7f2;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.4rem;
   outline: none;
@@ -135,4 +142,31 @@
 }
 .create-container .create-form .form-item .selections .types:focus {
   border-color: #7aa7f2;
+}
+.create-container .create-form .form-item .form-btn {
+  border: none;
+  width: 80px;
+  height: 35px;
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1.5rem;
+  outline: none;
+  cursor: pointer;
+}
+.create-container .create-form .form-item .share-btn {
+  background-color: #7aa7f2;
+  color: white;
+}
+.create-container .create-form .form-item .share-btn:hover {
+  background-color: #6398f0;
+}
+.create-container .create-form .form-item .share-btn:active {
+  background-color: #4c88ed;
+}
+.create-container .create-form .form-item .cancel-btn {
+  background-color: white;
+  color: #7aa7f2;
+}
+.create-container .create-form .btn-item {
+  text-align: center;
+  margin-top: 35px;
 }
