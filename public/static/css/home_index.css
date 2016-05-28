@@ -1,5 +1,5 @@
 body {
-  background-color: #f1f1f1;
+  background-color: #f6f6f6;
 }
 .navbar {
   background-color: rgba(255, 255, 255, 0) !important;
@@ -8,12 +8,14 @@ body {
   background-color: #7aa7f2 !important;
 }
 .container .container-top {
+  height: 100%;
   position: relative;
   padding-top: 100px;
   padding-bottom: 10px;
-  background: url("/public/static/images/back.png");
+  background: url("/public/static/images/back3.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
 }
 .container .container-top .pineapple-logo {
   width: 100%;
@@ -49,11 +51,11 @@ body {
   text-align: center;
   color: white;
   font-size: 1.7rem;
-  background-color: #eee966;
   top: 0;
   left: 50%;
   margin-top: -33px;
   margin-left: -50px;
+  z-index: 999;
 }
 @media screen and (min-width: 1366px) {
   body .topic-container {
@@ -66,7 +68,7 @@ body {
 }
 .topic-container .topic-container-title {
   width: 100%;
-  margin: 20px auto;
+  margin: 35px auto;
   text-align: center;
 }
 .topic-container .topic-container-title h1 {

@@ -6,7 +6,7 @@
 @baseFontFamily: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
 
 body {
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(246, 246, 246);
 }
 
 .navbar {
@@ -19,12 +19,14 @@ body {
 
 .container {
     .container-top {
+        height: 100%;
         position: relative;
         padding-top: 100px;
         padding-bottom: 10px;
-        background: url("@{imagesDir}/back.png");
+        background: url("@{imagesDir}/back3.jpg");
         background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-size: cover;
+        background-position: center;
 
         .pineapple-logo {
             width: 100%;
@@ -66,11 +68,12 @@ body {
             text-align: center;
             color: white;
             font-size: 1.7rem;
-            background-color: #eee966;
+            // background-color: #eee966;
             top: 0;
             left: 50%;
             margin-top: -33px;
             margin-left: -50px;
+            z-index: 999;
         }
     }
 }
@@ -87,7 +90,7 @@ body {
 
     .topic-container-title {
         width: 100%;
-        margin: 20px auto;
+        margin: 35px auto;
         text-align: center;
 
         @topicTitleColor: #5d5d5d;

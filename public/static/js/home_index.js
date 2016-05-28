@@ -6,6 +6,11 @@ webpackJsonp([4],{
 	__webpack_require__(1);
 	__webpack_require__(7);
 
+	(function() {
+	    var container = document.getElementById("container");
+	    container.style.height = document.documentElement.clientHeight + "px";
+	})();
+
 
 /***/ },
 
