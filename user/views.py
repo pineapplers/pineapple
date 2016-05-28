@@ -75,13 +75,13 @@ def user_posts(request, user_id):
         })
 
 # 正在关注
+@tab('following')
 def user_following(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     followings = make_paginator(request, user.following.all())
     return render(request, 'user/user_list.tpl', {
             'users': followings,
             'user': user,
-            'section': 'following'
         })
 
 # 被关注的

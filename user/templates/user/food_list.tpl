@@ -11,7 +11,7 @@
         <div class="eat-item clearfix">
             <div class="food-image" style="background-image: url('{{ MEDIA_URL }}{{ food.cover_image }}')"></div>
             <div class="eat-item-main">
-                <h3 class="food-title"><a href="#">{{ food.title }}</a></h3>
+                <h3 class="food-title"><a href="{{ food.get_absolute_url }}">{{ food.title }}</a></h3>
                 <p class="food-desc">
                     {{ food.description }}
                 </p>
