@@ -1,11 +1,8 @@
-body {
-  background-color: #f5f8f9;
-}
 .user-container {
   padding: 80px 100px;
   padding-bottom: 0;
   background-color: white;
-  border-bottom: 1px solid #cbcbcb;
+  box-shadow: 0 0 5px #aaaaaa;
 }
 .user-container .user-portrait {
   position: relative;

@@ -1,11 +1,8 @@
-body {
-  background-color: #f5f8f9;
-}
 .user-container {
   padding: 80px 100px;
   padding-bottom: 0;
   background-color: white;
-  border-bottom: 1px solid #cbcbcb;
+  box-shadow: 0 0 5px #aaaaaa;
 }
 .user-container .user-portrait {
   position: relative;
@@ -113,7 +110,7 @@ body {
   color: #7aa7f2;
 }
 .tab-container .form-container {
-  padding: 50px 25px 0 25px;
+  padding: 50px 25px 80px 25px;
   width: 1000px;
   margin: 0 auto;
 }
@@ -123,11 +120,12 @@ body {
 .tab-container .form-container .form .form-item input,
 .tab-container .form-container .form .form-item textarea {
   vertical-align: middle;
+  outline: none;
 }
 .tab-container .form-container .form .form-item .form-item-label {
   display: inline-block;
   font-size: 1.5rem;
-  color: #828caa;
+  color: #333333;
   vertical-align: middle;
   width: 60px;
   margin-right: 25px;
@@ -135,20 +133,21 @@ body {
 }
 .tab-container .form-container .form .form-item .form-radio-label {
   font-size: 1.5rem;
-  color: #828caa;
+  color: #333333;
   vertical-align: middle;
 }
 .tab-container .form-container .form .form-item .selections,
 .tab-container .form-container .form .form-item text-input {
   width: 100px;
   height: 28px;
-  border: 1px solid #c7dceb;
+  border: 1px solid #7aa7f2;
   border-radius: 3px;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .tab-container .form-container .form .form-item .form-textarea {
-  border: 1px solid #c7dceb;
+  border: 1px solid #7aa7f2;
   border-radius: 3px;
+  padding: 10px;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   resize: none;
 }
@@ -157,20 +156,20 @@ body {
 }
 .tab-container .form-container .form .form-item .form-span {
   font-size: 1.5rem;
-  color: #828caa;
+  color: #333333;
   margin: 0 3px;
 }
 .tab-container .form-container .form .form-item .form-item-btn {
   text-align: center;
+  margin-top: 35px;
 }
 .tab-container .form-container .form .form-item .form-item-btn input,
 .tab-container .form-container .form .form-item .form-item-btn button {
   border: none;
-  width: 100px;
-  height: 45px;
+  width: 80px;
+  height: 35px;
   outline: none;
-  border-radius: 5px;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: white;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   cursor: pointer;
@@ -179,13 +178,19 @@ body {
   background-color: #7aa7f2;
 }
 .tab-container .form-container .form .form-item .form-item-btn #submit:hover {
-  background-color: #588ada;
+  background-color: #6398f0;
+}
+.tab-container .form-container .form .form-item .form-item-btn #submit:active {
+  background-color: #4c88ed;
 }
 .tab-container .form-container .form .form-item .form-item-btn #logout {
   background-color: #e04a4a;
 }
 .tab-container .form-container .form .form-item .form-item-btn #logout:hover {
-  background-color: #bb3b3b;
+  background-color: #dc3434;
+}
+.tab-container .form-container .form .form-item .form-item-btn #logout:active {
+  background-color: #d32424;
 }
 .tab-container .form-container .form .form-item .img-preview {
   display: table;

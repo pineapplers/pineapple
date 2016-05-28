@@ -1,13 +1,11 @@
-@baseFontColor: #5d5d5d;
-@baseFontLightColor: #828caa;
+@baseFontColor: #333333;
 @baseColor: rgb(122, 167, 242);
 @baseDeepColor: rgb(88, 138, 218);
 @baseFontFamily: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
-
 .tab-container {
 
     .form-container {
-        padding: 50px 25px 0 25px;
+        padding: 50px 25px 80px 25px;
         width: 1000px;
         margin: 0 auto;
         // background-color: #ebf2f2;
@@ -18,12 +16,13 @@
 
                 input, textarea {
                     vertical-align: middle;
+                    outline: none;
                 }
 
                 .form-item-label {
                     display: inline-block;
                     font-size: 1.5rem;
-                    color: @baseFontLightColor;
+                    color: @baseFontColor;
                     vertical-align: middle;
                     width: 60px;
                     margin-right: 25px;
@@ -32,21 +31,22 @@
 
                 .form-radio-label {
                     font-size: 1.5rem;
-                    color: @baseFontLightColor;
+                    color: @baseFontColor;
                     vertical-align: middle;
                 }
 
                 .selections, text-input {
                     width: 100px;
                     height: 28px;
-                    border: 1px solid #c7dceb;
+                    border: 1px solid @baseColor;
                     border-radius: 3px;
                     font-family: @baseFontFamily;
                 }
 
                 .form-textarea {
-                    border: 1px solid #c7dceb;
+                    border: 1px solid @baseColor;
                     border-radius: 3px;
+                    padding: 10px;
                     font-family: @baseFontFamily;
                     resize: none;
                 }
@@ -57,20 +57,20 @@
 
                 .form-span {
                     font-size: 1.5rem;
-                    color: @baseFontLightColor;
+                    color: @baseFontColor;
                     margin: 0 3px;
                 }
 
                 .form-item-btn {
                     text-align: center;
+                    margin-top: 35px;
 
                     input, button {
                         border: none;
-                        width: 100px;
-                        height: 45px;
+                        width: 80px;
+                        height: 35px;
                         outline: none;
-                        border-radius: 5px;
-                        font-size: 1.6rem;
+                        font-size: 1.5rem;
                         color: white;
                         font-family: @baseFontFamily;
                         cursor: pointer;
@@ -80,7 +80,10 @@
                         background-color: @baseColor;
 
                         &:hover {
-                            background-color: @baseDeepColor;
+                            background-color: darken(@baseColor, 5%);;
+                        }
+                        &:active {
+                            background-color: darken(@baseColor, 10%);;
                         }
                     }
 
@@ -88,7 +91,10 @@
                         background-color: rgb(224, 74, 74);
 
                         &:hover {
-                            background-color: rgb(187, 59, 59);
+                            background-color: darken(rgb(224, 74, 74), 5%);
+                        }
+                        &:active {
+                            background-color: darken(rgb(224, 74, 74), 10%);
                         }
                     }
                 }
