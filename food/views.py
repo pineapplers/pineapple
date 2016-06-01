@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
@@ -26,15 +27,20 @@ r = redis.StrictRedis(host=settings.REDIS_HOST,
 categorys = FoodCategory.objects.all()
 
 
+@login_required
 def food_create(request):
     if request.method == 'POST':
-        form = FoodForm(request.POST)
+        form = FoodForm(request.POST, request.FILES)
         if form.is_valid():
-            print("ok")
+            food = form.save(commit=False)
+            food.user = request.user
+            food.save()
+            return HttpResponseRedirect(reverse('food:detail', kwargs={'food_id': food.id}))
     else:
         form = FoodForm()
     return render(request, 'food/create.tpl', {
-            'form': form
+            'form': form,
+            'categorys': categorys
         })
 
 
@@ -51,13 +57,16 @@ def food_detail(request, food_id):
     comments = make_paginator(request, food.comments.all())
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.user = request.user
-            comment.save()
-            messages.success(request, '评论成功')
+        if request.user.is_authenticated():
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.user = request.user
+                comment.save()
+                messages.success(request, '评论成功')
+            else:
+                messages.error(request, '评论失败')
         else:
-            messages.error(request, '评论失败')
+            messages.error(request, '请登录后评论')
     else:
         comment_form = CommentForm()
     food_tags_ids = food.tags.values_list('id')

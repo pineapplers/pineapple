@@ -18,17 +18,17 @@
                     <div class="food-img-shadow">
                         <div class="shadow-icons">
                             <div class="icon clicked">
-                                <a href="#">
+                                <a href="#" id="want">
                                     <i class="fa fa-cutlery">
-                                        <span class="fa-margin">想吃</span>
+                                        <span class="fa-margin" data-id="{{ food.id }}">想吃</span>
                                     </i>
                                 </a>
                             </div>
 
                             <div class="icon">
-                                <a href="#">
+                                <a href="#" id="eated">
                                     <i class="fa fa-hand-peace-o">
-                                        <span class="fa-margin">吃过</span>
+                                        <span class="fa-margin" data-id="{{ food.id }}">吃过</span>
                                     </i>
                                 </a>
                             </div>
@@ -37,11 +37,13 @@
                 </div>
 
                 <div class="food-like-share">
-                    
-                    <div class="circle liked">
-                        <i class="fa fa-heart"></i>
+                    <div class="circle" id="like" data-id="{{ food.id }}" data-action="like">
+                        <i class="fa fa-thumbs-o-up"></i>
                     </div>
-                    <div class="circle">
+                    <div class="circle" id="dislike" data-id="{{ food.id }}" data-action="dislike">
+                        <i class="fa fa-thumbs-o-down"></i>
+                    </div>
+                    <div class="circle" id="share">
                         <i class="fa fa-share-alt"></i>
                     </div>
                 </div>
@@ -52,24 +54,30 @@
                     <form method="post" action=".">
                         {% csrf_token %}
                         {{ comment_form.content | add_class:"comments-area" | attr:"rows:5"}}
-                        <button type="button" name="sendBtn" class="send-btn">发表评论</button>
+                        <button type="submit" name="sendBtn" class="send-btn">发表评论</button>
                     </form>
                 </div>
                 <h2 class="comments-title">全部评论</h2>
+                {% with comments=comments %}
                 <div class="comments-main">
-                    {% for comment in comments %}
-                    <div class="comments-item clearfix">
-                        <div class="comments-user-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
-                        <div class="comments-user-name">
-                            <span class="name"><a href="#">{{ comment.user }}</a></span>
-                            <span class="comments-time">{{ comment.created| date:"Y-m-d H:m" }}</span>
+                    {% if comments %}
+                        {% for comment in comments %}
+                        <div class="comments-item clearfix">
+                            <div class="comments-user-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
+                            <div class="comments-user-name">
+                                <span class="name"><a href="#">{{ comment.user }}</a></span>
+                                <span class="comments-time">{{ comment.created| date:"Y-m-d H:m" }}</span>
+                            </div>
+                            <div class="comments-item-content">
+                                {{ comment.content }}
+                            </div>
                         </div>
-                        <div class="comments-item-content">
-                            {{ comment.content }}
-                        </div>
-                    </div>
-                   {% endfor %}
+                        {% endfor %}
+                    {% else %}
+                    <p>目前没有人评论</p>
+                    {% endif %}
                 </div>
+                {% endwith %}
             </div>
         </div>
 
@@ -77,7 +85,7 @@
             <h2 class="food-title">{{ food.title }}</h2>
             <div class="food-sharer">
                 <div class="sharer-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
-                <span class="sharer-name">{{ food.user }}</span>
+                <a href="{{ food.user.get_absolute_url }}"><span class="sharer-name">{{ food.user }}</span></a>
                 <span class="share-text">分享于</span>
                 <span class="share-time">{{ food.created| date:"Y-m-d" }}</span>
             </div>
@@ -99,9 +107,15 @@
                 标签
             </div>
             <div class="tags">
-                {% for tag in food.tags.all %}
-                    <a href="{% url 'food:tag' tag=tag %}"><div class="tag-item">{{ tag }}</div></a>
-                {% endfor %}
+                {% with tags=food.tags.all %}
+                    {% if tags %}
+                        {% for tag in tags %}
+                            <a href="{% url 'food:tag' tag=tag %}"><div class="tag-item">{{ tag }}</div></a>
+                        {% endfor %}
+                    {% else %}
+                        <p>该食物没有添加标签😊</p>
+                    {% endif %}
+                {% endwith %}
             </div>
 
             <div class="food-item-title">

@@ -1,5 +1,6 @@
 {% extends 'home/base.tpl' %}
 {% load staticfiles %}
+{% load thumbnail %}
 {% block head %}
 <title>专题</title>
 <link href="{% static 'css/topic_list.css' %}" rel="stylesheet">
@@ -10,7 +11,9 @@
         {% for topic in topics %}
         <div class="topic-item">
             <a href="{{ topic.get_absolute_url }}">
-                <div class="topic-item-img" style="background-image: url('{{ MEDIA_URL }}{{ topic.cover_image }}')"></div>
+                {% thumbnail topic.cover_image "393x188" crop="center" as im %}
+                    <div class="topic-item-img" style="background-image: url('{{ im.url }}')"></div>
+                {% endthumbnail %}
             </a>
             <div class="topic-item-desc">
                 <a href="#"><h3 class="desc-title">{{ topic.title }}</h3></a>

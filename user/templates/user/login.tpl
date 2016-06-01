@@ -7,11 +7,25 @@
         <title>登录</title>
         <link href="{% static 'css/vendors.css' %}" rel="stylesheet">
         <link href="{% static 'css/user_login.css' %}" rel="stylesheet">
+        <style type="text/css">
+            img {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+                z-index: -9999;
+                -webkit-filter: gray;
+            }
+        </style>
     </head>
     <body>
+        <img src="/public/static/images/bg.jpg">
         <div class="user-container">
             <div class="user-container-title">
-                <h2>登录 | Login</h2>
+                <h2>登录</h2>
                 <h3>登录，寻找更好的</h3>
             </div>
             <div class="form-container" id="form-container">

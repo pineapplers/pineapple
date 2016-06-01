@@ -12,7 +12,7 @@
             <li class="share-container-item clearfix">
                 <span class="share-time">分享于 {{ food.created | naturaltime }}</span>
                 <div class="item-index">
-                    {{ forloop.count }}
+                    {{ forloop.counter }}
                 </div>
                 <div class="images-item" style="background-image: url('{{ MEDIA_URL }}{{ food.cover_image }}')"></div>
                 <div class="item-main">

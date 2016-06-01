@@ -1,5 +1,6 @@
 {% extends 'home/base.tpl' %}
 {% load staticfiles %}
+{% load thumbnail %}
 {% block head %}
 <title>专题</title>
 <link href="{% static 'css/topic_detail.css' %}" rel="stylesheet">
@@ -18,7 +19,9 @@
     {% for food in foods %}
     <div class="detail-item">
         <a href="#">
-            <div class="detail-img-left" style="background-image: url('{{ MEDIA_URL }}{{ food.cover_image }}')"></div>
+            {% thumbnail food.cover_image "1048x350" crop="center" as im %}
+                <div class="detail-img-left" style="background-image: url('{{ im.url }}')"></div>
+            {% endthumbnail %}
         </a>
         <div class="detail-content">
             <h2 class="detail-title"><a href="{{ food.get_absolute_url }}">{{ food.title }}</a></h2>

@@ -26,7 +26,7 @@ webpackJsonp([1],{
 	    var shareDom = $("share");
 	    var wantDom = $("want");
 	    var eatedDom = $("eated");
-
+	    
 	    likeDom.click(function (event) {
 	        var self = this;
 

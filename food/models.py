@@ -29,7 +29,7 @@ class Food(models.Model):
     users_wta = models.ManyToManyField(User, related_name='foods_wta', blank=True, verbose_name='想吃的用户')
     users_ate = models.ManyToManyField(User, related_name='foods_ate', blank=True, verbose_name='吃过的用户')
     link = models.URLField(blank=True, verbose_name='相关链接')
-    category = models.ForeignKey(FoodCategory, blank=True, related_name='foods', verbose_name='分类')
+    category = models.ForeignKey(FoodCategory, related_name='foods', verbose_name='分类')
     user = models.ForeignKey(User, related_name='foods_shared', verbose_name='创建用户')
     created = models.DateTimeField(auto_now_add=True, verbose_name='添加日期')
     tags = TaggableManager(blank=True, help_text='多个标签以逗号分隔', verbose_name="标签")
