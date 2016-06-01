@@ -5,6 +5,7 @@
 @venusFontColor: rgb(242, 102, 237);
 @followingBtnBackColor: rgb(136, 136, 136);
 @unfollowBtnBackColor: rgb(122, 167, 242);
+@baseFontFamily: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
 
 body {
     // background-color: rgb(245, 248, 249);
@@ -22,6 +23,7 @@ body {
         float: left;
         width: 100px;
         height: 100px;
+        top: 15px;
         border-radius: 50%;
         background-image: url("@{imagesDir}/topic1.jpg");
         background-size: cover;
@@ -38,6 +40,8 @@ body {
             color: white;
             outline: none;
             cursor: pointer;
+            font-family: @baseFontFamily;
+            display: none;
         }
 
         .unfollow {

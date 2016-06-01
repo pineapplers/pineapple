@@ -1,30 +1,42 @@
-webpackJsonp([0],[
-/* 0 */
+webpackJsonp([0],{
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	__webpack_require__(3);
+	module.exports = __webpack_require__(299);
 
 
-	(function() {
+/***/ },
+
+/***/ 299:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	__webpack_require__(300);
+	__webpack_require__(302);
+	window.$ajax = __webpack_require__(303);
+
+	(function () {
 	    function preview() {
 	        var prevDiv = document.getElementById('preview-img');
 	        var file = this;
 	        if (file.files && file.files[0]) {
 	            var reader = new FileReader();
-	            reader.onload = function(evt) {
+	            reader.onload = function (evt) {
 	                prevDiv.style.backgroundImage = "url('" + evt.target.result + "')";
-	            }
+	            };
 	            reader.readAsDataURL(file.files[0]);
-	        }else {
-	            prevDiv.style.backgroundImage = "url('" + file.value + "')"
+	        } else {
+	            prevDiv.style.backgroundImage = "url('" + file.value + "')";
 	        }
 	    }
 
 	    document.getElementById("upload").addEventListener("change", preview, false);
 	})();
 
-	(function() {
+	(function () {
 	    var tag_input = document.getElementById("create-tag");
 	    var tag_add_btn = document.getElementById("add-tag");
 	    var tagContainer = document.getElementById("tag-preview");
@@ -32,31 +44,31 @@ webpackJsonp([0],[
 	    var tagsFlag = {};
 	    var tagCount = 0;
 
-	    tag_add_btn.addEventListener("click", function(event) {
-	        if(tag_input.value !== "") {
+	    tag_add_btn.addEventListener("click", function (event) {
+	        if (tag_input.value !== "") {
 	            // 标签输入处理
 	            var val_result = tag_input.value.split(/[,|，]/);
-	            for(var i=0;i<val_result.length;i++) {
-	                if(!tagsFlag[val_result[i]] && val_result[i] !== "") {
+	            for (var i = 0; i < val_result.length; i++) {
+	                if (!tagsFlag[val_result[i]] && val_result[i] !== "") {
 	                    tagContainer.innerHTML += "<div class=\"tag\"><span>" + val_result[i] + "</span><span class=\"tag-delete\">x</span></div>";
 	                    tags.push(val_result[i]);
 	                    tagsFlag[val_result[i]] = true;
 	                }
 	            }
-	            console.log(tags)
+	            console.log(tags);
 	            tag_input.value = "";
 	            tag_input.focus();
 	        }
 	    }, false);
 
-	    tagContainer.addEventListener("click", function(event) {
+	    tagContainer.addEventListener("click", function (event) {
 	        var e = window.event || event;
 	        var target = e.srcElement || e.target;
 
-	        if(target.className === "tag-delete") {
+	        if (target.className === "tag-delete") {
 	            var val = target.previousElementSibling.innerHTML;
-	            for(var idx=0;idx<tags.length;idx++) {
-	                if(tags[idx] === val) {
+	            for (var idx = 0; idx < tags.length; idx++) {
+	                if (tags[idx] === val) {
 	                    tags.splice(idx, 1);
 	                    tagsFlag[val] = false;
 	                    break;
@@ -70,21 +82,20 @@ webpackJsonp([0],[
 	    (function formFilter() {
 	        var form = document.getElementById("create-form");
 
-	        form.addEventListener("submit", function() {
+	        form.addEventListener("submit", function () {
 	            tag_input.value = tags.join(",");
 	            return true;
 	        });
 	    })();
 	})();
 
-
 /***/ },
-/* 1 */,
-/* 2 */,
-/* 3 */
+
+/***/ 302:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ }
-]);
+
+});

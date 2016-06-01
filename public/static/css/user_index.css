@@ -9,6 +9,7 @@
   float: left;
   width: 100px;
   height: 100px;
+  top: 15px;
   border-radius: 50%;
   background-image: url("/public/static/images/topic1.jpg");
   background-size: cover;
@@ -25,6 +26,8 @@
   color: white;
   outline: none;
   cursor: pointer;
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  display: none;
 }
 .user-container .user-portrait .unfollow {
   background-color: #7aa7f2;

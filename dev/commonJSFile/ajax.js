@@ -14,7 +14,18 @@
  * @date     2016-06-01
  * @author   Rlilyyy<bingohlee@gmail.com>
  */
+
+(function() {
+    window.$ = (id) => {
+        let dom = document.getElementById(id);
+        dom.click = function(func) {
+            dom.addEventListener("click", func, false);
+        }
+        return dom;
+    };
+})();
 module.exports = function({url = false, method = "GET", data = null} = {}) {
+
     // xhr 获取数据成功
     let isReady = (xhr) => {
         return xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300;

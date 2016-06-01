@@ -39,16 +39,33 @@ body {
   width: 100%;
   top: 100px;
   left: 0;
+  text-align: center;
 }
 .details-container .topic-content .topic-info .topic-title {
   text-align: center;
+  margin-bottom: 15px;
   color: #2a2a2a;
   font-size: 4.5rem;
 }
+.details-container .topic-content .topic-info #collect {
+  width: 100px;
+  height: 35px;
+  border: none;
+  background-color: #7aa7f2;
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+.details-container .topic-content .topic-info .collected {
+  background-color: #b8b8b8 !important;
+}
 .details-container .topic-content .topic-info .topic-desc {
   width: 550px;
-  margin: 50px auto 0 auto;
+  margin: 20px auto 0 auto;
   color: #3b3b3b;
+  text-align: left;
 }
 .details-container .detail-item {
   position: relative;

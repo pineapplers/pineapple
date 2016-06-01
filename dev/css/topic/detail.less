@@ -47,17 +47,36 @@ body {
             width: 100%;
             top: 100px;
             left: 0;
+            text-align: center;
 
             .topic-title {
                 text-align: center;
+                margin-bottom: 15px;
                 color: rgb(42, 42, 42);
                 font-size: 4.5rem;
             }
 
+            #collect {
+                width: 100px;
+                height: 35px;
+                border: none;
+                background-color: @baseColor;
+                font-family: @baseFontFamily;
+                font-size: 1.5rem;
+                color: white;
+                cursor: pointer;
+                outline: none;
+            }
+
+            .collected {
+                background-color: rgb(184, 184, 184) !important;
+            }
+
             .topic-desc {
                 width: 550px;
-                margin: 50px auto 0 auto;
+                margin: 20px auto 0 auto;
                 color: rgb(42, 42, 42) + #111;
+                text-align: left;
             }
         }
     }

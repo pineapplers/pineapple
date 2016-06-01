@@ -146,6 +146,5 @@ function getEntry(globPath, pathDir) {
         entries.configNames[i].pathName = "./" + entry;
         entries.configNames[i].modelName = reg.exec(dirname)[0];
     }
-    console.log(entries)
     return entries;
 }
