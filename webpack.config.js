@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var glob = require('glob');
+var polyfill = require("babel-polyfill");
 /*
 extract-text-webpack-plugin插件，
 有了它就可以将你的样式提取到单独的css文件里，
@@ -52,7 +53,14 @@ module.exports = {
                 test: /\.html$/,
                 loader: "html?attrs=img:src img:data-src"
             },
-
+            {
+                test: /\.js?$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: 'babel',
+                query: {
+                    presets: ['es2015']
+                }
+            },
             {
                 //文件加载器，处理文件静态资源
                 test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -129,11 +137,15 @@ function getEntry(globPath, pathDir) {
         pathname = pathDir ? pathname.replace(new RegExp("^" + pathDir), "") : pathname;
         // entries[pathname] = ['./' + entry];
 
-        entries.input[entryname] = './' + entry;
+        entries.input[entryname] = [];
+        entries.input[entryname].push("babel-polyfill");
+        entries.input[entryname].push("./" + entry);
+        // entries.input[entryname] = './' + entry;
         entries.configNames[i] = {};
         entries.configNames[i].baseName = basename;
         entries.configNames[i].pathName = "./" + entry;
         entries.configNames[i].modelName = reg.exec(dirname)[0];
     }
+    console.log(entries)
     return entries;
 }
