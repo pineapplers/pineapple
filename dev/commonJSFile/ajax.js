@@ -1,3 +1,19 @@
+/**
+ * 用于实现基本的 ajax 功能
+ *
+ * 使用 Promise 实现 ajax 的基本功能，POST 提交方式为表单提交，
+ * 使用 Promise.then(func) 和 Promise.catch(func) 来设置回调函数
+ *
+ * @param  {string}  url     API 地址
+ * @param  {string}  method  访问 API 方式（GET || POST）
+ * @param  {object}  data    传输数据
+ * @returns  Promise
+ * @returns 成功时 resolve 返回获取到的数据
+ * @returns 失败时 reject 返回一个对象，包含 xhr 和 status
+ *
+ * @date     2016-06-01
+ * @author   Rlilyyy<bingohlee@gmail.com>
+ */
 module.exports = function({url = false, method = "GET", data = null} = {}) {
     // xhr 获取数据成功
     let isReady = (xhr) => {

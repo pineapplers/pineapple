@@ -1,6 +1,6 @@
 require("../../css/common.less");
 require("../../css/food/create.less");
-
+window.$ajax = require("../../commonJSFile/ajax.js");
 
 (function() {
     function preview() {
