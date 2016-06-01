@@ -12,7 +12,6 @@
         {% include 'home/navbar.tpl' %}
         {% block content %}
         {% endblock content %}
-    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="{% static 'js/vendors.js' %}"></script>
     {% block js %}
     {% endblock js %}

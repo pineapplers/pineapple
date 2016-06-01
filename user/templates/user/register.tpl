@@ -15,7 +15,7 @@
     <body>
         <div class="user-container">
             <div class="user-container-title">
-                <h2>注册 | Register</h2>
+                <h2>注册</h2>
                 <h3>注册，加入我们的大家庭</h3>
             </div>
             <div class="form-container" id="form-container">
