@@ -190,7 +190,29 @@
                     </div>
                 </div>
             </div>
-
         </div>
+        <script type="text/javascript">
+
+            (function() {
+                let collectDom = $("collect");
+
+                collectDom.click(function(event) {
+                    let self = this;
+
+                    $ajax({
+                        url: "",
+                        method: "POST",
+                        data: {
+
+                        }
+                    }).then(function(data) {
+                        self.innerHTML = "已收藏";
+                        self.className = "collected";
+                    }).catch(function(error) {
+                        alert("网络异常");
+                    });
+                });
+            })();
+        </script>
     </body>
 </html>

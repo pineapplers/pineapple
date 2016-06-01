@@ -104,7 +104,7 @@ configNames.forEach(function(configName) {
     //html模板路径
     config.template = "./dev/templates/" + configName.modelName + "/" + configName.baseName + ".html";
     //js插入的位置，true/'head'/'body'/false
-    config.inject = "body";
+    config.inject = "head";
     //为静态资源生成hash值
     config.hash = true;
     //需要引入的chunk，不配置就会引入所有页面的资源

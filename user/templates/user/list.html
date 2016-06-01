@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="/public/static/font/font-awesome-4.5.0/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
         <script src="http://localhost:8111/webpack-dev-server.js"></script>
         <title>关注页面</title>
-    <link href="/public/static/css/vendors.css?695dd7bfe2d259826282" rel="stylesheet"><link href="/public/static/css/user_list.css?695dd7bfe2d259826282" rel="stylesheet"></head>
+    <link href="/public/static/css/vendors.css?40de67a0e9c768c3ad9a" rel="stylesheet"><link href="/public/static/css/user_list.css?40de67a0e9c768c3ad9a" rel="stylesheet"><script src="/public/static/js/vendors.js?40de67a0e9c768c3ad9a"></script><script src="/public/static/js/user_list.js?40de67a0e9c768c3ad9a"></script></head>
     <body>
         <div class="navbar">
 
@@ -97,7 +97,33 @@
                     <button type="button" name="follow" class="user-item-follow-btn">关注</button>
                 </div>
             </div>
-
         </div>
-    <script src="/public/static/js/vendors.js?695dd7bfe2d259826282"></script><script src="/public/static/js/user_list.js?695dd7bfe2d259826282"></script></body>
+        <script type="text/javascript">
+            var url = "https://api.unsplash.com/photos/random";
+            // "fa60305aa82e74134cabc7093ef54c8e2c370c47e73152f72371c828daedfcd7"
+
+            (function() {
+                let container = $("user-item-container");
+
+                container.click(function(event) {
+                    let e = window.event || event;
+                    let target = e.srcElement || e.target;
+                    let self = this;
+
+                    $ajax({
+                        url: url,
+                        method: "GET",
+                        data: {
+                            client_id: "fa60305aa82e74134cabc7093ef54c8e2c370c47e73152f72371c828daedfcd7"
+                        }
+                    }).then(function(data) {
+                        target.innerHTML = "取消关注";
+                        target.className = "user-item-follow-btn has-follow";
+                    }).catch(function(error) {
+                        alert("网络异常");
+                    });
+                });
+            })();
+        </script>
+    </body>
 </html>

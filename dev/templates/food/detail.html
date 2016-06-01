@@ -236,5 +236,87 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+
+            (function() {
+                let likeDom = $("like");
+                let dislikeDom = $("dislike");
+                let shareDom = $("share");
+                let wantDom = $("want");
+                let eatedDom = $("eated");
+
+                // 喜欢
+                likeDom.click(function(event) {
+                    let self = this;
+
+                    $ajax({
+                        url: "",
+                        method: "POST",
+                        data: {
+
+                        }
+                    }).then(function(data) {
+                        self.className = "circle liked";
+                        dislikeDom.className = "circle";
+                        shareDom.className = "circle";
+                    }).catch(function(error) {
+                        alert("网络异常");
+                    });
+                });
+
+                // 不喜欢
+                dislikeDom.click(function(event) {
+                    let self = this;
+
+                    $ajax({
+                        url: "",
+                        method: "POST",
+                        data: {
+
+                        }
+                    }).then(function(data) {
+                        self.className = "circle liked";
+                        likeDom.className = "circle";
+                        shareDom.className = "circle";
+                    }).catch(function(error) {
+                        alert("网络异常");
+                    });
+                });
+
+                wantDom.click(function(event) {
+                    let self = this;
+
+                    $ajax({
+                        url: "",
+                        method: "POST",
+                        data: {
+
+                        }
+                    }).then(function(data) {
+                        self.className = "icon clicked";
+                        eatedDom.className = "icon";
+                    }).catch(function(error) {
+                        alert("网络异常");
+                    });
+                });
+
+                eatedDom.click(function(event) {
+                    let self = this;
+
+                    $ajax({
+                        url: "",
+                        method: "POST",
+                        data: {
+                            
+                        }
+                    }).then(function(data) {
+                        self.className = "icon clicked";
+                        wantDom.className = "icon";
+                    }).catch(function(error) {
+                        alert("网络异常");
+                    });
+                });
+            })();
+        </script>
     </body>
 </html>

@@ -107,7 +107,31 @@
                     <button type="button" name="follow" class="user-item-follow-btn">关注</button>
                 </div>
             </div>
-
         </div>
+        <script type="text/javascript">
+
+            (function() {
+                let container = $("user-item-container");
+
+                container.click(function(event) {
+                    let e = window.event || event;
+                    let target = e.srcElement || e.target;
+                    let self = this;
+
+                    $ajax({
+                        url: "",
+                        method: "POST",
+                        data: {
+
+                        }
+                    }).then(function(data) {
+                        target.innerHTML = "取消关注";
+                        target.className = "user-item-follow-btn has-follow";
+                    }).catch(function(error) {
+                        alert("网络异常");
+                    });
+                });
+            })();
+        </script>
     </body>
 </html>
