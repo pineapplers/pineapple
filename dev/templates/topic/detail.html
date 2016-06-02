@@ -34,7 +34,7 @@
                 <div class="topic-img" style="background-image: url('/public/static/images/details.jpg')"></div>
                 <div class="topic-info">
                     <h1 class="topic-title">夏日里，用清新的杯子喝冰水</h1>
-                    <button type="button" name="button" id="collect">收藏专题</button>
+                    <button type="button" name="button" id="collect" data-id="" data-action="">收藏专题</button>
                     <div class="topic-desc">
                         多喝热水这句话拜托别再说啦，夏日彻底到来，当然要好好喝冰水，喝冷饮啦。换掉用了一冬天的保温杯，选一款超级清新可爱的水杯，在夏日里大口喝水。小糖君帮大家选择了很多超高性价比的清新款式水杯，一起看看吧。
                     </div>
@@ -194,10 +194,12 @@
         <script type="text/javascript">
 
             (function() {
-                let collectDom = $("collect");
+                var collectDom = $("collect");
 
                 collectDom.click(function(event) {
-                    let self = this;
+                    var self = this;
+                    var id = $getDataOf(this, "id");
+                    var action = $getDataOf(this, "action");
 
                     $ajax({
                         url: "",

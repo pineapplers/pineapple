@@ -23,6 +23,10 @@
         }
         return dom;
     };
+
+    window.$getDataOf = function(elem, name) {
+        return elem.dataset[name] || "NULL";
+    }
 })();
 module.exports = function({url = false, method = "GET", data = null} = {}) {
 

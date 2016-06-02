@@ -88,7 +88,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "40de67a0e9c768c3ad9a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "64e72b16cf7fdcfe8823"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -8725,6 +8725,10 @@
 	            dom.addEventListener("click", func, false);
 	        };
 	        return dom;
+	    };
+
+	    window.$getDataOf = function (elem, name) {
+	        return elem.dataset[name] || "NULL";
 	    };
 	})();
 	module.exports = function () {

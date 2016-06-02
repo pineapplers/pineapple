@@ -89,7 +89,7 @@
                     <a href="#"><div class="user-item-portrait"></div></a>
                     <a href="#"><span class="user-item-info">滨滨和泓泓</span></a>
                     <a href="#"><span class="user-item-info">45,012 人关注他</span></a>
-                    <button type="button" name="follow" class="user-item-follow-btn">关注</button>
+                    <button type="button" name="follow" class="user-item-follow-btn" data-id="" data-action="">关注</button>
                 </div>
 
                 <div class="user-item">
@@ -97,26 +97,28 @@
                     <a href="#"><span class="user-item-info">滨滨和泓泓</span></a>
                     <a href="#"><span class="user-item-info">45,012 人关注他</span></a>
                     <!-- 给 button 加上 has-follow class 即为取消关注样式 -->
-                    <button type="button" name="follow" class="user-item-follow-btn has-follow">取消关注</button>
+                    <button type="button" name="follow" class="user-item-follow-btn has-follow" data-id="" data-action="">取消关注</button>
                 </div>
 
                 <div class="user-item">
                     <a href="#"><div class="user-item-portrait"></div></a>
                     <a href="#"><span class="user-item-info">滨滨和泓泓</span></a>
                     <a href="#"><span class="user-item-info">45,012 人关注他</span></a>
-                    <button type="button" name="follow" class="user-item-follow-btn">关注</button>
+                    <button type="button" name="follow" class="user-item-follow-btn" data-id="" data-action="">关注</button>
                 </div>
             </div>
         </div>
         <script type="text/javascript">
 
             (function() {
-                let container = $("user-item-container");
+                var container = $("user-item-container");
 
                 container.click(function(event) {
-                    let e = window.event || event;
-                    let target = e.srcElement || e.target;
-                    let self = this;
+                    var e = window.event || event;
+                    var target = e.srcElement || e.target;
+                    var self = this;
+                    var id = $getDataOf(this, "id");
+                    var action = $getDataOf(this, "action");
 
                     $ajax({
                         url: "",

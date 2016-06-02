@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>商品详情</title>
         <link rel="stylesheet" href="/public/static/font/font-awesome-4.5.0/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
-    <link href="/public/static/css/vendors.css?40de67a0e9c768c3ad9a" rel="stylesheet"><link href="/public/static/css/food_detail.css?40de67a0e9c768c3ad9a" rel="stylesheet"><script src="/public/static/js/vendors.js?40de67a0e9c768c3ad9a"></script><script src="/public/static/js/food_detail.js?40de67a0e9c768c3ad9a"></script></head>
+    <link href="/public/static/css/vendors.css?64e72b16cf7fdcfe8823" rel="stylesheet"><link href="/public/static/css/food_detail.css?64e72b16cf7fdcfe8823" rel="stylesheet"><script src="/public/static/js/vendors.js?64e72b16cf7fdcfe8823"></script><script src="/public/static/js/food_detail.js?64e72b16cf7fdcfe8823"></script></head>
     <body>
         <div class="navbar">
 
@@ -38,7 +38,7 @@
                             <div class="food-img-shadow">
                                 <div class="shadow-icons">
                                     
-                                    <div class="icon" id="want">
+                                    <div class="icon" id="want" data-id="123" data-action="321">
                                         
                                             <i class="fa fa-cutlery">
                                                 <span class="fa-margin">想吃</span>
@@ -46,7 +46,7 @@
                                         
                                     </div>
 
-                                    <div class="icon" id="eated">
+                                    <div class="icon" id="eated" data-id="222" data-action="333">
                                         
                                             <i class="fa fa-hand-peace-o">
                                                 <span class="fa-margin">吃过</span>
@@ -60,13 +60,13 @@
                         <div class="food-like-share">
                             
                             
-                            <div class="circle" id="like">
+                            <div class="circle" id="like" data-id="" data-action="">
                                 <i class="fa fa-thumbs-o-up"></i>
                             </div>
-                            <div class="circle" id="dislike">
+                            <div class="circle" id="dislike" data-id="" data-action="">
                                 <i class="fa fa-thumbs-o-down"></i>
                             </div>
-                            <div class="circle" id="share">
+                            <div class="circle" id="share" data-id="" data-action="">
                                 <i class="fa fa-share-alt"></i>
                             </div>
                         </div>
@@ -237,15 +237,18 @@
         <script type="text/javascript">
 
             (function() {
-                let likeDom = $("like");
-                let dislikeDom = $("dislike");
-                let shareDom = $("share");
-                let wantDom = $("want");
-                let eatedDom = $("eated");
+
+                var likeDom = $("like");
+                var dislikeDom = $("dislike");
+                var shareDom = $("share");
+                var wantDom = $("want");
+                var eatedDom = $("eated");
 
                 // 喜欢
                 likeDom.click(function(event) {
-                    let self = this;
+                    var self = this;
+                    var id = $getDataOf(this, "id");
+                    var action = $getDataOf(this, "action");
 
                     $ajax({
                         url: "",
@@ -264,7 +267,9 @@
 
                 // 不喜欢
                 dislikeDom.click(function(event) {
-                    let self = this;
+                    var self = this;
+                    var id = $getDataOf(this, "id");
+                    var action = $getDataOf(this, "action");
 
                     $ajax({
                         url: "",
@@ -282,7 +287,10 @@
                 });
 
                 wantDom.click(function(event) {
-                    let self = this;
+                    var self = this;
+                    console.log(this)
+                    var id = $getDataOf(this, "id");
+                    var action = $getDataOf(this, "action");
 
                     $ajax({
                         url: "",
@@ -299,13 +307,15 @@
                 });
 
                 eatedDom.click(function(event) {
-                    let self = this;
+                    var self = this;
+                    var id = $getDataOf(this, "id");
+                    var action = $getDataOf(this, "action");
 
                     $ajax({
                         url: "",
                         method: "POST",
                         data: {
-                            
+
                         }
                     }).then(function(data) {
                         self.className = "icon clicked";
