@@ -13,7 +13,7 @@ from .models import Food, FoodCategory
 
 from actions.utils import create_action
 from comments.models import Comment
-from comments.forms import CommentForm
+from comments.forms import FoodCommentForm
 from utils import make_paginator
 from utils.decorators import ajax_required, tab
 
@@ -56,11 +56,12 @@ def food_detail(request, food_id):
     food = get_object_or_404(Food, pk=food_id)
     comments = make_paginator(request, food.comments.all())
     if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
+        comment_form = FoodCommentForm(request.POST)
         if request.user.is_authenticated():
             if comment_form.is_valid():
                 comment = comment_form.save(commit=False)
                 comment.user = request.user
+                comment.food = food
                 comment.save()
                 messages.success(request, '评论成功')
             else:
@@ -68,7 +69,7 @@ def food_detail(request, food_id):
         else:
             messages.error(request, '请登录后评论')
     else:
-        comment_form = CommentForm()
+        comment_form = FoodCommentForm()
     food_tags_ids = food.tags.values_list('id')
     similar_foods = Food.objects.filter(tags__in=food.tags.all()).exclude(id=food_tags_ids)
     similar_foods = similar_foods.annotate(same_tags=Count('tags')).order_by('-same_tags')[:4]

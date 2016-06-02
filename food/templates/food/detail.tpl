@@ -26,7 +26,7 @@
                             </div>
 
                             <div class="icon">
-                                <a href="#" id="eated">
+                                <a href="#" id="ate">
                                     <i class="fa fa-hand-peace-o">
                                         <span class="fa-margin" data-id="{{ food.id }}">吃过</span>
                                     </i>
@@ -135,4 +135,93 @@
 {% endblock content %}
 {% block js %}
 <script src="{% static 'js/food_detail.js' %}"></script>
+<script type="text/javascript">
+(function() {
+    var likeDom = $("like");
+    var dislikeDom = $("dislike");
+    var shareDom = $("share");
+    var wantDom = $("want");
+    var ateDom = $("ate");
+
+    // 喜欢
+    likeDom.click(function(event) {
+        var self = this;
+        var id = $getDataOf(this, "id");
+        var action = $getDataOf(this, "action");
+
+        $ajax({
+            url: "{% url 'food:rate' %}",
+            method: "POST",
+            data: {
+                id: id,
+                action: action
+            }
+        }).then(function(data) {
+            self.className = "circle liked";
+            dislikeDom.className = "circle";
+            shareDom.className = "circle";
+        }).catch(function(error) {
+            alert("网络异常");
+        });
+    });
+
+    // 不喜欢
+    dislikeDom.click(function(event) {
+        var self = this;
+        var id = $getDataOf(this, "id");
+        var action = $getDataOf(this, "action");
+
+        $ajax({
+            url: "{% url 'food:rate' %}",
+            method: "POST",
+            data: {
+                id: id,
+                action: action
+            }
+        }).then(function(data) {
+            self.className = "circle liked";
+            likeDom.className = "circle";
+            shareDom.className = "circle";
+        }).catch(function(error) {
+            alert("网络异常");
+        });
+    });
+
+    wantDom.click(function(event) {
+        var self = this;
+        var id = $getDataOf(this, "id");
+
+        $ajax({
+            url: "{% url 'food:wta' %}",
+            method: "POST",
+            data: {
+                id: id
+            }
+        }).then(function(data) {
+            self.className = "icon clicked";
+            eatedDom.className = "icon";
+        }).catch(function(error) {
+            alert("网络异常");
+        });
+    });
+
+    ateDom.click(function(event) {
+        var self = this;
+        var id = $getDataOf(this, "id");
+
+        $ajax({
+            url: "{% url 'food:ate' %}",
+            method: "POST",
+            data: {
+                id: id
+            }
+        }).then(function(data) {
+            self.className = "icon clicked";
+            wantDom.className = "icon";
+        }).catch(function(error) {
+            alert("网络异常");
+        });
+    });
+})();
+</script>
 {% endblock js %}
