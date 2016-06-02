@@ -235,8 +235,6 @@
             </div>
         </div>
         <script type="text/javascript">
-            var url = "https://api.unsplash.com/photos/random";
-            // "fa60305aa82e74134cabc7093ef54c8e2c370c47e73152f72371c828daedfcd7"
 
             (function() {
                 let likeDom = $("like");
@@ -245,14 +243,15 @@
                 let wantDom = $("want");
                 let eatedDom = $("eated");
 
+                // 喜欢
                 likeDom.click(function(event) {
                     let self = this;
 
                     $ajax({
-                        url: url,
-                        method: "GET",
+                        url: "",
+                        method: "POST",
                         data: {
-                            client_id: "fa60305aa82e74134cabc7093ef54c8e2c370c47e73152f72371c828daedfcd7"
+
                         }
                     }).then(function(data) {
                         self.className = "circle liked";
@@ -263,14 +262,15 @@
                     });
                 });
 
+                // 不喜欢
                 dislikeDom.click(function(event) {
                     let self = this;
 
                     $ajax({
-                        url: url,
-                        method: "GET",
+                        url: "",
+                        method: "POST",
                         data: {
-                            client_id: "fa60305aa82e74134cabc7093ef54c8e2c370c47e73152f72371c828daedfcd7"
+
                         }
                     }).then(function(data) {
                         self.className = "circle liked";
@@ -285,10 +285,10 @@
                     let self = this;
 
                     $ajax({
-                        url: url,
-                        method: "GET",
+                        url: "",
+                        method: "POST",
                         data: {
-                            client_id: "fa60305aa82e74134cabc7093ef54c8e2c370c47e73152f72371c828daedfcd7"
+
                         }
                     }).then(function(data) {
                         self.className = "icon clicked";
@@ -302,10 +302,10 @@
                     let self = this;
 
                     $ajax({
-                        url: url,
-                        method: "GET",
+                        url: "",
+                        method: "POST",
                         data: {
-                            client_id: "fa60305aa82e74134cabc7093ef54c8e2c370c47e73152f72371c828daedfcd7"
+                            
                         }
                     }).then(function(data) {
                         self.className = "icon clicked";

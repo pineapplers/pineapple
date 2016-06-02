@@ -192,8 +192,6 @@
             </div>
         </div>
         <script type="text/javascript">
-            var url = "https://api.unsplash.com/photos/random";
-            // "fa60305aa82e74134cabc7093ef54c8e2c370c47e73152f72371c828daedfcd7"
 
             (function() {
                 let collectDom = $("collect");
@@ -202,10 +200,10 @@
                     let self = this;
 
                     $ajax({
-                        url: url,
-                        method: "GET",
+                        url: "",
+                        method: "POST",
                         data: {
-                            client_id: "fa60305aa82e74134cabc7093ef54c8e2c370c47e73152f72371c828daedfcd7"
+
                         }
                     }).then(function(data) {
                         self.innerHTML = "已收藏";
