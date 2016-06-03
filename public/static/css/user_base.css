@@ -27,7 +27,6 @@
   outline: none;
   cursor: pointer;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
-  display: none;
 }
 .user-container .user-portrait .unfollow {
   background-color: #7aa7f2;

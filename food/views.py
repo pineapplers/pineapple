@@ -16,6 +16,7 @@ from comments.models import Comment
 from comments.forms import FoodCommentForm
 from utils import make_paginator
 from utils.decorators import ajax_required, tab
+from updown.views import AddRatingFromModel
 
 import redis
 
@@ -53,14 +54,15 @@ def food_latest(request):
 
 
 def food_detail(request, food_id):
+    user = request.user
     food = get_object_or_404(Food, pk=food_id)
     comments = make_paginator(request, food.comments.all())
     if request.method == 'POST':
         comment_form = FoodCommentForm(request.POST)
-        if request.user.is_authenticated():
+        if user.is_authenticated():
             if comment_form.is_valid():
                 comment = comment_form.save(commit=False)
-                comment.user = request.user
+                comment.user = user
                 comment.food = food
                 comment.save()
                 messages.success(request, '评论成功')
@@ -80,7 +82,9 @@ def food_detail(request, food_id):
             'comments': comments,
             'comment_form': comment_form,
             'similar_foods': similar_foods,
-            'total_views': total_views
+            'total_views': total_views,
+            'is_wta': user.foods_wta.filter(pk=food.id).exists(),
+            'is_ate': user.foods_ate.filter(pk=food.id).exists(),
         })
 
 def food_category(request, category):
@@ -141,7 +145,7 @@ def food_wta(request):
     if food_id:
         food = Food.objects.get(pk=food_id)
         food.users_wta.add(request.user)
-        return JsonResponse({'status': 'yes'})
+        return JsonResponse({'status': True})
     return JsonResponse({'status': False}, status=400)
 
 @ajax_required
@@ -152,5 +156,5 @@ def food_ate(request):
     if food_id:
         food = Food.objects.get(pk=food_id)
         food.users_ate.add(request.user)
-        return JsonResponse({'status': 'yes'})
+        return JsonResponse({'status': True})
     return JsonResponse({'status': False}, status=400)

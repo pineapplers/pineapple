@@ -13,6 +13,8 @@
         {% block content %}
         {% endblock content %}
     <script src="{% static 'js/vendors.js' %}"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="{% static 'js/csrf.js' %}"></script>
     {% block js %}
     {% endblock js %}
 </body>

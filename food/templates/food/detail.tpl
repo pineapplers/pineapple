@@ -17,18 +17,18 @@
                     {% endthumbnail %}
                     <div class="food-img-shadow">
                         <div class="shadow-icons">
-                            <div class="icon clicked">
-                                <a href="#" id="want">
+                            <div class="icon {% if is_wta %}clicked{% endif %}" id="want" data-id="{{ food.id }}">
+                                <a href="#">
                                     <i class="fa fa-cutlery">
-                                        <span class="fa-margin" data-id="{{ food.id }}">想吃</span>
+                                        <span class="fa-margin">想吃</span>
                                     </i>
                                 </a>
                             </div>
 
-                            <div class="icon">
-                                <a href="#" id="ate">
+                            <div class="icon {% if is_ate %}clicked{% endif %}" id="ate" data-id="{{ food.id }}">
+                                <a href="#">
                                     <i class="fa fa-hand-peace-o">
-                                        <span class="fa-margin" data-id="{{ food.id }}">吃过</span>
+                                        <span class="fa-margin">吃过</span>
                                     </i>
                                 </a>
                             </div>
@@ -39,9 +39,11 @@
                 <div class="food-like-share">
                     <div class="circle" id="like" data-id="{{ food.id }}" data-action="like">
                         <i class="fa fa-thumbs-o-up"></i>
+                        <span>{{ food.rating.likes }}</span>
                     </div>
                     <div class="circle" id="dislike" data-id="{{ food.id }}" data-action="dislike">
                         <i class="fa fa-thumbs-o-down"></i>
+                        <span>{{ food.rating.dislikes }}</span>
                     </div>
                     <div class="circle" id="share">
                         <i class="fa fa-share-alt"></i>
@@ -134,94 +136,87 @@
 </div>
 {% endblock content %}
 {% block js %}
-<script src="{% static 'js/food_detail.js' %}"></script>
 <script type="text/javascript">
-(function() {
-    var likeDom = $("like");
-    var dislikeDom = $("dislike");
-    var shareDom = $("share");
-    var wantDom = $("want");
-    var ateDom = $("ate");
+$(function() {
 
     // 喜欢
-    likeDom.click(function(event) {
-        var self = this;
-        var id = $getDataOf(this, "id");
-        var action = $getDataOf(this, "action");
+    $("#like").click(function(event) {
+        var that = $(this);
+        var id = that.attr('data-id');
+        var action = that.attr('data-action');
 
-        $ajax({
+        $.ajax({
             url: "{% url 'food:rate' %}",
             method: "POST",
             data: {
                 id: id,
                 action: action
             }
-        }).then(function(data) {
+        }).success(function(data) {
             self.className = "circle liked";
             dislikeDom.className = "circle";
             shareDom.className = "circle";
-        }).catch(function(error) {
+        }).error(function(error) {
             alert("网络异常");
         });
     });
 
     // 不喜欢
-    dislikeDom.click(function(event) {
-        var self = this;
-        var id = $getDataOf(this, "id");
-        var action = $getDataOf(this, "action");
+    $("#dislike").click(function(event) {
+        var that = $(this);
+        var id = that.attr('data-id');
+        var action = that.attr('data-action');
 
-        $ajax({
+        $.ajax({
             url: "{% url 'food:rate' %}",
             method: "POST",
             data: {
                 id: id,
                 action: action
             }
-        }).then(function(data) {
+        }).success(function(data) {
             self.className = "circle liked";
             likeDom.className = "circle";
             shareDom.className = "circle";
-        }).catch(function(error) {
+        }).error(function(error) {
             alert("网络异常");
         });
     });
 
-    wantDom.click(function(event) {
-        var self = this;
-        var id = $getDataOf(this, "id");
+    $("#want").click(function(event) {
+        var that = $(this);
+        var id = that.attr('data-id');
 
-        $ajax({
+        $.ajax({
             url: "{% url 'food:wta' %}",
             method: "POST",
             data: {
                 id: id
             }
-        }).then(function(data) {
-            self.className = "icon clicked";
-            eatedDom.className = "icon";
-        }).catch(function(error) {
+        }).success(function(data) {
+            that.addClass("clicked");
+            // self.className = "icon clicked";
+        }).error(function(error) {
             alert("网络异常");
         });
     });
 
-    ateDom.click(function(event) {
-        var self = this;
-        var id = $getDataOf(this, "id");
+    $("#ate").click(function(event) {
+        var that = $(this);
+        var id = that.attr('data-id');
 
-        $ajax({
+        $.ajax({
             url: "{% url 'food:ate' %}",
             method: "POST",
             data: {
                 id: id
             }
-        }).then(function(data) {
-            self.className = "icon clicked";
-            wantDom.className = "icon";
-        }).catch(function(error) {
+        }).success(function(data) {
+            that.addClass("clicked");
+        }).error(function(error) {
             alert("网络异常");
         });
     });
-})();
+});
 </script>
 {% endblock js %}

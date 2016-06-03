@@ -15,7 +15,17 @@
             {% with following_num=user.following.count followers_num=user.followers_num %}
             <div class="user-main clearfix">
                 <div class="user-portrait">
-                    <a href="#"><button type="button" name="button" class="follow-btn unfollow">关注</button></a>
+                {% if user.id == request.user.id %}
+                <a href="#"><button type="button" name="button" class="follow-btn unfollow">编辑资料</button></a>
+                {% else %}
+                <a href="#">
+                    {% if is_follow %}
+                    <button type="button" data-id="{{ user.id }}" data-action="follow" id="follow-btn" name="button" class="follow-btn unfollow">取消关注</button>
+                    {% else %}
+                    <button type="button" data-id="{{ user.id }}" data-action="unfollow" id="follow-btn" name="button" class="follow-btn follow">关注</button>
+                    {% endif %}
+                </a>
+                {% endif %}
                 </div>
                 <div class="user-info">
                     <h2 class="user-name"><i class="fa {% if profile.gender == "f" %}fa-venus{% else %}fa-mars{% endif %}"></i>{{ user.username }}</h2>
@@ -82,6 +92,30 @@
         </div>
     <script src="{% static 'js/vendors.js' %}"></script>
     <script src="{% static 'js/user_base.js' %}"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="{% static 'js/csrf.js' %}"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#follow-btn").click(function(event) {
+                var that = $(this);
+                var id = that.attr('data-id');
+                var action = that.attr('data-action');
+
+                $.ajax({
+                    url: "{% url 'user:follow' %}",
+                    method: "POST",
+                    data: {
+                        id: id,
+                        action: action
+                    }
+                }).success(function(data) {
+                    console.log(data);
+                }).error(function(error) {
+                    alert("网络异常");
+                });
+            });
+        });
+    </script>
     {% block js %}
     {% endblock js %}
 </body>

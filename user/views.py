@@ -183,11 +183,11 @@ def user_follow(request):
     if user_id and action:
         user = User.objects.get(pk=user_id)
         if action == 'follow':
-            request.user.followings.add(user)
+            request.user.following.add(user)
             create_action(request.user, '关注了', user)
         elif action == 'unfollow':
-            request.user.followings.remove(user)
+            request.user.following.remove(user)
         else:
-            return JsonResponse({'status':'fail'})
-        return JsonResponse({'status':'ok'})
-    return JsonResponse()
+            return JsonResponse({'status': False})
+        return JsonResponse({'status': True})
+    return JsonResponse({'status': False}, status=400)
