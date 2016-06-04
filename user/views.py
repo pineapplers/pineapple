@@ -67,77 +67,92 @@ def user_confirm(request, token):
 
 # 用户博客
 def user_posts(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
+    user = get_object_or_404(User.objects.select_related('profile'), pk=user_id)
+    profile = user.profile
     posts = user.posts
     return render(request, 'user/posts.tpl', {
             'posts': posts,
             'user': user,
+            'profile': profile,
         })
 
 # 正在关注
 @tab('following')
 def user_following(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
+    user = get_object_or_404(User.objects.select_related('profile'), pk=user_id)
+    profile = user.profile
     followings = make_paginator(request, user.following.all())
     return render(request, 'user/user_list.tpl', {
             'users': followings,
             'user': user,
+            'profile': profile,
         })
 
 # 被关注的
 @tab('followers')
 def user_followers(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
+    user = get_object_or_404(User.objects.select_related('profile'), pk=user_id)
+    profile = user.profile
     followers = make_paginator(request, user.followers.all())
     return render(request, 'user/user_list.tpl', {
             'users': followers,
             'user': user,
+            'profile': profile,
         })
 
 # 分享
 @tab('share')
 def user_shared(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
+    user = get_object_or_404(User.objects.select_related('profile'), pk=user_id)
+    profile = user.profile
     foods_shared = make_paginator(request, user.foods_shared.all())
     return render(request, 'user/share.tpl', {
             'foods': foods_shared,
             'user': user,
+            'profile': profile,
         })
 
 # 想吃的
 @tab('wta')
 def user_wants_to_eat(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
+    user = get_object_or_404(User.objects.select_related('profile'), pk=user_id)
+    profile = user.profile
     foods = make_paginator(request, user.foods_wta.all())
     return render(request, 'user/food_list.tpl', {
             'foods': foods,
             'user': user,
+            'profile': profile,
         })
 
 # 吃过的
 @tab('ate')
 def user_ate(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
+    user = get_object_or_404(User.objects.select_related('profile'), pk=user_id)
+    profile = user.profile
     foods = make_paginator(request, user.foods_ate.all())
     return render(request, 'user/food_list.tpl', {
             'foods': foods,
             'user': user,
+            'profile': profile,
         })
 
 # Topic收藏夹
 @tab('collection')
 def topics_collection(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
+    user = get_object_or_404(User.objects.select_related('profile'), pk=user_id)
+    profile = user.profile
     collections = make_paginator(request, user.topics_collected.all())
     return render(request, 'user/topic_collection.tpl', {
             'collections': collections,
             'user': user,
+            'profile': profile,
         })
 
 # 个人设置
 @login_required
 @tab('settings')
 def user_settings(request):
+    profile = request.user.profile
     settings = request.user.settings
     if request.method == 'POST':
         form = SettingForm(instance=settings, data=request.POST,
@@ -152,6 +167,7 @@ def user_settings(request):
     return render(request, 'user/settings.tpl', {
             'settings': settings,
             'form': form,
+            'profile': profile,
         })
 
 # 个人档案

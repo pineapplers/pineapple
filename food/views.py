@@ -142,9 +142,13 @@ def food_rate(request):
 @login_required
 def food_wta(request):
     food_id = request.POST.get('id')
-    if food_id:
+    action = request.POST.get('action')
+    if food_id and action:
         food = Food.objects.get(pk=food_id)
-        food.users_wta.add(request.user)
+        if action == 'wta':
+            food.users_wta.add(request.user)
+        else:
+            food.users_wta.remove(request.user)
         return JsonResponse({'status': True})
     return JsonResponse({'status': False}, status=400)
 
@@ -153,8 +157,12 @@ def food_wta(request):
 @login_required
 def food_ate(request):
     food_id = request.POST.get('id')
-    if food_id:
+    action = request.POST.get('action')
+    if food_id and action:
         food = Food.objects.get(pk=food_id)
-        food.users_ate.add(request.user)
+        if action == 'ate':
+            food.users_ate.add(request.user)
+        else:
+            food.users_ate.remove(request.user)
         return JsonResponse({'status': True})
     return JsonResponse({'status': False}, status=400)

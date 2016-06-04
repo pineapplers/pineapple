@@ -17,21 +17,33 @@
                     {% endthumbnail %}
                     <div class="food-img-shadow">
                         <div class="shadow-icons">
-                            <div class="icon {% if is_wta %}clicked{% endif %}" id="want" data-id="{{ food.id }}">
-                                <a href="#">
-                                    <i class="fa fa-cutlery">
-                                        <span class="fa-margin">想吃</span>
-                                    </i>
-                                </a>
+                            {% if is_wta %}
+                            <div class="icon clicked" id="want" data-id="{{ food.id }}" data-action="unwta">
+                                <a href="#"><i class="fa fa-cutlery">
+                                    <span class="fa-margin">想吃</span>
+                                </i></a>
                             </div>
+                            {% else %}
+                            <div class="icon" id="want" data-id="{{ food.id }}" data-action="wta">
+                                <a href="#"><i class="fa fa-cutlery">
+                                    <span class="fa-margin">想吃</span>
+                                </i></a>
+                            </div>
+                            {% endif %}
 
-                            <div class="icon {% if is_ate %}clicked{% endif %}" id="ate" data-id="{{ food.id }}">
-                                <a href="#">
-                                    <i class="fa fa-hand-peace-o">
-                                        <span class="fa-margin">吃过</span>
-                                    </i>
-                                </a>
+                            {% if is_ate %}
+                            <div class="icon clicked" id="ate" data-id="{{ food.id }}" data-action="unate">
+                                <a href="#"><i class="fa fa-hand-peace-o">
+                                    <span class="fa-margin">吃过</span>
+                                </i></a>
                             </div>
+                            {% else %}
+                            <div class="icon" id="ate" data-id="{{ food.id }}" data-action="ate">
+                                <a href="#"><i class="fa fa-hand-peace-o">
+                                    <span class="fa-margin">吃过</span>
+                                </i></a>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -139,7 +151,6 @@
 <script type="text/javascript">
 $(function() {
 
-    // 喜欢
     $("#like").click(function(event) {
         var that = $(this);
         var id = that.attr('data-id');
@@ -152,16 +163,14 @@ $(function() {
                 id: id,
                 action: action
             }
-        }).success(function(data) {
-            self.className = "circle liked";
-            dislikeDom.className = "circle";
-            shareDom.className = "circle";
+        }).success(function(resp) {
+            that.addClass("clicked");
+            $("#dislike").removeClass("clicked");
         }).error(function(error) {
             alert("网络异常");
         });
     });
 
-    // 不喜欢
     $("#dislike").click(function(event) {
         var that = $(this);
         var id = that.attr('data-id');
@@ -174,10 +183,9 @@ $(function() {
                 id: id,
                 action: action
             }
-        }).success(function(data) {
-            self.className = "circle liked";
-            likeDom.className = "circle";
-            shareDom.className = "circle";
+        }).success(function(resp) {
+            that.addClass("clicked");
+            $("#like").removeClass("clicked");
         }).error(function(error) {
             alert("网络异常");
         });
@@ -186,16 +194,21 @@ $(function() {
     $("#want").click(function(event) {
         var that = $(this);
         var id = that.attr('data-id');
+        var action = that.attr('data-action');
 
         $.ajax({
             url: "{% url 'food:wta' %}",
             method: "POST",
             data: {
-                id: id
+                id: id,
+                action: action
             }
-        }).success(function(data) {
-            that.addClass("clicked");
-            // self.className = "icon clicked";
+        }).success(function(resp) {
+            if (that.hasClass("clicked")) {
+                that.removeClass("clicked");
+            } else {
+                that.addClass("clicked");
+            }
         }).error(function(error) {
             alert("网络异常");
         });
@@ -204,15 +217,21 @@ $(function() {
     $("#ate").click(function(event) {
         var that = $(this);
         var id = that.attr('data-id');
+        var action = that.attr('data-action');
 
         $.ajax({
             url: "{% url 'food:ate' %}",
             method: "POST",
             data: {
-                id: id
+                id: id,
+                action: action
             }
-        }).success(function(data) {
-            that.addClass("clicked");
+        }).success(function(resp) {
+            if (that.hasClass("clicked")) {
+                that.removeClass("clicked");
+            } else {
+                that.addClass("clicked");
+            }
         }).error(function(error) {
             alert("网络异常");
         });

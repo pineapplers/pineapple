@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load thumbnail %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,15 +15,19 @@
         <div class="user-container clearfix">
             {% with following_num=user.following.count followers_num=user.followers_num %}
             <div class="user-main clearfix">
+                {% if profile.avatar %}
+                <div class="user-portrait" style="background-image: url('{{MEDIA_URL}}{{profile.avatar}}')">
+                {% else %}
                 <div class="user-portrait">
+                {% endif %}
                 {% if user.id == request.user.id %}
                 <a href="#"><button type="button" name="button" class="follow-btn unfollow">编辑资料</button></a>
                 {% else %}
                 <a href="#">
                     {% if is_follow %}
-                    <button type="button" data-id="{{ user.id }}" data-action="follow" id="follow-btn" name="button" class="follow-btn unfollow">取消关注</button>
+                    <button type="button" data-id="{{ user.id }}" data-action="unfollow" id="follow-btn" name="button" class="follow-btn unfollow" style="background-color:rgb(122,167,242)">取消关注</button>
                     {% else %}
-                    <button type="button" data-id="{{ user.id }}" data-action="unfollow" id="follow-btn" name="button" class="follow-btn follow">关注</button>
+                    <button type="button" data-id="{{ user.id }}" data-action="follow" id="follow-btn" name="button" class="follow-btn follow" style="background-color:rgb(122,167,242)">关注</button>
                     {% endif %}
                 </a>
                 {% endif %}

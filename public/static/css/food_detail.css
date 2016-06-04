@@ -78,6 +78,12 @@ body {
   padding-right: 60px;
   margin: 20px auto;
 }
+.food-like-share #like.clicked {
+  color: red;
+}
+.food-like-share #dislike.clicked {
+  color: blue;
+}
 .detail-container .main-container .food-left .food-left-container .food-like-share .circle {
   display: inline-block;
   cursor: pointer;
