@@ -10,10 +10,7 @@
     <div class="container-top">
         <div class="desc">
             <div class="desc-main">
-                <div class="desc-main-title">
-                    Pineapple
-                </div>
-                发现好吃的，好玩的
+                一起分享和发现好吃的
             </div>
         </div>
         <div class="pineapple-logo">

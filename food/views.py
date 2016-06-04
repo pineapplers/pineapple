@@ -55,8 +55,8 @@ def food_latest(request):
 
 def food_detail(request, food_id):
     user = request.user
-    food = get_object_or_404(Food, pk=food_id)
-    comments = make_paginator(request, food.comments.all())
+    food = get_object_or_404(Food.objects.prefetch_related('comments').select_related('user__profile'), pk=food_id)
+    comments = make_paginator(request, food.comments.order_by('-created').all())
     if request.method == 'POST':
         comment_form = FoodCommentForm(request.POST)
         if user.is_authenticated():
@@ -73,7 +73,7 @@ def food_detail(request, food_id):
     else:
         comment_form = FoodCommentForm()
     food_tags_ids = food.tags.values_list('id')
-    similar_foods = Food.objects.filter(tags__in=food.tags.all()).exclude(id=food_tags_ids)
+    similar_foods = Food.objects.filter(tags__in=food_tags_ids).exclude(id=food.id)
     similar_foods = similar_foods.annotate(same_tags=Count('tags')).order_by('-same_tags')[:4]
     total_views = r.incr('food:{}:views'.format(food.id))
     # r.zincrby('food_ranking', food.id, 1)

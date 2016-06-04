@@ -11,12 +11,14 @@
             {% for user in users %}
             <div class="user-item">
                 <a href="{{ user.get_absolute_url }}">
-                    {% thumbnail user.profile.avatar "65*65" crop="center" as im %}
+                    {% thumbnail user.profile.avatar "65x65" as im %}
                     <div class="user-item-portrait" style="background-image: url('{{im.url}}')"></div>
+                    {% empty %}
+                    <div class="user-item-portrait"></div>
                     {% endthumbnail %}
                 </a>
                 <a href="{{ user.get_absolute_url }}"><span class="user-item-info">{{ user.username }}</span></a>
-                <a href="#"><button type="button" name="follow" class="user-item-follow-btn">关注</button></a>
+                <a href="{{ user.get_absolute_url }}"><button type="button" name="follow" class="user-item-follow-btn">查看资料</button></a>
             </div>
             {% endfor %}
         {% else %}

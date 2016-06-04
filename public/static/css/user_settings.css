@@ -29,7 +29,7 @@
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .user-container .user-portrait .unfollow {
-  background-color: #7aa7f2;
+  background-color: rgb(64,163,194);
 }
 .user-container .user-portrait .following {
   background-color: #888888;
@@ -46,7 +46,7 @@
   font-weight: bold;
 }
 .user-container .user-info .user-name .fa-mars {
-  color: #7aa7f2;
+  color: rgb(64,163,194);
 }
 .user-container .user-info .user-name .fa-venus {
   color: #f266ed;
@@ -91,6 +91,7 @@
 .user-container .user-tabs {
   width: 100%;
   margin-top: 30px;
+  border-bottom: 1px solid rgb(231,231,231);
 }
 .user-container .user-tabs .tab-item {
   float: left;
@@ -103,13 +104,13 @@
 }
 .user-container .user-tabs .tab-item:hover {
   background-color: #f5f8f9;
-  border-top: 2px solid #7aa7f2;
-  color: #7aa7f2;
+  border-top: 2px solid rgb(64,163,194);
+  color: rgb(64,163,194);
 }
 .user-container .user-tabs .current-tab {
   background-color: #f5f8f9;
-  border-top: 2px solid #7aa7f2;
-  color: #7aa7f2;
+  border-top: 2px solid rgb(64,163,194);
+  color: rgb(64,163,194);
 }
 .tab-container .form-container {
   padding: 50px 25px 80px 25px;
@@ -142,12 +143,12 @@
 .tab-container .form-container .form .form-item text-input {
   width: 100px;
   height: 28px;
-  border: 1px solid #7aa7f2;
+  border: 1px solid rgb(64,163,194);
   border-radius: 3px;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .tab-container .form-container .form .form-item .form-textarea {
-  border: 1px solid #7aa7f2;
+  border: 1px solid rgb(64,163,194);
   border-radius: 3px;
   padding: 10px;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -177,7 +178,7 @@
   cursor: pointer;
 }
 .tab-container .form-container .form .form-item .form-item-btn #submit {
-  background-color: #7aa7f2;
+  background-color: rgb(64,163,194);
 }
 .tab-container .form-container .form .form-item .form-item-btn #submit:hover {
   background-color: #6398f0;

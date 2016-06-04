@@ -7,7 +7,8 @@
 <div class="tab-container">
     <div class="form-container">
 
-        <form class="form" action="index.html" method="post">
+        <form class="form" action="" method="post">
+            {% csrf_token %}
             <div class="form-item">
                 <label class="form-item-label" for="">设置背景</label>
                 <div class="img-preview">
@@ -19,8 +20,6 @@
             <div class="form-item">
                 <div class="form-item-btn">
                     <input type="submit" name="submit" value="保存" id="submit">
-                    <input type="submit" name="logout" value="注销账号" id="logout">
-                    
                 </div>
             </div>
         </form>

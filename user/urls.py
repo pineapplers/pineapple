@@ -3,7 +3,7 @@ from django.contrib.auth.views import (logout as user_logout, password_change, p
     password_reset, password_reset_done, password_reset_complete, password_reset_confirm)
 
 from .views import (home, user_login, user_register, user_follow, user_followers, user_following, user_posts,
-    user_confirm, user_settings, user_profile, user_shared, user_wants_to_eat, user_ate, topics_collection)
+    user_confirm, user_settings, user_profile, user_shared, user_wants_to_eat, user_ate, topics_collection, get_cities)
 
 urlpatterns = [
     url(r'^(?P<user_id>[\d]+)/$', home, name='home'),
@@ -33,4 +33,5 @@ urlpatterns = [
     url(r'^(?P<user_id>[\d]+)/topic-collection', topics_collection, name='topic-collection'),
 
     url(r'^follow/$', user_follow, name='follow'),
+    url(r'^get_cities/$', get_cities, name='get_cities'),
 ]

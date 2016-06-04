@@ -12,8 +12,12 @@ from .tasks import confirm_user
 
 from actions.models import Action
 from actions.utils import create_action
+from location.models import Province, City
 from utils import make_paginator
 from utils.decorators import ajax_required, tab
+
+
+provinces = Province.objects.values_list('name', flat=True)
 
 # 用户主页
 @tab('home')
@@ -172,6 +176,7 @@ def user_settings(request):
 
 # 个人档案
 @login_required
+@tab('profile')
 def user_profile(request):
     profile = request.user.profile
     if request.method == 'POST':
@@ -181,13 +186,22 @@ def user_profile(request):
             form.save()
             messages.success(request, '资料更新成功')
         else:
+            print(form.errors)
             messages.error(request, '资料更新失败')
     else:
         form = ProfileForm(instance=profile)
     return render(request, 'user/profile.tpl', {
             'profile': profile,
-            'form': form
+            'form': form,
+            'provinces': provinces
         })
+
+@ajax_required
+@login_required
+def get_cities(request):
+    province = request.GET.get('province')
+    cities = City.objects.filter(province__name=province).values_list('id', 'name')
+    return JsonResponse(list(cities), safe=False)
 
 # 关注/取消关注
 @ajax_required

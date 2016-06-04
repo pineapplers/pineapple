@@ -72,4 +72,7 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        exclude = ()
+        fields = ('avatar', 'gender', 'date_of_birth', 'location', 'introduction')
+        widgets = {
+            'date_of_birth': forms.SelectDateWidget(years=range(1916, 2017))
+        }

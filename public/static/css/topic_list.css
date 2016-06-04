@@ -3,7 +3,6 @@ body {
 }
 .navbar {
   background-image: url("/public/static/images/home-header-bg-563ac1688e.png");
-  background-color: transparent;
   transition: background-color ease-in-out 0.2s;
   -o-transition: background-color ease-in-out 0.2s;
   -ms-transition: background-color ease-in-out 0.2s;
@@ -13,7 +12,7 @@ body {
 }
 body .over-navbar {
   background-image: none;
-  background-color: #7aa7f2;
+  background-color: rgb(64,163,194);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 .container .container-top {
@@ -140,7 +139,7 @@ body .over-navbar {
   padding: 15px 17px 20px;
 }
 .topic-container .topic-container-main .topic-item .topic-item-info .fa {
-  color: #7aa7f2;
+  color: rgb(64,163,194);
   font-size: 1.7rem;
   margin-right: 10px;
   vertical-align: middle;
@@ -154,7 +153,7 @@ body .over-navbar {
   margin-top: 80px;
 }
 html body .navbar {
-  background-color: #7aa7f2 !important;
+  background-color: rgb(64,163,194) !important;
 }
 html body .navbar .cursor {
   background-color: white !important;

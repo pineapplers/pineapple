@@ -29,7 +29,7 @@
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .user-container .user-portrait .unfollow {
-  background-color: #7aa7f2;
+  background-color: rgb(64,163,194);
 }
 .user-container .user-portrait .following {
   background-color: #888888;
@@ -46,7 +46,7 @@
   font-weight: bold;
 }
 .user-container .user-info .user-name .fa-mars {
-  color: #7aa7f2;
+  color: rgb(64,163,194);
 }
 .user-container .user-info .user-name .fa-venus {
   color: #f266ed;
@@ -91,6 +91,7 @@
 .user-container .user-tabs {
   width: 100%;
   margin-top: 30px;
+  border-bottom: 1px solid rgb(231,231,231);
 }
 .user-container .user-tabs .tab-item {
   float: left;
@@ -103,13 +104,13 @@
 }
 .user-container .user-tabs .tab-item:hover {
   background-color: #f5f8f9;
-  border-top: 2px solid #7aa7f2;
-  color: #7aa7f2;
+  border-top: 2px solid rgb(64,163,194);
+  color: rgb(64,163,194);
 }
 .user-container .user-tabs .current-tab {
   background-color: #f5f8f9;
-  border-top: 2px solid #7aa7f2;
-  color: #7aa7f2;
+  border-top: 2px solid rgb(64,163,194);
+  color: rgb(64,163,194);
 }
 .tab-container .timeline-container {
   margin: 50px 150px 0 150px;

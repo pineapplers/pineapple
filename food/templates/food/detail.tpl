@@ -65,21 +65,24 @@
 
             <div class="comments-container">
                 <div class="comments-wraaper clearfix">
-                    <form method="post" action=".">
+                   <!--  <form method="post" action=".">
                         {% csrf_token %}
                         {{ comment_form.content | add_class:"comments-area" | attr:"rows:5"}}
                         <button type="submit" name="sendBtn" class="send-btn">发表评论</button>
-                    </form>
+                    </form> -->
                 </div>
-                <h2 class="comments-title">全部评论</h2>
-                {% with comments=comments %}
+                <h2 class="comments-title">全部评论（{{comments|length}}）</h2>
                 <div class="comments-main">
                     {% if comments %}
                         {% for comment in comments %}
                         <div class="comments-item clearfix">
-                            <div class="comments-user-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
+                            {% thumbnail comment.user.profile.avatar "50x50" crop="center" as im %}
+                                <div class="comments-user-img" style="background-image: url('{{ im.url }}')"></div>
+                            {% empty %}
+                                <div class="comments-user-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
+                            {% endthumbnail %}
                             <div class="comments-user-name">
-                                <span class="name"><a href="#">{{ comment.user }}</a></span>
+                                <span class="name"><a href="{{ comment.user.get_absolute_url }}">{{ comment.user }}</a></span>
                                 <span class="comments-time">{{ comment.created| date:"Y-m-d H:m" }}</span>
                             </div>
                             <div class="comments-item-content">
@@ -87,11 +90,13 @@
                             </div>
                         </div>
                         {% endfor %}
+                        <a href="?page={{ comments.next_page_number }}">
+                        <button type="button" style="width: 300px;height: 50px;margin: 20px 20%;background-color: rgb(64,163,194);color: #fff;border: none;">下一页</button>
+                        </a>
                     {% else %}
                     <p>目前没有人评论</p>
                     {% endif %}
                 </div>
-                {% endwith %}
             </div>
         </div>
 

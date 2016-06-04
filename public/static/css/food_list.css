@@ -3,6 +3,15 @@ body {
   min-width: 1100px;
   background-color: #f1f1f1;
 }
+.navbar {
+  background-image: url("/public/static/images/home-header-bg-563ac1688e.png");
+  transition: background-color ease-in-out 0.2s;
+  -o-transition: background-color ease-in-out 0.2s;
+  -ms-transition: background-color ease-in-out 0.2s;
+  -moz-transition: background-color ease-in-out 0.2s;
+  -webkit-transition: background-color ease-in-out 0.2s;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0);
+}
 .list-container {
   width: 1020px;
   margin: 0 auto;
@@ -29,7 +38,7 @@ body {
 }
 .list-container .list-tab-container .tab-ul .current-item {
   color: #5d5d5d;
-  border-bottom: 2px solid #7aa7f2;
+  border-bottom: 2px solid rgb(64,163,194);
 }
 .list-container .list-main-container .item {
   float: left;
@@ -66,13 +75,13 @@ body {
   padding: 12px 0;
   text-align: center;
   font-weight: normal;
-  color: #7aa7f2;
+  color: rgb(64,163,194);
 }
 .list-container .list-main-container .item .item-tags {
   height: 22px;
   overflow: hidden;
   padding: 0px 15px;
-  color: #7aa7f2;
+  color: rgb(64,163,194);
   font-size: 1.6rem;
 }
 .list-container .list-main-container .item .item-tags .tag {

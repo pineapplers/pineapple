@@ -11,6 +11,9 @@ class Comment(models.Model):
     content = models.TextField(max_length=512, verbose_name='评论内容')
     created = models.DateTimeField(auto_now_add=True, verbose_name='评论时间')
 
+    def __str__(self):
+        return "{}: {}".format(self.user, self.content)
+
     class Meta:
         abstract = True
         verbose_name = '评论'

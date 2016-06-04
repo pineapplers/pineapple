@@ -11,6 +11,11 @@
         <div class="topic-img" style="background-image: url('{{ MEDIA_URL }}{{ topic.cover_image }}')"></div>
         <div class="topic-info">
             <h1 class="topic-title">{{ topic.title }}</h1>
+            {% if request.user in topic.users_collect.all %}
+            <button type="button" name="button" id="collect" data-id="{{ topic.id }}" data-action="uncollect">取消收藏</button>
+            {% else %}
+            <button type="button" name="button" id="collect" data-id="{{ topic.id }}" data-action="collect">收藏专题</button>
+            {% endif %}
             <div class="topic-desc">
                 {{ topic.description }}
             </div>
@@ -51,5 +56,34 @@
 </div>
 {% endblock content %}
 {% block js %}
-<script src="{% static 'js/topic_detail.js' %}"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#collect").click(function() {
+            var that = $(this);
+            var id = that.attr('data-id');
+            var action = that.attr('data-action');
+
+            $.ajax({
+                url: "{% url 'topic:collect' %}",
+                method: "POST",
+                data: {
+                    id: id,
+                    action: action
+                }
+            }).success(function(resp) {
+                if(resp.status == true) {
+                    if (action == 'collect') {
+                        that.attr('data-action', 'uncollect');
+                        that.text('取消收藏');
+                    } else {
+                        that.attr('data-action', 'collect');
+                        that.text('收藏专题');
+                    }                     
+                }
+            }).error(function(error) {
+                alert("网络异常");
+            });
+        });
+    });
+</script>
 {% endblock js %}

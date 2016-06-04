@@ -4,6 +4,12 @@
 {% block head %}
 <title>用户首页</title>
 <link href="{% static 'css/user_index.css' %}" rel="stylesheet">
+<style type="text/css">
+    a {
+        text-decoration: none;
+        color: #828caa;
+    }
+</style>
 {% endblock head %}
 {% block content %}
     <div class="tab-container">
@@ -16,7 +22,7 @@
                         <i class="fa {{ action.get_action_class }}"></i>
                         <span class="timeline-item-username">{{ action.user }}</span>
                         <span class="timeline-item-action">{{ action.verb }}</span>
-                        <span class="timeline-item-theme">{{ action.target }}</span>
+                        <span class="timeline-item-theme"><a href="{{ action.target.get_absolute_url }}">{{ action.target }}</a></span>
                         <span class="timeline-item-time">{{ action.created | naturaltime}}</span>
                     </div>
                     {% endfor %}

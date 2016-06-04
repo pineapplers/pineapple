@@ -47,10 +47,10 @@ body {
 }
 .user-container .form-container .form-item .focus-label {
   bottom: 30px;
-  color: #7aa7f2;
+  color: rgb(64,163,194);
 }
 .user-container .form-container .form-item .complete-input {
-  border-bottom-color: #7aa7f2;
+  border-bottom-color: rgb(64,163,194);
 }
 .user-container .form-container .form-item input {
   width: 350px;
@@ -65,7 +65,7 @@ body {
   background-color: transparent;
 }
 .user-container .form-container .form-item input:focus {
-  border-bottom-color: #7aa7f2;
+  border-bottom-color: rgb(64,163,194);
 }
 .user-container .form-container .form-item #login-btn,
 .user-container .form-container .form-item #register-btn {
@@ -73,7 +73,7 @@ body {
   padding: 0;
   margin-top: 35px;
   color: white;
-  background-color: #7aa7f2;
+  background-color: rgb(64,163,194);
   cursor: pointer;
 }
 .user-container .form-container .form-item #login-btn:hover,
@@ -96,11 +96,11 @@ body {
 }
 .user-container .form-container .register-tab a,
 .user-container .form-container .login-tab a {
-  color: #7aa7f2;
+  color: rgb(64,163,194);
   text-decoration: none;
 }
 .user-container .form-container .register-tab a:hover,
 .user-container .form-container .login-tab a:hover {
-  color: #7aa7f2;
+  color: rgb(64,163,194);
   text-decoration: underline;
 }

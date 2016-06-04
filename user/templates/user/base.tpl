@@ -13,19 +13,17 @@
     <body>
         {% include 'home/navbar.tpl' %}
         <div class="user-container clearfix">
-            {% with following_num=user.following.count followers_num=user.followers_num %}
+            {% with following_num=user.following.count followers_num=user.followers.count %}
             <div class="user-main clearfix">
                 {% if profile.avatar %}
                 <div class="user-portrait" style="background-image: url('{{MEDIA_URL}}{{profile.avatar}}')">
                 {% else %}
                 <div class="user-portrait">
                 {% endif %}
-                {% if user.id == request.user.id %}
-                <a href="#"><button type="button" name="button" class="follow-btn unfollow">编辑资料</button></a>
-                {% else %}
+                {% if user.id != request.user.id %}
                 <a href="#">
-                    {% if is_follow %}
-                    <button type="button" data-id="{{ user.id }}" data-action="unfollow" id="follow-btn" name="button" class="follow-btn unfollow" style="background-color:rgb(122,167,242)">取消关注</button>
+                    {% if request.user in user.followers.all %}
+                    <button type="button" data-id="{{ user.id }}" data-action="unfollow" id="unfollow-btn" name="button" class="follow-btn unfollow" style="background-color:rgb(122,167,242)">取消关注</button>
                     {% else %}
                     <button type="button" data-id="{{ user.id }}" data-action="follow" id="follow-btn" name="button" class="follow-btn follow" style="background-color:rgb(122,167,242)">关注</button>
                     {% endif %}
@@ -34,11 +32,11 @@
                 </div>
                 <div class="user-info">
                     <h2 class="user-name"><i class="fa {% if profile.gender == "f" %}fa-venus{% else %}fa-mars{% endif %}"></i>{{ user.username }}</h2>
-                    <h4 class="user-area">{{ profile.city | default:"外星" }}</h4>
+                    <h4 class="user-area"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ profile.location | default:"外星" }}</h4>
                     <h4 class="user-desc">{{ profile.introduction | default:"这个人什么也没写" }}</h4>
                 </div>
                 <div class="user-follower">
-                    <div class="follow-num">{{ following_num }}</div>
+                    <div class="follow-num">{{ followers_num }}</div>
                     粉丝
                 </div>
                 <div class="user-following">
@@ -85,9 +83,9 @@
                     </div>
                 </a>
                 {% if request.user.id == user.id %}
-                <a href="{% url 'user:settings' %}">
-                    <div class="tab-item  {% if section == "settings" %}current-tab{% endif %}">
-                        设置
+                <a href="{% url 'user:profile' %}">
+                    <div class="tab-item  {% if request.TAB == "profile" %}current-tab{% endif %}">
+                        编辑资料
                     </div>
                 </a>
                 {% endif %}
@@ -114,7 +112,15 @@
                         action: action
                     }
                 }).success(function(data) {
-                    console.log(data);
+                    if(data.status == true) {
+                        if (action == 'follow') {
+                            that.attr('data-action', 'unfollow');
+                            that.text('取消关注');
+                        } else {
+                            that.attr('data-action', 'follow');
+                            that.text('关注');
+                        }                     
+                    }
                 }).error(function(error) {
                     alert("网络异常");
                 });

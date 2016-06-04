@@ -44,14 +44,15 @@ body {
 .details-container .topic-content .topic-info .topic-title {
   text-align: center;
   margin-bottom: 15px;
-  color: #2a2a2a;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
   font-size: 4.5rem;
 }
 .details-container .topic-content .topic-info #collect {
   width: 100px;
   height: 35px;
   border: none;
-  background-color: #7aa7f2;
+  background-color: rgb(64,163,194);
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.5rem;
   color: white;
@@ -64,8 +65,9 @@ body {
 .details-container .topic-content .topic-info .topic-desc {
   width: 550px;
   margin: 20px auto 0 auto;
-  color: #3b3b3b;
   text-align: left;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
 }
 .details-container .detail-item {
   position: relative;

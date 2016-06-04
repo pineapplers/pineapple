@@ -37,7 +37,7 @@ ul {
   top: 0;
   left: 0;
   z-index: 999;
-  background-color: #7aa7f2;
+  background-color: rgb(64,163,194);
   background-repeat: no-repeat;
   background-size: 100% 65px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);

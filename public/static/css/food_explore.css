@@ -1,6 +1,15 @@
 body {
   margin-top: 80px;
 }
+.navbar {
+  background-image: url("/public/static/images/home-header-bg-563ac1688e.png");
+  transition: background-color ease-in-out 0.2s;
+  -o-transition: background-color ease-in-out 0.2s;
+  -ms-transition: background-color ease-in-out 0.2s;
+  -moz-transition: background-color ease-in-out 0.2s;
+  -webkit-transition: background-color ease-in-out 0.2s;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0);
+}
 .explore-container {
   width: 1020px;
   margin: 0 auto;
@@ -27,7 +36,7 @@ body {
 }
 .explore-container .explore-tab-container .tab-ul .current-item {
   color: #5d5d5d;
-  border-bottom: 2px solid #7aa7f2;
+  border-bottom: 2px solid rgb(64,163,194);
 }
 .explore-container .explore-main-container .item {
   width: 300px;
