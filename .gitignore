@@ -3,7 +3,6 @@ venv/
 __pycache__/
 *.pyc
 .coverage
-migrations/
 media/
 /node_modules/
 *.hot-update.js

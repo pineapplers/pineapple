@@ -14,7 +14,6 @@
 {% block content %}
     <div class="tab-container">
         <div class="timeline-container">
-            {% with actions=actions %}
             {% if actions %}
                 <div class="timeline-item-main">
                     {% for action in actions %}
@@ -30,7 +29,6 @@
             {% else %}
                 <p>ta最近还没有个人动态</p>
             {% endif %}
-            {% endwith %}
         </div>
     </div>
 {% endblock content %}

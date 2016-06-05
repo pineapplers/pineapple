@@ -202,6 +202,20 @@ def user_profile(request):
             'provinces': provinces
         })
 
+@login_required
+@tab('moments')
+def user_moments(request):
+    profile = request.user.profile
+    actions = Action.objects.all().exclude(user=request.user)
+    following_ids = request.user.following.values_list('id', flat=True)
+    if following_ids:
+        actions = actions.filter(user_id__in=following_ids).select_related('user', 'user__profile').prefetch_related('target')
+    actions = actions[:10]
+    return render(request, 'user/moments.tpl', {
+            'profile': profile,
+            'actions': actions
+        })
+
 @ajax_required
 @login_required
 def get_cities(request):

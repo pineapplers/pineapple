@@ -3,7 +3,7 @@ from django.contrib.auth.views import (password_change, password_change_done,
     password_reset, password_reset_done, password_reset_complete, password_reset_confirm)
 
 from .views import (home, user_login, user_logout, user_register, user_follow, user_followers, user_following, user_posts,
-    user_confirm, user_settings, user_profile, user_shared, user_wants_to_eat, user_ate, topics_collection, get_cities)
+    user_confirm, user_settings, user_profile, user_moments, user_shared, user_wants_to_eat, user_ate, topics_collection, get_cities)
 
 urlpatterns = [
     url(r'^(?P<user_id>[\d]+)/$', home, name='home'),
@@ -23,6 +23,7 @@ urlpatterns = [
 
     url(r'^settings/$', user_settings, name='settings'),
     url(r'^profile/$', user_profile, name='profile'),
+    url(r'^moments/$', user_moments, name='moments'),
 
     url(r'^(?P<user_id>[\d]+)/shared/$', user_shared, name='share'),
     url(r'^(?P<user_id>[\d]+)/following/$', user_following, name='following'),

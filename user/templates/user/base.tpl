@@ -88,6 +88,11 @@
                     </div>
                 </a>
                 {% if request.user.id == user.id %}
+                <a href="{% url 'user:moments' %}">
+                    <div class="tab-item {% if request.TAB == "moments" %}current-tab{% endif %}">
+                        吃友圈
+                    </div>
+                </a>
                 <a href="{% url 'user:profile' %}">
                     <div class="tab-item  {% if request.TAB == "profile" %}current-tab{% endif %}">
                         编辑资料
