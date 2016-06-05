@@ -51,7 +51,7 @@
             {{ form.tags.errors }}
             <div class="item-input">
                 {{ form.tags | add_class:"input" | attr:"placeholder:请输入标签，以逗号分隔" }}
-              <!--   <input type="text" name="tag" class="input" id="create-tag" placeholder="请输入标签">
+                <!-- <input type="text" name="tag" class="input" id="create-tag" placeholder="请输入标签">
                 <div class="add-tag" id="add-tag">
                     +
                 </div>

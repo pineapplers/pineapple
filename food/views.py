@@ -36,6 +36,8 @@ def food_create(request):
             food = form.save(commit=False)
             food.user = request.user
             food.save()
+            form.save_m2m()
+            create_action(request.user, '分享了', food)
             return HttpResponseRedirect(reverse('food:detail', kwargs={'food_id': food.id}))
     else:
         form = FoodForm()
@@ -66,6 +68,7 @@ def food_detail(request, food_id):
                 comment.food = food
                 comment.save()
                 messages.success(request, '评论成功')
+                return HttpResponseRedirect(reverse('food:detail', kwargs={'food_id': food_id}))
             else:
                 messages.error(request, '评论失败')
         else:
@@ -128,12 +131,18 @@ def food_rate(request):
     food_id = request.POST.get('id')
     action = request.POST.get('action')
     view = AddRatingFromModel()
+    score = -1
+    if action == 'like':
+        score = 1
+        food = Food.objects.get(pk=food_id)
+        if food:
+            create_action(request.user, '喜欢了', food)
     resp = view(request,
         app_label='food',
         model='Food',
         field_name='rating',
         object_id=int(food_id),
-        score=1 if action=='like' else -1
+        score=score
     )
     return JsonResponse({'status': resp.status_code==200}, status=resp.status_code)
 
@@ -146,6 +155,7 @@ def food_wta(request):
     if food_id and action:
         food = Food.objects.get(pk=food_id)
         if action == 'wta':
+            create_action(request.user, '想吃', food)
             food.users_wta.add(request.user)
         else:
             food.users_wta.remove(request.user)
@@ -161,6 +171,7 @@ def food_ate(request):
     if food_id and action:
         food = Food.objects.get(pk=food_id)
         if action == 'ate':
+            create_action(request.user, '吃过', food)
             food.users_ate.add(request.user)
         else:
             food.users_ate.remove(request.user)

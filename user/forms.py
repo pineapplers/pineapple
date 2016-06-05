@@ -16,6 +16,7 @@ class UserCacheMixin(object):
 
 
 class LoginForm(forms.ModelForm, UserCacheMixin):
+    password = forms.CharField(label='密码', widget=forms.PasswordInput)
 
     def clean(self):
         username = self.cleaned_data.get('username')

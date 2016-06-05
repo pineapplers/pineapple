@@ -12,6 +12,7 @@ class FoodForm(forms.ModelForm):
 
     def clean_tags(self):
         tags = self.cleaned_data['tags']
+        print(tags)
         if len(tags) > 5:
             raise forms.ValidationError('最多只能输入5个标签')
         return tags
@@ -19,6 +20,6 @@ class FoodForm(forms.ModelForm):
     class Meta:
         model = Food
         fields = ('title', 'description', 'cover_image', 'link', 'category', 'tags')        
-        widgets = {
-            'tags': TagWidget(),
-        }
+        # widgets = {
+        #     'tags': TagWidget(),
+        # }

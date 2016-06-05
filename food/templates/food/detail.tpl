@@ -65,11 +65,11 @@
 
             <div class="comments-container">
                 <div class="comments-wraaper clearfix">
-                   <!--  <form method="post" action=".">
+                    <form method="post" action=".">
                         {% csrf_token %}
                         {{ comment_form.content | add_class:"comments-area" | attr:"rows:5"}}
                         <button type="submit" name="sendBtn" class="send-btn">发表评论</button>
-                    </form> -->
+                    </form>
                 </div>
                 <h2 class="comments-title">全部评论</h2>
                 <div class="comments-main">
@@ -83,7 +83,7 @@
                             {% endthumbnail %}
                             <div class="comments-user-name">
                                 <span class="name"><a href="{{ comment.user.get_absolute_url }}">{{ comment.user }}</a></span>
-                                <span class="comments-time">{{ comment.created| date:"Y-m-d H:m" }}</span>
+                                <span class="comments-time">{{ comment.created| date:"Y/m/d H:m" }}</span>
                             </div>
                             <div class="comments-item-content">
                                 {{ comment.content }}
@@ -110,7 +110,11 @@
         <div class="food-right fl">
             <h2 class="food-title">{{ food.title }}</h2>
             <div class="food-sharer">
-                <div class="sharer-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
+                {% thumbnail food.user.profile.avatar "20x20" crop="center" as im %}
+                    <div class="sharer-img" style="background-image: url('{{ im.url }}')"></div>
+                {% empty %}
+                    <div class="sharer-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
+                {% endthumbnail %}
                 <a href="{{ food.user.get_absolute_url }}"><span class="sharer-name">{{ food.user }}</span></a>
                 <span class="share-text">分享于</span>
                 <span class="share-time">{{ food.created| date:"Y-m-d" }}</span>

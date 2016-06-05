@@ -45,6 +45,12 @@ def user_login(request):
             'form': form,
         })
 
+# 退出
+@login_required
+def user_logout(request):
+    logout(request.user)
+    return HttpResponseRedirect(reverse('home:index'))
+
 # 注册
 def user_register(request):
     if request.method == 'POST':

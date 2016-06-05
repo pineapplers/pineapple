@@ -78,11 +78,11 @@ body {
 }
 .user-container .form-container .form-item #login-btn:hover,
 .user-container .form-container .form-item #register-btn:hover {
-  background-color: #6398f0;
+  background-color: rgb(64,163,194);
 }
 .user-container .form-container .form-item #login-btn:active,
 .user-container .form-container .form-item #register-btn:active {
-  background-color: #4c88ed;
+  background-color: rgb(64,163,194);
 }
 .user-container .form-container .form-item #login-btn:focus,
 .user-container .form-container .form-item #register-btn:focus {

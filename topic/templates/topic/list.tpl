@@ -21,7 +21,7 @@
             </div>
             <div class="topic-item-info">
                 
-                <i class="fa fa-comments"><span class="num">{{ topic.total_collects }}</span></i>
+                <i class="fa fa-bookmark"><span class="num">{{ topic.total_collects }}</span></i>
                 <a href="#"><a href="#"><i class="fa fa-share-alt"></i></a></a>
             </div>
         </div>

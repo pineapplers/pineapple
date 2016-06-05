@@ -1,8 +1,8 @@
 from django.conf.urls import url
-from django.contrib.auth.views import (logout as user_logout, password_change, password_change_done,
+from django.contrib.auth.views import (password_change, password_change_done,
     password_reset, password_reset_done, password_reset_complete, password_reset_confirm)
 
-from .views import (home, user_login, user_register, user_follow, user_followers, user_following, user_posts,
+from .views import (home, user_login, user_logout, user_register, user_follow, user_followers, user_following, user_posts,
     user_confirm, user_settings, user_profile, user_shared, user_wants_to_eat, user_ate, topics_collection, get_cities)
 
 urlpatterns = [

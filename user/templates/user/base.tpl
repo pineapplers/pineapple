@@ -29,6 +29,10 @@
                     <button type="button" data-id="{{ user.id }}" data-action="follow" id="follow-btn" name="button" class="follow-btn follow">关注</button>
                     {% endif %}
                 </a>
+                {% else %}
+                    <a href="{% url 'user:logout' %}">
+                    <button type="button" class="follow-btn" style="background-color:#DC143C;">退出登录</button>
+                    </a>
                 {% endif %}
                 </div>
                 <div class="user-info">
