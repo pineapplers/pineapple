@@ -80,6 +80,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.media',
                 'django.contrib.messages.context_processors.messages',
+                'search.context_processors.search_proc'
             ],
             # disable 'APP_DIRS' option if open cached loader
             # 'loaders': [
@@ -194,6 +195,8 @@ AUTHENTICATION_BACKENDS = {
     'django.contrib.auth.backends.ModelBackend',
     'user.auth.EmailAuthBackend',
 }
+
+FULLTEXT_SEARCH = False
 
 HAYSTACK_CONNECTIONS = {
     'default': {

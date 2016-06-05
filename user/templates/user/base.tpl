@@ -4,6 +4,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{% static 'font/font-awesome-4.5.0/css/font-awesome.min.css' %}" media="screen" title="no title" charset="utf-8">
         <link href="{% static 'css/vendors.css' %}" rel="stylesheet">
         <title>{{ user.username }}的主页</title>
@@ -23,9 +24,9 @@
                 {% if user.id != request.user.id %}
                 <a href="#">
                     {% if request.user in user.followers.all %}
-                    <button type="button" data-id="{{ user.id }}" data-action="unfollow" id="unfollow-btn" name="button" class="follow-btn unfollow" style="background-color:rgb(122,167,242)">取消关注</button>
+                    <button type="button" data-id="{{ user.id }}" data-action="unfollow" id="follow-btn" name="button" class="follow-btn unfollow">取消关注</button>
                     {% else %}
-                    <button type="button" data-id="{{ user.id }}" data-action="follow" id="follow-btn" name="button" class="follow-btn follow" style="background-color:rgb(122,167,242)">关注</button>
+                    <button type="button" data-id="{{ user.id }}" data-action="follow" id="follow-btn" name="button" class="follow-btn follow">关注</button>
                     {% endif %}
                 </a>
                 {% endif %}

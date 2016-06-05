@@ -1,3 +1,4 @@
+{% load widget_tweaks %}
 <div class="navbar">
     <div class="nav">
         <ul>
@@ -25,6 +26,9 @@
             <a href="{% url 'user:login' %}"><button type="button" name="login" id="login-btn">登录</button></a>
             <a href="{% url 'user:register' %}"><button type="button" name="register" id="register-btn">注册</button></a>
         {% endif %}
-        <input type="text" name="search" value="寻找好物……" id="search">
+        <form method="post" action="{% url 'search:search' %}">
+            {% csrf_token %}
+            {{ search_form.q | attr:"id:search" | attr:"placeholder:寻觅好吃……"}}
+        </form>
     </div>
 </div>

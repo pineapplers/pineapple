@@ -3,7 +3,7 @@
 {% load widget_tweaks %}
 {% load thumbnail %}
 {% block head %}
-<title>发现</title>
+<title>{{ food.title }}</title>
 <link href="{% static 'css/food_detail.css' %}" rel="stylesheet">
 {% endblock head %}
 {% block content %}
@@ -71,7 +71,7 @@
                         <button type="submit" name="sendBtn" class="send-btn">发表评论</button>
                     </form> -->
                 </div>
-                <h2 class="comments-title">全部评论（{{comments|length}}）</h2>
+                <h2 class="comments-title">全部评论</h2>
                 <div class="comments-main">
                     {% if comments %}
                         {% for comment in comments %}
@@ -90,9 +90,16 @@
                             </div>
                         </div>
                         {% endfor %}
-                        <a href="?page={{ comments.next_page_number }}">
-                        <button type="button" style="width: 300px;height: 50px;margin: 20px 20%;background-color: rgb(64,163,194);color: #fff;border: none;">下一页</button>
+                        {% if comments.has_previous %}
+                        <a href="?page={{ comments.previous_page_number }}">
+                        <button type="button" style="width: 200px;height: 50px;margin: 10px 30% 10px 30%;background-color: rgb(64,163,194);color: #fff;border: none;">上一页</button>
                         </a>
+                        {% endif %}
+                        {% if comments.has_next %}
+                        <a href="?page={{ comments.next_page_number }}">
+                        <button type="button" style="width: 200px;height: 50px;margin: 10px 30% 20px 30%;background-color: rgb(64,163,194);color: #fff;border: none;">下一页</button>
+                        </a>
+                        {% endif %}
                     {% else %}
                     <p>目前没有人评论</p>
                     {% endif %}
@@ -240,6 +247,25 @@ $(function() {
         }).error(function(error) {
             alert("网络异常");
         });
+    });
+
+
+    $("#share").click(function(event) {
+        event.preventDefault();
+        var _width = 600,
+            _height = 600,
+            _top = (screen.height-_height)/2,
+            _left = (screen.width-_width)/2,
+            _pic = '';
+
+        var _shareUrl = 'http://v.t.sina.com.cn/share/share.php?&appkey=895033136';
+        _shareUrl += '&url='+ encodeURIComponent(document.location);
+        _shareUrl += '&title=' + encodeURIComponent(document.title + ' - Pineapple');
+        _shareUrl += '&source=' + encodeURIComponent('');
+        _shareUrl += '&sourceUrl=' + encodeURIComponent('');
+        _shareUrl += '&content=' + 'utf-8';
+        _shareUrl += '&pic=' + encodeURIComponent('');
+        window.open(_shareUrl,'_blank','width='+_width+',height='+_height+',top='+_top+',left='+_left+',toolbar=no,menubar=no,scrollbars=no, resizable=1,location=no,status=0');
     });
 });
 </script>

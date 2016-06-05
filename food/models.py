@@ -34,6 +34,10 @@ class Food(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='添加日期')
     tags = TaggableManager(blank=True, help_text='多个标签以逗号分隔', verbose_name="标签")
 
+    @classmethod
+    def get_food_categorys(self):
+        return FoodCategory.objects.all()
+
     def get_absolute_url(self):
         return reverse('food:detail', kwargs={'food_id': self.id})
 

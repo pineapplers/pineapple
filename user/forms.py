@@ -74,5 +74,5 @@ class ProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('avatar', 'gender', 'date_of_birth', 'location', 'introduction')
         widgets = {
-            'date_of_birth': forms.SelectDateWidget(years=range(1916, 2017))
+            'date_of_birth': forms.SelectDateWidget(years=range(1916, 2017), attrs={'class': 'selections'})
         }

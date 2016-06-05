@@ -9,7 +9,7 @@ from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
 from .forms import FoodForm
-from .models import Food, FoodCategory
+from .models import Food
 
 from actions.utils import create_action
 from comments.models import Comment
@@ -25,7 +25,7 @@ r = redis.StrictRedis(host=settings.REDIS_HOST,
                       port=settings.REDIS_PORT,
                       db=settings.REDIS_DB)
 
-categorys = FoodCategory.objects.all()
+categorys = Food.get_food_categorys()
 
 
 @login_required

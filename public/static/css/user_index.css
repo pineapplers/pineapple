@@ -3,6 +3,10 @@
   padding-bottom: 0;
   background-color: white;
   box-shadow: 0 0 5px #aaaaaa;
+  min-height: 700px;
+}
+.user-container a:hover {
+  color: rgb(64,163,194);
 }
 .user-container .user-portrait {
   position: relative;
