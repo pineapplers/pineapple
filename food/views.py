@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
@@ -17,6 +18,7 @@ from comments.forms import FoodCommentForm
 from utils import make_paginator
 from utils.decorators import ajax_required, tab
 from updown.views import AddRatingFromModel
+from updown.models import Vote
 
 import redis
 
@@ -57,11 +59,12 @@ def food_latest(request):
 
 def food_detail(request, food_id):
     user = request.user
+    user_authenticated = user.is_authenticated()
     food = get_object_or_404(Food.objects.prefetch_related('comments').select_related('user__profile'), pk=food_id)
     comments = make_paginator(request, food.comments.order_by('-created').all())
     if request.method == 'POST':
         comment_form = FoodCommentForm(request.POST)
-        if user.is_authenticated():
+        if user_authenticated:
             if comment_form.is_valid():
                 comment = comment_form.save(commit=False)
                 comment.user = user
@@ -80,6 +83,11 @@ def food_detail(request, food_id):
     similar_foods = similar_foods.annotate(same_tags=Count('tags')).order_by('-same_tags')[:4]
     total_views = r.incr('food:{}:views'.format(food.id))
     # r.zincrby('food_ranking', food.id, 1)
+    score = 0
+    if user_authenticated:
+        rating = Vote.objects.filter(user=user, object_id=food.id, 
+            content_type=ContentType.objects.get_for_model(model=Food)).only('score').first()
+        score = rating.score if rating else score
     return render(request, 'food/detail.tpl', {
             'food': food,
             'comments': comments,
@@ -88,6 +96,7 @@ def food_detail(request, food_id):
             'total_views': total_views,
             'is_wta': user.foods_wta.filter(pk=food.id).exists(),
             'is_ate': user.foods_ate.filter(pk=food.id).exists(),
+            'score': score
         })
 
 def food_category(request, category):

@@ -49,11 +49,11 @@
                 </div>
 
                 <div class="food-like-share">
-                    <div class="circle" id="like" data-id="{{ food.id }}" data-action="like">
+                    <div class="circle {% if score == 1 %}clicked{% endif %}" id="like" data-id="{{ food.id }}" data-action="like">
                         <i class="fa fa-thumbs-o-up"></i>
                         <span>{{ food.rating.likes }}</span>
                     </div>
-                    <div class="circle" id="dislike" data-id="{{ food.id }}" data-action="dislike">
+                    <div class="circle {% if score == -1 %}clicked{% endif %}" id="dislike" data-id="{{ food.id }}" data-action="dislike">
                         <i class="fa fa-thumbs-o-down"></i>
                         <span>{{ food.rating.dislikes }}</span>
                     </div>

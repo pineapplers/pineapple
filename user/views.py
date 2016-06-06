@@ -33,6 +33,8 @@ def home(request, user_id):
 
 # 登录
 def user_login(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('user:home'))
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -48,7 +50,7 @@ def user_login(request):
 # 退出
 @login_required
 def user_logout(request):
-    logout(request.user)
+    logout(request)
     return HttpResponseRedirect(reverse('home:index'))
 
 # 注册

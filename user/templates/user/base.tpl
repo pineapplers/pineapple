@@ -40,14 +40,18 @@
                     <h4 class="user-area"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ profile.location | default:"外星" }}</h4>
                     <h4 class="user-desc">{{ profile.introduction | default:"这个人什么也没写" }}</h4>
                 </div>
-                <div class="user-follower">
-                    <div class="follow-num">{{ followers_num }}</div>
-                    粉丝
-                </div>
-                <div class="user-following">
-                    <div class="follow-num">{{ following_num }}</div>
-                    关注
-                </div>
+                <a href="{% url 'user:followers' user.id %}">
+                    <div class="user-follower">
+                        <div class="follow-num">{{ followers_num }}</div>
+                        粉丝
+                    </div>
+                </a>
+                <a href="{% url 'user:following' user.id %}">
+                    <div class="user-following">
+                        <div class="follow-num">{{ following_num }}</div>
+                        关注
+                    </div>
+                </a>
             </div>
             {% endwith %}
 
