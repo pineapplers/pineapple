@@ -96,6 +96,7 @@ def food_detail(request, food_id):
         rating = Vote.objects.filter(user=user, object_id=food.id, 
             content_type=ContentType.objects.get_for_model(model=Food)).only('score').first()
         score = rating.score if rating else score
+        context['score'] = score
         context['is_wta'] = user.foods_wta.filter(pk=food.id).exists()
         context['is_ate'] = user.foods_ate.filter(pk=food.id).exists()
     return render(request, 'food/detail.tpl', context)

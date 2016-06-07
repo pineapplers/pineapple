@@ -113,7 +113,7 @@
                 {% thumbnail food.user.profile.avatar "20x20" crop="center" as im %}
                     <div class="sharer-img" style="background-image: url('{{ im.url }}')"></div>
                 {% empty %}
-                    <div class="sharer-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
+                    <div class="sharer-img" style="background-image: url('/public/static/images/anonymous.jpg')"></div>
                 {% endthumbnail %}
                 <a href="{{ food.user.get_absolute_url }}"><span class="sharer-name">{{ food.user }}</span></a>
                 <span class="share-text">分享于</span>
