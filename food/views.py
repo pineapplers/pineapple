@@ -82,22 +82,23 @@ def food_detail(request, food_id):
     similar_foods = Food.objects.filter(tags__in=food_tags_ids).exclude(id=food.id)
     similar_foods = similar_foods.annotate(same_tags=Count('tags')).order_by('-same_tags')[:4]
     total_views = r.incr('food:{}:views'.format(food.id))
-    # r.zincrby('food_ranking', food.id, 1)
+    r.zincrby('food_ranking', food.id, 1)
     score = 0
+    context = {
+        'food': food,
+        'comments': comments,
+        'comment_form': comment_form,
+        'similar_foods': similar_foods,
+        'total_views': total_views,
+        'score': score
+    }
     if user_authenticated:
         rating = Vote.objects.filter(user=user, object_id=food.id, 
             content_type=ContentType.objects.get_for_model(model=Food)).only('score').first()
         score = rating.score if rating else score
-    return render(request, 'food/detail.tpl', {
-            'food': food,
-            'comments': comments,
-            'comment_form': comment_form,
-            'similar_foods': similar_foods,
-            'total_views': total_views,
-            'is_wta': user.foods_wta.filter(pk=food.id).exists(),
-            'is_ate': user.foods_ate.filter(pk=food.id).exists(),
-            'score': score
-        })
+        context['is_wta'] = user.foods_wta.filter(pk=food.id).exists()
+        context['is_ate'] = user.foods_ate.filter(pk=food.id).exists()
+    return render(request, 'food/detail.tpl', context)
 
 def food_category(request, category):
     foods = make_paginator(request, Food.objects.filter(category__name=category))
