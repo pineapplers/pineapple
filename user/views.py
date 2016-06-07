@@ -191,10 +191,10 @@ def user_profile(request):
         form = ProfileForm(instance=profile, data=request.POST,
                             files=request.FILES)
         if form.is_valid():
+            print(form.cleaned_data)
             form.save()
             messages.success(request, '资料更新成功')
         else:
-            print(form.errors)
             messages.error(request, '资料更新失败')
     else:
         form = ProfileForm(instance=profile)

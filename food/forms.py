@@ -12,7 +12,6 @@ class FoodForm(forms.ModelForm):
 
     def clean_tags(self):
         tags = self.cleaned_data['tags']
-        print(tags)
         if len(tags) > 5:
             raise forms.ValidationError('最多只能输入5个标签')
         return tags

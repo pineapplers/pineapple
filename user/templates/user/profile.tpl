@@ -7,7 +7,7 @@
 {% block content %}
 <div class="tab-container">
     <div class="form-container">
-        <form class="form" action="." method="post">
+        <form class="form" action="." method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-item">
                 <label class="form-item-label" for="">设置头像</label>

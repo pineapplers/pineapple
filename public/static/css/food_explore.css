@@ -1,5 +1,6 @@
 body {
   margin-top: 80px;
+  background-color: #f1f1f1;
 }
 .navbar {
   background-image: url("/public/static/images/home-header-bg-563ac1688e.png");

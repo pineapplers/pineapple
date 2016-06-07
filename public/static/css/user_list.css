@@ -12,7 +12,7 @@
   height: 100px;
   top: 15px;
   border-radius: 50%;
-  background-image: url("/public/static/images/topic1.jpg");
+  background-image: url("/public/static/images/anonymous.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -145,7 +145,7 @@ a {
   height: 65px;
   border-radius: 50%;
   margin: 30px auto 20px auto;
-  background-image: url("/public/static/images/topic1.jpg");
+  background-image: url("/public/static/images/anonymous.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

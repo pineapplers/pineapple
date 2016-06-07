@@ -51,11 +51,11 @@
                 <div class="food-like-share">
                     <div class="circle {% if score == 1 %}clicked{% endif %}" id="like" data-id="{{ food.id }}" data-action="like">
                         <i class="fa fa-thumbs-o-up"></i>
-                        <span>{{ food.rating.likes }}</span>
+                        <span id="like-count">{{ food.rating.likes }}</span>
                     </div>
                     <div class="circle {% if score == -1 %}clicked{% endif %}" id="dislike" data-id="{{ food.id }}" data-action="dislike">
                         <i class="fa fa-thumbs-o-down"></i>
-                        <span>{{ food.rating.dislikes }}</span>
+                        <span id="dislike-count">{{ food.rating.dislikes }}</span>
                     </div>
                     <div class="circle" id="share">
                         <i class="fa fa-share-alt"></i>
@@ -79,7 +79,7 @@
                             {% thumbnail comment.user.profile.avatar "50x50" crop="center" as im %}
                                 <div class="comments-user-img" style="background-image: url('{{ im.url }}')"></div>
                             {% empty %}
-                                <div class="comments-user-img" style="background-image: url('/public/static/images/food2.jpg')"></div>
+                                <div class="comments-user-img" style="background-image: url('/public/static/images/anonymous.jpg')"></div>
                             {% endthumbnail %}
                             <div class="comments-user-name">
                                 <span class="name"><a href="{{ comment.user.get_absolute_url }}">{{ comment.user }}</a></span>
@@ -166,12 +166,38 @@
 {% block js %}
 <script type="text/javascript">
 $(function() {
+    var hasLike = false;
+    var hasDisLike = false;
+
+    function clickLike() {
+        if (hasLike && hasDisLike) {
+            alert('你好无聊哦，不让你点了！');
+            return
+        }
+        $("#like-count").text((parseInt($("#like-count").text()) + 1).toString());
+        hasLike = true;
+        if (hasDisLike) {
+            $("#dislike-count").text((parseInt($("#dislike-count").text()) - 1).toString());
+        }
+    }
+
+    function clickDisLike() {
+        if (hasLike && hasDisLike) {
+            alert('你好无聊哦，不让你点了！');
+            return
+        }
+        hasDisLike = true;
+        $("#dislike-count").text((parseInt($("#dislike-count").text()) + 1).toString());
+        if (hasLike) {
+            $("#like-count").text((parseInt($("#like-count").text()) - 1).toString());
+        }
+    }
 
     $("#like").click(function(event) {
         var that = $(this);
         var id = that.attr('data-id');
         var action = that.attr('data-action');
-
+        
         $.ajax({
             url: "{% url 'food:rate' %}",
             method: "POST",
@@ -180,6 +206,7 @@ $(function() {
                 action: action
             }
         }).success(function(resp) {
+            clickLike();
             that.addClass("clicked");
             $("#dislike").removeClass("clicked");
         }).error(function(error) {
@@ -200,6 +227,7 @@ $(function() {
                 action: action
             }
         }).success(function(resp) {
+            clickDisLike();
             that.addClass("clicked");
             $("#like").removeClass("clicked");
         }).error(function(error) {

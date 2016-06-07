@@ -16,13 +16,13 @@
                 {% endthumbnail %}
             </a>
             <div class="topic-item-desc">
-                <a href="#"><h3 class="desc-title">{{ topic.title }}</h3></a>
+                <a href="{{ topic.get_absolute_url }}"><h3 class="desc-title">{{ topic.title }}</h3></a>
                 <a href="#"><h4 class="desc-content">{{ topic.description }}</h4></a>
             </div>
             <div class="topic-item-info">
                 
                 <i class="fa fa-bookmark"><span class="num">{{ topic.total_collects }}</span></i>
-                <a href="#"><a href="#"><i class="fa fa-share-alt"></i></a></a>
+                <a href="#" id="share-topic"><i class="fa fa-share-alt"></i></a>
             </div>
         </div>
         {% endfor %}
