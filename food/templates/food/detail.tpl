@@ -154,7 +154,11 @@
             <div class="similar-container clearfix">
                 {% for food in similar_foods %}
                 <div class="similar-item">
-                    <a href="#"><img src="{{ MEDIA_URL }}{{ food.cover_image }}" alt="" width="100%" height="185px"></a>
+                    <a href="{{ food.get_absolute_url }}">
+                        {% thumbnail food.cover_image "185x185" crop="center" as im %}
+                            <img src="{{ im.url }}" width="100%" height="100%">
+                        {% endthumbnail %}
+                    </a>
                     <span class="similar-title">{{ food.title }}</span>
                 </div>
                 {% endfor %}
