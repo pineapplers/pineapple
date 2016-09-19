@@ -41,16 +41,16 @@
   margin-left: 15px;
   text-align: center;
   line-height: 35px;
-  background-color: rgb(64,163,194);
+  background-color: #40a3c2;
   color: white;
   cursor: pointer;
   vertical-align: bottom;
 }
 .create-container .create-form .form-item .preview-main .upload:hover {
-  background-color: #6398f0;
+  background-color: #3894b0;
 }
 .create-container .create-form .form-item .preview-main .upload:active {
-  background-color: #4c88ed;
+  background-color: #32839d;
 }
 .create-container .create-form .form-item .preview-main #upload {
   display: none;
@@ -63,7 +63,7 @@
   padding: 0 10px;
   padding-bottom: 5px;
   border: none;
-  border-bottom: 2px solid rgb(64,163,194);
+  border-bottom: 2px solid #40a3c2;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.5rem;
   outline: none;
@@ -71,7 +71,7 @@
   transition: border-color ease 0.5s;
 }
 .create-container .create-form .form-item .item-input .input:focus {
-  border-bottom-color: rgb(64,163,194);
+  border-bottom-color: #40a3c2;
 }
 .create-container .create-form .form-item .item-input .add-tag {
   display: inline-block;
@@ -82,15 +82,15 @@
   line-height: 23px;
   font-size: 1.8rem;
   vertical-align: middle;
-  background-color: rgb(64,163,194);
+  background-color: #40a3c2;
   color: white;
   cursor: pointer;
 }
 .create-container .create-form .form-item .item-input .add-tag:hover {
-  background-color: #6398f0;
+  background-color: #3894b0;
 }
 .create-container .create-form .form-item .item-input .add-tag:active {
-  background-color: #4c88ed;
+  background-color: #32839d;
 }
 .create-container .create-form .form-item .item-input .tag-preview {
   margin-top: 10px;
@@ -98,7 +98,7 @@
 .create-container .create-form .form-item .item-input .tag-preview .tag {
   display: inline-block;
   padding: 3px 8px;
-  background-color: rgb(64,163,194);
+  background-color: #40a3c2;
   border-radius: 15px;
   color: white;
   margin-right: 5px;
@@ -112,7 +112,7 @@
   width: 545px;
   height: 155px;
   padding: 10px;
-  border: 2px solid rgb(64,163,194);
+  border: 2px solid #40a3c2;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.4rem;
   outline: none;
@@ -121,7 +121,7 @@
   transition: border-color ease 0.5s;
 }
 .create-container .create-form .form-item .item-input .textarea:focus {
-  border-color: rgb(64,163,194);
+  border-color: #40a3c2;
 }
 .create-container .create-form .form-item .selections {
   margin-top: 10px;
@@ -135,7 +135,7 @@
   font-size: 1.5rem;
 }
 .create-container .create-form .form-item .selections .types:focus {
-  border-color: rgb(64,163,194);
+  border-color: #40a3c2;
 }
 .create-container .create-form .form-item .form-btn {
   border: none;
@@ -147,18 +147,18 @@
   cursor: pointer;
 }
 .create-container .create-form .form-item .share-btn {
-  background-color: rgb(64,163,194);
+  background-color: #40a3c2;
   color: white;
 }
 .create-container .create-form .form-item .share-btn:hover {
-  background-color: #6398f0;
+  background-color: #3894b0;
 }
 .create-container .create-form .form-item .share-btn:active {
-  background-color: #4c88ed;
+  background-color: #32839d;
 }
 .create-container .create-form .form-item .cancel-btn {
   background-color: white;
-  color: rgb(64,163,194);
+  color: #40a3c2;
 }
 .create-container .create-form .btn-item {
   text-align: center;
