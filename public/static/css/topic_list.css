@@ -11,6 +11,9 @@ body {
   -webkit-transition: background-color ease-in-out 0.2s;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0);
 }
+.navbar .user-name-btn {
+  background-color: #deb646;
+}
 body .over-navbar {
   background-image: none;
   background-color: #40a3c2;

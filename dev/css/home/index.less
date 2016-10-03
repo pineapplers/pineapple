@@ -18,6 +18,47 @@ body {
     -moz-transition: background-color ease-in-out 0.2s;
     -webkit-transition: background-color ease-in-out 0.2s;
     box-shadow: 0 0 4px rgba(0,0,0,0);
+
+    .nav .user-name-btn {
+      width: 90px;
+      padding: 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .user-name {
+      position: relative;
+      display: inline-block;
+      float: right;
+
+      &:hover {
+        border-radius: 0;
+        background-color: rgba(158, 158, 158, 0.3);
+
+        .user-dropdown {
+          display: block;
+        }
+      }
+
+      .user-dropdown {
+        display: none;
+        position: absolute;
+        top: 45px;
+        left: 0;
+
+        a {
+          display: inline-block;
+        }
+
+        li {
+          line-height: 45px;
+
+          &:hover {
+            background-color: rgba(158, 158, 158, 0.3);
+          }
+        }
+      }
+    }
 }
 
 body .over-navbar {
