@@ -6,7 +6,7 @@ from search.forms import SearchForm
 from topic.models import FoodTopic
 
 # 首页
-@cache_page(60)
+# @cache_page(60)
 def home(request):
     form = SearchForm()
     topics = FoodTopic.objects.order_by('-total_collects').all()[:4]

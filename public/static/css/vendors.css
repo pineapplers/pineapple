@@ -124,11 +124,11 @@ ul {
   border: 1px solid white;
 }
 .navbar .nav #register-btn:hover {
-  color: #2a2a2a;
+  color: #40a3c2;
   background-color: white;
 }
 .navbar .nav #register-btn:active {
-  color: #2a2a2a;
+  color: #40a3c2;
   border: 1px solid #f2f2f2;
   background-color: #f2f2f2;
 }
