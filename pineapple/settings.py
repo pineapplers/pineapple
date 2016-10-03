@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'actions',
     'blog',
     'comments',
+    'forum',
     'food',
     'haystack',
     'home',

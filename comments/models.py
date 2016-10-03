@@ -1,6 +1,7 @@
 from django.db import models
 
-from blog.models import Post
+from forum.models import ForumPost
+from blog.models import Post as BlogPost
 from food.models import Food
 from topic.models import FoodTopic
 from user.models import User
@@ -36,9 +37,17 @@ class TopicComment(Comment):
         verbose_name_plural = '专题评论'
 
 
-class PostComment(Comment):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments', verbose_name='帖子')
+class ForumPostComment(Comment):
+    post = models.ForeignKey(ForumPost, on_delete=models.CASCADE, related_name='comments', verbose_name='帖子')
 
     class Meta:
         verbose_name = '帖子评论'
         verbose_name_plural = '帖子评论'
+
+
+class PostComment(Comment):
+    post = models.ForeignKey(BlogPost, on_delete=models.CASCADE, related_name='comments', verbose_name='帖子')
+
+    class Meta:
+        verbose_name = '博客评论'
+        verbose_name_plural = '博客评论'

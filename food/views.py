@@ -114,7 +114,7 @@ def food_tag(request, tag):
 
 @tab('explore', sub_tab='new')
 def explore(request):
-    foods = make_paginator(request, Food.objects.all())
+    foods = make_paginator(request, Food.objects.all()[:50])
     return render(request, 'food/explore.tpl', {
                    'foods': foods
                 })
