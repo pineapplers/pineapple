@@ -1,12 +1,12 @@
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
-from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, JsonResponse
 from django.views.decorators.http import require_POST
+from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
 
 from .forms import FoodForm
@@ -15,22 +15,18 @@ from .models import Food
 from actions.utils import create_action
 from comments.models import Comment
 from comments.forms import FoodCommentForm
+from constants import *
 from utils import make_paginator
 from utils.decorators import ajax_required, tab
 from updown.views import AddRatingFromModel
 from updown.models import Vote
 
-import redis
-
-
-r = redis.StrictRedis(host=settings.REDIS_HOST,
-                      port=settings.REDIS_PORT,
-                      db=settings.REDIS_DB)
+from ext import redis_db as rds
 
 categorys = Food.get_food_categorys()
 
-
 @login_required
+@cache_page(60)
 def food_create(request):
     if request.method == 'POST':
         form = FoodForm(request.POST, request.FILES)
@@ -39,7 +35,7 @@ def food_create(request):
             food.user = request.user
             food.save()
             form.save_m2m()
-            create_action(request.user, '分享了', food)
+            create_action(request.user, SHARE, food)
             return HttpResponseRedirect(reverse('food:detail', kwargs={'food_id': food.id}))
     else:
         form = FoodForm()
@@ -70,19 +66,19 @@ def food_detail(request, food_id):
                 comment.user = user
                 comment.food = food
                 comment.save()
-                messages.success(request, '评论成功')
+                messages.success(request, COMMENT_SUCCESS)
                 return HttpResponseRedirect(reverse('food:detail', kwargs={'food_id': food_id}))
             else:
-                messages.error(request, '评论失败')
+                messages.error(request, COMMENT_FAIL)
         else:
-            messages.error(request, '请登录后评论')
+            messages.error(request, COMMENT_AFTER_LOGIN)
     else:
         comment_form = FoodCommentForm()
     food_tags_ids = food.tags.values_list('id')
     similar_foods = Food.objects.filter(tags__in=food_tags_ids).exclude(id=food.id)
     similar_foods = similar_foods.annotate(same_tags=Count('tags')).order_by('-same_tags')[:4]
-    total_views = r.incr('food:{}:views'.format(food.id))
-    r.zincrby('food_ranking', food.id, 1)
+    total_views = rds.incr(REDIS_FOOD_VIEWS_KEY.format(food.id))
+    rds.zincrby(REDIS_FOOD_RANKING_KEY, food.id, 1)
     score = 0
     context = {
         'food': food,
@@ -118,14 +114,14 @@ def food_tag(request, tag):
 
 @tab('explore', sub_tab='new')
 def explore(request):
-    foods = make_paginator(request, Food.objects.all())
+    foods = make_paginator(request, Food.objects.all()[:50])
     return render(request, 'food/explore.tpl', {
                    'foods': foods
                 })
 
 @tab('explore', sub_tab='hot')
 def hot(request):
-    food_ranking = r.zrange('food_ranking', 0, -1, desc=True)[:10]
+    food_ranking = rds.zrange(REDIS_FOOD_RANKING_KEY, 0, -1, desc=True)[:10]
     food_ranking_ids = [int(id) for id in food_ranking]
 
     most_viewed = list(Food.objects.filter(id__in=food_ranking_ids))
@@ -147,7 +143,7 @@ def food_rate(request):
         score = 1
         food = Food.objects.get(pk=food_id)
         if food:
-            create_action(request.user, '喜欢了', food)
+            create_action(request.user, LIKE, food)
     resp = view(request,
         app_label='food',
         model='Food',
@@ -166,7 +162,7 @@ def food_wta(request):
     if food_id and action:
         food = Food.objects.get(pk=food_id)
         if action == 'wta':
-            create_action(request.user, '想吃', food)
+            create_action(request.user, WTA, food)
             food.users_wta.add(request.user)
         else:
             food.users_wta.remove(request.user)
@@ -182,9 +178,9 @@ def food_ate(request):
     if food_id and action:
         food = Food.objects.get(pk=food_id)
         if action == 'ate':
-            create_action(request.user, '吃过', food)
+            create_action(request.user, ATE, food)
             food.users_ate.add(request.user)
         else:
             food.users_ate.remove(request.user)
-        return JsonResponse({'status': True})
-    return JsonResponse({'status': False}, status=400)
+        return JsonResponse(JSON_SUCCESS)
+    return JsonResponse(JSON_FAIL(STATUS_INVALID_ARGUMENTS), status=400)

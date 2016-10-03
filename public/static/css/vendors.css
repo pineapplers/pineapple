@@ -37,7 +37,7 @@ ul {
   top: 0;
   left: 0;
   z-index: 999;
-  background-color: rgb(64,163,194);
+  background-color: #40a3c2;
   background-repeat: no-repeat;
   background-size: 100% 65px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
@@ -88,14 +88,13 @@ ul {
   float: right;
 }
 .navbar .nav #search {
+  float: right;
   width: 300px;
   height: 30px;
   padding: 0 10px;
   border: 1px solid white;
   font-family: inherit;
   outline: none;
-  color: white;
-  background-color: rgba(0, 0, 0, 0);
   margin: 17px 15px 0px 15px;
 }
 .navbar .nav button {
@@ -113,23 +112,23 @@ ul {
   background-color: rgba(0, 0, 0, 0);
 }
 .navbar .nav #login-btn {
-  background-color: #4c88ed;
+  background-color: #32839d;
 }
 .navbar .nav #login-btn:hover {
-  background-color: #3479eb;
+  background-color: #2c738a;
 }
 .navbar .nav #login-btn:active {
-  background-color: #1d6ae9;
+  background-color: #266376;
 }
 .navbar .nav #register-btn {
   border: 1px solid white;
 }
 .navbar .nav #register-btn:hover {
-  color: #2a2a2a;
+  color: #40a3c2;
   background-color: white;
 }
 .navbar .nav #register-btn:active {
-  color: #2a2a2a;
+  color: #40a3c2;
   border: 1px solid #f2f2f2;
   background-color: #f2f2f2;
 }
@@ -143,18 +142,4 @@ ul {
 }
 .clearfix:after {
   clear: both;
-}
-#search::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #fff;
-}
-#search:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #fff;
-   opacity:  1;
-}
-#search::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #fff;
-   opacity:  1;
-}
-#search:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #fff;
 }

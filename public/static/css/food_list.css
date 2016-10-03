@@ -38,7 +38,7 @@ body {
 }
 .list-container .list-tab-container .tab-ul .current-item {
   color: #5d5d5d;
-  border-bottom: 2px solid rgb(64,163,194);
+  border-bottom: 2px solid #40a3c2;
 }
 .list-container .list-main-container .item {
   float: left;
@@ -75,13 +75,13 @@ body {
   padding: 12px 0;
   text-align: center;
   font-weight: normal;
-  color: rgb(64,163,194);
+  color: #40a3c2;
 }
 .list-container .list-main-container .item .item-tags {
   height: 22px;
   overflow: hidden;
   padding: 0px 15px;
-  color: rgb(64,163,194);
+  color: #40a3c2;
   font-size: 1.6rem;
 }
 .list-container .list-main-container .item .item-tags .tag {

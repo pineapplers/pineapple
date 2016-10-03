@@ -12,6 +12,7 @@ from .tasks import confirm_user
 
 from actions.models import Action
 from actions.utils import create_action
+from constants import *
 from location.models import Province, City
 from utils import make_paginator
 from utils.decorators import ajax_required, tab
@@ -171,9 +172,9 @@ def user_settings(request):
                             files=request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, '设置更新成功')
+            messages.success(request, SETTING_UPDATE_SUCCESS)
         else:
-            messages.error(request, '设置更新失败')
+            messages.error(request, SETTING_UPDATE_FAIL)
     else:
         form = SettingForm(instance=settings)
     return render(request, 'user/settings.tpl', {
@@ -193,9 +194,9 @@ def user_profile(request):
         if form.is_valid():
             print(form.cleaned_data)
             form.save()
-            messages.success(request, '资料更新成功')
+            messages.success(request, PROFILE_UPDATE_SUCCESS)
         else:
-            messages.error(request, '资料更新失败')
+            messages.error(request, PROFILE_UPDATE_FAIL)
     else:
         form = ProfileForm(instance=profile)
     return render(request, 'user/profile.tpl', {
@@ -236,10 +237,10 @@ def user_follow(request):
         user = User.objects.get(pk=user_id)
         if action == 'follow':
             request.user.following.add(user)
-            create_action(request.user, '关注了', user)
+            create_action(request.user, FOLLOW, user)
         elif action == 'unfollow':
             request.user.following.remove(user)
         else:
-            return JsonResponse({'status': False})
+            return JsonResponse(JSON_FAIL(STATUS_INVALID_ARGUMENTS))
         return JsonResponse({'status': True})
-    return JsonResponse({'status': False}, status=400)
+    return JsonResponse(JSON_FAIL(STATUS_INVALID_ARGUMENTS), status=400)

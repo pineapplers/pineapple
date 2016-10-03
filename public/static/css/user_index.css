@@ -6,7 +6,7 @@
   min-height: 700px;
 }
 .user-container a:hover {
-  color: rgb(64,163,194);
+  color: #40a3c2;
 }
 .user-container .user-portrait {
   position: relative;
@@ -31,13 +31,12 @@
   outline: none;
   cursor: pointer;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
-  background-color: rgb(64,163,194);
 }
 .user-container .user-portrait .unfollow {
-  background-color: rgb(64,163,194);
+  background-color: #40a3c2;
 }
 .user-container .user-portrait .following {
-  background-color: #888888;
+  background-color: #40a3c2;
 }
 .user-container .user-info {
   float: left;
@@ -51,7 +50,7 @@
   font-weight: bold;
 }
 .user-container .user-info .user-name .fa-mars {
-  color: rgb(64,163,194);
+  color: #40a3c2;
 }
 .user-container .user-info .user-name .fa-venus {
   color: #f266ed;
@@ -66,12 +65,6 @@
 .user-container .user-info .user-desc {
   color: #828caa;
   font-weight: normal;
-}
-@media screen and (max-width: 1200px) {
-  .user-container .user-follower,
-  .user-container .user-following {
-    display: none;
-  }
 }
 .user-container .user-follower,
 .user-container .user-following {
@@ -96,7 +89,7 @@
 .user-container .user-tabs {
   width: 100%;
   margin-top: 30px;
-  border-bottom: 1px solid rgb(231,231,231);
+  border-bottom: 1px solid #e7e7e7;
 }
 .user-container .user-tabs .tab-item {
   float: left;
@@ -109,13 +102,13 @@
 }
 .user-container .user-tabs .tab-item:hover {
   background-color: #f5f8f9;
-  border-top: 2px solid rgb(64,163,194);
-  color: rgb(64,163,194);
+  border-top: 2px solid #40a3c2;
+  color: #40a3c2;
 }
 .user-container .user-tabs .current-tab {
   background-color: #f5f8f9;
-  border-top: 2px solid rgb(64,163,194);
-  color: rgb(64,163,194);
+  border-top: 2px solid #40a3c2;
+  color: #40a3c2;
 }
 .tab-container .timeline-container {
   margin: 50px 150px 0 150px;

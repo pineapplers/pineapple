@@ -6,6 +6,7 @@ from django.views.decorators.http import require_POST
 from .models import FoodTopic
 
 from actions.utils import create_action
+from constants import *
 from utils import make_paginator
 from utils.decorators import ajax_required
 
@@ -40,7 +41,7 @@ def topic_collect(request):
         if action == 'collect':
             topic.users_collect.add(request.user)
             topic.total_collects += 1
-            create_action(request.user, '收藏了', topic)
+            create_action(request.user, COLLECT, topic)
         elif action == 'uncollect':
             topic.users_collect.remove(request.user)
             topic.total_collects -= 1

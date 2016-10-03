@@ -13,7 +13,7 @@ body {
 }
 body .over-navbar {
   background-image: none;
-  background-color: rgb(64,163,194);
+  background-color: #40a3c2;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 .container .container-top {
@@ -140,7 +140,7 @@ body .over-navbar {
   padding: 15px 17px 20px;
 }
 .topic-container .topic-container-main .topic-item .topic-item-info .fa {
-  color: rgb(64,163,194);
+  color: #40a3c2;
   font-size: 1.7rem;
   margin-right: 10px;
   vertical-align: middle;
