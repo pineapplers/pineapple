@@ -35,5 +35,6 @@ urlpatterns = [
     url(r'^topic/', include('topic.urls', namespace='topic')),
     url(r'^food/', include('food.urls', namespace='food')),
     url(r'^message/', include('message.urls', namespace='message')),
+    url(r'^forum/', include('forum.urls', namespace='forum')),
 ] + static('public/static', document_root=settings.STATIC_ROOT) + static('media/', document_root=settings.MEDIA_ROOT)
 

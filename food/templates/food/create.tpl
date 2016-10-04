@@ -22,7 +22,7 @@
             <label class="form-label">封面图片</label>
             {{ form.cover_image.errors }}
             <div class="preview-main clearfix">
-                <div class="preview-img" id="preview-img" style="background-image: url('/public/static/images/topic1.jpg')"></div>
+                <div class="preview-img" id="preview-img" style="background-image: url('/public/static/images/topic3.jpg')"></div>
                 <label for="upload" class="upload">
                     + 上传图片
                 </label>

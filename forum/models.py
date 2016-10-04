@@ -8,6 +8,9 @@ class Board(models.Model):
     name = models.CharField(max_length=32, verbose_name='名称')
     created = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
+    def __str__(self):
+        return self.name
+
 
 class ForumPost(models.Model):
     title = models.CharField(max_length=64, verbose_name='帖子标题')
@@ -18,3 +21,6 @@ class ForumPost(models.Model):
     updated = models.DateTimeField(auto_now=True, verbose_name='更新时间')
     users_like = models.ManyToManyField(User, related_name='forumposts_liked', blank=True, verbose_name='推荐的用户')
     total_likes = models.PositiveIntegerField(default=0, verbose_name='推荐数')
+
+    def __str__(self):
+        return self.title

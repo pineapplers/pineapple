@@ -6,7 +6,7 @@
 <link href="{% static 'css/home_index.css' %}" rel="stylesheet">
 {% endblock head %}
 {% block content %}
-<div class="container">
+<div class="container" id="container">
     <div class="container-top">
         <div class="desc">
             <div class="desc-main">
