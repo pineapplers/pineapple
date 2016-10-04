@@ -143,3 +143,161 @@ ul {
 .clearfix:after {
   clear: both;
 }
+.chat-container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  box-shadow: -3px -2px 8px -1px rgba(0, 0, 0, 0.2);
+}
+.chat-container .chat-bar {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #cbcbcb;
+}
+.chat-container .chat-main {
+  height: 400px;
+}
+.chat-container .chat-left {
+  width: 160px;
+  height: 100%;
+  float: left;
+  border-right: 1px solid #cbcbcb;
+}
+.chat-container .chat-left .chat-users {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  list-style-type: none;
+}
+.chat-container .chat-left .chat-users .current {
+  background-color: #e6e6e6;
+}
+.chat-container .chat-left .chat-users .users-list-item {
+  width: 100%;
+  padding: 5px;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.chat-container .chat-left .chat-users .users-list-item .name {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  line-height: 30px;
+  padding-left: 5px;
+  float: left;
+}
+.chat-container .chat-left .chat-users .users-list-item .portrait {
+  float: left;
+  vertical-align: middle;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url('http://tva3.sinaimg.cn/crop.81.0.1934.1934.50/6d2c1e95jw1el4t4hx644j21kw1hze75.jpg');
+}
+.chat-container .chat-left .chat-users .users-list-item:hover {
+  background-color: #e6e6e6;
+}
+.chat-container .chat-right {
+  position: relative;
+  width: 500px;
+  height: 100%;
+  float: left;
+  overflow: auto;
+}
+.chat-container .chat-right .chat-record {
+  width: 100%;
+  height: 100%;
+  padding: 20px 15px;
+  padding-bottom: 45px;
+  overflow: auto;
+  box-sizing: border-box;
+}
+.chat-container .chat-right .chat-record .receiver {
+  float: right;
+}
+.chat-container .chat-right .chat-record .sender {
+  float: left;
+}
+.chat-container .chat-right .chat-record .sender .record {
+  background-color: #8ec5da;
+  border: 1px solid #7bbbd4 !important;
+}
+.chat-container .chat-right .chat-record .record-item .portrait {
+  vertical-align: middle;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url('http://tva3.sinaimg.cn/crop.81.0.1934.1934.50/6d2c1e95jw1el4t4hx644j21kw1hze75.jpg');
+}
+.chat-container .chat-right .chat-record .record-item .record {
+  display: inline-block;
+  border: 1px solid #cbcbcb;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  margin-top: 15px;
+}
+.chat-container .chat-right .chat-sender {
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid #cbcbcb;
+}
+.chat-container .chat-right .chat-sender input[name="sender"] {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding-left: 15px;
+  padding-right: 15px;
+  outline: none;
+}
+.navbar .nav .user-name-btn {
+  width: 90px;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+.navbar .user-name {
+  position: relative;
+  display: inline-block;
+  float: right;
+}
+.navbar .user-name:hover {
+  border-radius: 0;
+  background-color: rgba(158, 158, 158, 0.3);
+}
+.navbar .user-name:hover .user-dropdown {
+  display: block;
+}
+.navbar .user-name .user-dropdown {
+  display: none;
+  position: absolute;
+  top: 45px;
+  left: 0;
+}
+.navbar .user-name .user-dropdown a {
+  display: inline-block;
+}
+.navbar .user-name .user-dropdown li {
+  line-height: 45px;
+}
+.navbar .user-name .user-dropdown li:hover {
+  background-color: rgba(158, 158, 158, 0.3);
+}

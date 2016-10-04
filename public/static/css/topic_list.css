@@ -11,8 +11,38 @@ body {
   -webkit-transition: background-color ease-in-out 0.2s;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0);
 }
-.navbar .user-name-btn {
-  background-color: #deb646;
+.navbar .nav .user-name-btn {
+  width: 90px;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+.navbar .user-name {
+  position: relative;
+  display: inline-block;
+  float: right;
+}
+.navbar .user-name:hover {
+  border-radius: 0;
+  background-color: rgba(158, 158, 158, 0.3);
+}
+.navbar .user-name:hover .user-dropdown {
+  display: block;
+}
+.navbar .user-name .user-dropdown {
+  display: none;
+  position: absolute;
+  top: 45px;
+  left: 0;
+}
+.navbar .user-name .user-dropdown a {
+  display: inline-block;
+}
+.navbar .user-name .user-dropdown li {
+  line-height: 45px;
+}
+.navbar .user-name .user-dropdown li:hover {
+  background-color: rgba(158, 158, 158, 0.3);
 }
 body .over-navbar {
   background-image: none;
