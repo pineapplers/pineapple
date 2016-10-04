@@ -9,6 +9,7 @@ PROFILE_UPDATE_FAIL = '资料更新失败'
 MAX_MESSAGE_LENGTH_REACH = '消息长度最大为200'
 
 SHARE = '分享了'
+POST = '发表了'
 LIKE = '喜欢了'
 WTA = '想吃'
 ATE = '吃过'

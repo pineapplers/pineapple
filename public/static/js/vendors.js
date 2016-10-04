@@ -88,7 +88,11 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
+<<<<<<< HEAD
 /******/ 	var hotCurrentHash = "c74a090999224bfa1d0c"; // eslint-disable-line no-unused-vars
+=======
+/******/ 	var hotCurrentHash = "9fb5096139152ddda6b8"; // eslint-disable-line no-unused-vars
+>>>>>>> 1330f735ee96e1fabc47672c017a6ba94f972853
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -642,10 +646,14 @@
 
 	__webpack_require__(295);
 
+	/* eslint max-len: 0 */
+
 	if (global._babelPolyfill) {
 	  throw new Error("only one instance of babel-polyfill is allowed");
 	}
 	global._babelPolyfill = true;
+
+	// Should be removed in the next major release:
 
 	var DEFINE_PROPERTY = "defineProperty";
 	function define(O, key, value) {
@@ -8772,7 +8780,7 @@
 
 	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	/**
 	 * 用于实现基本的 ajax 功能
@@ -8807,7 +8815,7 @@
 	module.exports = function () {
 	    var _marked = [iteratorOfData].map(regeneratorRuntime.mark);
 
-	    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	    var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
 	    var _ref$url = _ref.url;
 	    var url = _ref$url === undefined ? false : _ref$url;
