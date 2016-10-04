@@ -20,6 +20,7 @@ REDIS_FOOD_VIEWS_KEY = 'food:{}:views'
 REDIS_FOOD_RANKING_KEY = 'food_ranking'
 REDIS_MESSAGES_KEY = 'message:{}:store'
 REDIS_MESSAGES_UNREAD_KEY = 'message:{}:unread'
+REDIS_CONTACTS_KEY = 'contacts:{}:store'
 
 STATUS_INVALID_ARGUMENTS = '无效参数'
 
@@ -28,4 +29,6 @@ JSON_SUCCESS_WITH_DATA = lambda data: JSON_SUCCESS.update(data)
 JSON_FAIL = lambda reason='':{'status':False, 'reason': 'reason'}
 
 MAX_MESSAGE_LENGTH = 200
-MAX_MESSAGES_COUNT = 1000
+MAX_MESSAGES_COUNT = 100
+MESSAGES_TIMEOUT = 3600 * 24 * 7 # 私信缓存一周
+MAX_CONTACT_COUNT = 20
