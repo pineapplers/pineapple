@@ -51,33 +51,33 @@ $(function() {
     }
 
     function handleNewMessages(data, push) {
-        if (data.length == 0)
-            return
-        var currentUser = getCurrentUser();
-        data.forEach(function(msg, index){
-            if (msg.from == currentUser) {
-                if (!messages.hasOwnProperty(msg.to)) {
-                    messages[msg.to] = [];
-                }
-                if (push == true) {
-                    messages[msg.to].push(msg);
+        if (data.length > 0) {
+            var currentUser = getCurrentUser();
+            data.forEach(function(msg, index){
+                if (msg.from == currentUser) {
+                    if (!messages.hasOwnProperty(msg.to)) {
+                        messages[msg.to] = [];
+                    }
+                    if (push == true) {
+                        messages[msg.to].push(msg);
+                    } else {
+                        messages[msg.to].unshift(msg);
+                    }
                 } else {
-                    messages[msg.to].unshift(msg);
+                    if (!messages.hasOwnProperty(msg.from)) {
+                        messages[msg.from] = [];
+                    }
+                    if (push == true) {
+                        messages[msg.from].push(msg);
+                    } else {
+                        messages[msg.from].unshift(msg);
+                    }
                 }
-            } else {
-                if (!messages.hasOwnProperty(msg.from)) {
-                    messages[msg.from] = [];
+                if (msg.time > lastTime) {
+                    lastTime = msg.time;
                 }
-                if (push == true) {
-                    messages[msg.from].push(msg);
-                } else {
-                    messages[msg.from].unshift(msg);
-                }
-            }
-            if (msg.time > lastTime) {
-                lastTime = msg.time;
-            }
-        });
+            });
+        }
         
         loadContacts(function(){
             if (currentContact > 0) {
@@ -208,8 +208,8 @@ $(function() {
                 if (resp.status == true) {
                     if (newsession != undefined) {
                         messages[newsession] = [];
+                        currentContact = newsession;
                     }
-                    currentContact = newsession;
                     handleNewMessages(resp.data);
                 }
             }).error(function(error) {
