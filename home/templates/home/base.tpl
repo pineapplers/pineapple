@@ -13,9 +13,11 @@
         {% include 'home/navbar.tpl' %}
         {% block content %}
         {% endblock content %}
+        {% include 'user/chat.tpl' %}
     <script src="{% static 'js/vendors.js' %}"></script>
-    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="{% static 'js/csrf.js' %}"></script>
+    <script src="{% static 'js/chat.js' %}"></script>
     {% block js %}
     {% endblock js %}
 </body>

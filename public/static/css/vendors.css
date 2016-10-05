@@ -133,6 +133,7 @@ ul {
   background-color: #f2f2f2;
 }
 .clearfix {
+  clear: both;
   *zoom: 1;
 }
 .clearfix:before,
@@ -203,7 +204,7 @@ ul {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url('http://tva3.sinaimg.cn/crop.81.0.1934.1934.50/6d2c1e95jw1el4t4hx644j21kw1hze75.jpg');
+  background-image: url('/public/static/images/anonymous.jpg');
 }
 .chat-container .chat-left .chat-users .users-list-item:hover {
   background-color: #e6e6e6;

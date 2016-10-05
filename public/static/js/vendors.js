@@ -88,11 +88,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-<<<<<<< HEAD
-/******/ 	var hotCurrentHash = "c74a090999224bfa1d0c"; // eslint-disable-line no-unused-vars
-=======
-/******/ 	var hotCurrentHash = "9fb5096139152ddda6b8"; // eslint-disable-line no-unused-vars
->>>>>>> 1330f735ee96e1fabc47672c017a6ba94f972853
+/******/ 	var hotCurrentHash = "feaf3895d4f2a1e5b183"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -8776,248 +8772,144 @@
 /* 302 */
 /***/ function(module, exports) {
 
+	// /**
+	//  * 用于实现基本的 ajax 功能
+	//  *
+	//  * 使用 Promise 实现 ajax 的基本功能，POST 提交方式为表单提交，
+	//  * 使用 Promise.then(func) 和 Promise.catch(func) 来设置回调函数
+	//  *
+	//  * @param  {string}  url     API 地址
+	//  * @param  {string}  method  访问 API 方式（GET || POST）
+	//  * @param  {object}  data    传输数据
+	//  * @returns  Promise
+	//  * @returns 成功时 resolve 返回获取到的数据
+	//  * @returns 失败时 reject 返回一个对象，包含 xhr 和 status
+	//  *
+	//  * @date     2016-06-01
+	//  * @author   Rlilyyy<bingohlee@gmail.com>
+	//  */
+
+	// (function() {
+	//     window.$ = (id) => {
+	//         let dom = document.getElementById(id);
+	//         dom.click = function(func) {
+	//             dom.addEventListener("click", func, false);
+	//         }
+	//         return dom;
+	//     };
+
+	//     window.$getDataOf = function(elem, name) {
+	//         return elem.dataset[name] || "NULL";
+	//     }
+	// })();
+	// module.exports = function({url = false, method = "GET", data = null} = {}) {
+
+	//     // xhr 获取数据成功
+	//     let isReady = (xhr) => {
+	//         return xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300;
+	//     };
+
+	//     // xhr 获取数据失败
+	//     let isFailed = (xhr) => {
+	//         return xhr.readyState === 4 && xhr.status !== 0 && (xhr.status < 200 || xhr.status >= 300);
+	//     };
+
+	//     // 判断 "object" 类型
+	//     let isObject = (obj) => {
+	//         return typeof obj === "object" && obj !== null;
+	//     };
+
+	//     // 判断 xhr 获取方法为 "GET"
+	//     let isGET = (method) => {
+	//         return method === "GET" || method === "get" || method === "Get";
+	//     };
+
+	//     // 判断 xhr 获取方法为 "POST"
+	//     let isPOST = (method) => {
+	//         return method === "POST" || method === "post" || method === "Post";
+	//     };
+
+	//     // 以 "GET" 形式开始获取数据
+	//     let startWithGet = (xhr) => {
+	//         xhr.open("GET", url + "?" + arrangeData(data), true);
+	//         xhr.send(null);
+	//     };
+
+	//     // 以 "POST" 形式开始获取数据
+	//     let startWithPost = (xhr) => {
+	//         xhr.open("POST", url, true);
+	//         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	//         xhr.send(arrangeData(data));
+	//     }
+
+	//     // 将 object 类型的对象变为可迭代的对象
+	//     function* iteratorOfData(obj) {
+	//         for (let key of Object.keys(obj)) {
+	//             yield [key, obj[key]];
+	//         }
+	//     }
+
+	//     // 格式化数据
+	//     let arrangeData = (data) => {
+	//         if(data !== null && isObject(data)) {
+	//             let result = "";
+	//             let flag = "";
+	//             for(let [key, value] of iteratorOfData(data)) {
+	//                 result += flag;
+	//                 flag = "&";
+	//                 result += (key + "=" + value);
+	//             }
+	//             return result;
+	//         }
+
+	//         return "";
+	//     };
+
+
+	//     let ajax = new Promise((resolve, reject) => {
+	//         if(!url) {
+	//             reject(new Error("Please input a URL"));
+	//             return null;
+	//         }
+
+	//         let xhr = null;
+
+	//         if(window.XMLHttpRequest) {
+	//             xhr = new XMLHttpRequest();
+	//         }else if(window.ActiveXObject) {
+	//             xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	//         }else {
+	//             throw new Error("Your browser do not support XMLHttpRequest or ActiveXObject, please update your browser!");
+	//         }
+
+	//         let readyStateChangeEvent = function() {
+	//             if(isReady(this)) {
+	//                 resolve(JSON.parse(this.responseText));
+	//             }else if(isFailed(this)) {
+	//                 reject({
+	//                     xhr: xhr,
+	//                     status: xhr.status
+	//                 });
+	//             }
+	//         };
+
+	//         if(xhr !== null) {
+	//             xhr.onreadystatechange = readyStateChangeEvent;
+
+	//             if(isGET(method)) {
+	//                 startWithGet(xhr);
+	//             }else if(isPOST(method)) {
+	//                 startWithPost(xhr);
+	//             }else {
+	//                 xhr.open(method, url, true);
+	//                 xhr.send(arrangeData(data));
+	//             }
+	//         }
+	//     });
+
+	//     return ajax;
+	// };
 	"use strict";
-
-	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-	/**
-	 * 用于实现基本的 ajax 功能
-	 *
-	 * 使用 Promise 实现 ajax 的基本功能，POST 提交方式为表单提交，
-	 * 使用 Promise.then(func) 和 Promise.catch(func) 来设置回调函数
-	 *
-	 * @param  {string}  url     API 地址
-	 * @param  {string}  method  访问 API 方式（GET || POST）
-	 * @param  {object}  data    传输数据
-	 * @returns  Promise
-	 * @returns 成功时 resolve 返回获取到的数据
-	 * @returns 失败时 reject 返回一个对象，包含 xhr 和 status
-	 *
-	 * @date     2016-06-01
-	 * @author   Rlilyyy<bingohlee@gmail.com>
-	 */
-
-	(function () {
-	    window.$ = function (id) {
-	        var dom = document.getElementById(id);
-	        dom.click = function (func) {
-	            dom.addEventListener("click", func, false);
-	        };
-	        return dom;
-	    };
-
-	    window.$getDataOf = function (elem, name) {
-	        return elem.dataset[name] || "NULL";
-	    };
-	})();
-	module.exports = function () {
-	    var _marked = [iteratorOfData].map(regeneratorRuntime.mark);
-
-	    var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-	    var _ref$url = _ref.url;
-	    var url = _ref$url === undefined ? false : _ref$url;
-	    var _ref$method = _ref.method;
-	    var method = _ref$method === undefined ? "GET" : _ref$method;
-	    var _ref$data = _ref.data;
-	    var data = _ref$data === undefined ? null : _ref$data;
-
-
-	    // xhr 获取数据成功
-	    var isReady = function isReady(xhr) {
-	        return xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300;
-	    };
-
-	    // xhr 获取数据失败
-	    var isFailed = function isFailed(xhr) {
-	        return xhr.readyState === 4 && xhr.status !== 0 && (xhr.status < 200 || xhr.status >= 300);
-	    };
-
-	    // 判断 "object" 类型
-	    var isObject = function isObject(obj) {
-	        return (typeof obj === "undefined" ? "undefined" : _typeof(obj)) === "object" && obj !== null;
-	    };
-
-	    // 判断 xhr 获取方法为 "GET"
-	    var isGET = function isGET(method) {
-	        return method === "GET" || method === "get" || method === "Get";
-	    };
-
-	    // 判断 xhr 获取方法为 "POST"
-	    var isPOST = function isPOST(method) {
-	        return method === "POST" || method === "post" || method === "Post";
-	    };
-
-	    // 以 "GET" 形式开始获取数据
-	    var startWithGet = function startWithGet(xhr) {
-	        xhr.open("GET", url + "?" + arrangeData(data), true);
-	        xhr.send(null);
-	    };
-
-	    // 以 "POST" 形式开始获取数据
-	    var startWithPost = function startWithPost(xhr) {
-	        xhr.open("POST", url, true);
-	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	        xhr.send(arrangeData(data));
-	    };
-
-	    // 将 object 类型的对象变为可迭代的对象
-	    function iteratorOfData(obj) {
-	        var _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, key;
-
-	        return regeneratorRuntime.wrap(function iteratorOfData$(_context) {
-	            while (1) {
-	                switch (_context.prev = _context.next) {
-	                    case 0:
-	                        _iteratorNormalCompletion = true;
-	                        _didIteratorError = false;
-	                        _iteratorError = undefined;
-	                        _context.prev = 3;
-	                        _iterator = Object.keys(obj)[Symbol.iterator]();
-
-	                    case 5:
-	                        if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-	                            _context.next = 12;
-	                            break;
-	                        }
-
-	                        key = _step.value;
-	                        _context.next = 9;
-	                        return [key, obj[key]];
-
-	                    case 9:
-	                        _iteratorNormalCompletion = true;
-	                        _context.next = 5;
-	                        break;
-
-	                    case 12:
-	                        _context.next = 18;
-	                        break;
-
-	                    case 14:
-	                        _context.prev = 14;
-	                        _context.t0 = _context["catch"](3);
-	                        _didIteratorError = true;
-	                        _iteratorError = _context.t0;
-
-	                    case 18:
-	                        _context.prev = 18;
-	                        _context.prev = 19;
-
-	                        if (!_iteratorNormalCompletion && _iterator.return) {
-	                            _iterator.return();
-	                        }
-
-	                    case 21:
-	                        _context.prev = 21;
-
-	                        if (!_didIteratorError) {
-	                            _context.next = 24;
-	                            break;
-	                        }
-
-	                        throw _iteratorError;
-
-	                    case 24:
-	                        return _context.finish(21);
-
-	                    case 25:
-	                        return _context.finish(18);
-
-	                    case 26:
-	                    case "end":
-	                        return _context.stop();
-	                }
-	            }
-	        }, _marked[0], this, [[3, 14, 18, 26], [19,, 21, 25]]);
-	    }
-
-	    // 格式化数据
-	    var arrangeData = function arrangeData(data) {
-	        if (data !== null && isObject(data)) {
-	            var result = "";
-	            var flag = "";
-	            var _iteratorNormalCompletion2 = true;
-	            var _didIteratorError2 = false;
-	            var _iteratorError2 = undefined;
-
-	            try {
-	                for (var _iterator2 = iteratorOfData(data)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	                    var _step2$value = _slicedToArray(_step2.value, 2);
-
-	                    var key = _step2$value[0];
-	                    var value = _step2$value[1];
-
-	                    result += flag;
-	                    flag = "&";
-	                    result += key + "=" + value;
-	                }
-	            } catch (err) {
-	                _didIteratorError2 = true;
-	                _iteratorError2 = err;
-	            } finally {
-	                try {
-	                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-	                        _iterator2.return();
-	                    }
-	                } finally {
-	                    if (_didIteratorError2) {
-	                        throw _iteratorError2;
-	                    }
-	                }
-	            }
-
-	            return result;
-	        }
-
-	        return "";
-	    };
-
-	    var ajax = new Promise(function (resolve, reject) {
-	        if (!url) {
-	            reject(new Error("Please input a URL"));
-	            return null;
-	        }
-
-	        var xhr = null;
-
-	        if (window.XMLHttpRequest) {
-	            xhr = new XMLHttpRequest();
-	        } else if (window.ActiveXObject) {
-	            xhr = new ActiveXObject("Microsoft.XMLHTTP");
-	        } else {
-	            throw new Error("Your browser do not support XMLHttpRequest or ActiveXObject, please update your browser!");
-	        }
-
-	        var readyStateChangeEvent = function readyStateChangeEvent() {
-	            if (isReady(this)) {
-	                resolve(JSON.parse(this.responseText));
-	            } else if (isFailed(this)) {
-	                reject({
-	                    xhr: xhr,
-	                    status: xhr.status
-	                });
-	            }
-	        };
-
-	        if (xhr !== null) {
-	            xhr.onreadystatechange = readyStateChangeEvent;
-
-	            if (isGET(method)) {
-	                startWithGet(xhr);
-	            } else if (isPOST(method)) {
-	                startWithPost(xhr);
-	            } else {
-	                xhr.open(method, url, true);
-	                xhr.send(arrangeData(data));
-	            }
-	        }
-	    });
-
-	    return ajax;
-	};
 
 /***/ }
 /******/ ]);

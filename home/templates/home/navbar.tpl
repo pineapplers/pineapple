@@ -29,7 +29,7 @@
                 <button type="button" name="user-name-btn" class="user-name-btn">{{ request.user.username }}</button>
                 <ul class="user-dropdown">
                     <a href="{% url 'user:home' user_id=request.user.id %}"><li>资料</li></a>
-                    <a href="#"><li>私信</li></a>
+                    <a href="#" id="message"><li>私信</li></a>
                 </ul>
             </div>
         {% else %}

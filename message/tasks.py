@@ -11,14 +11,22 @@ def send_msg(sender, receiver, text):
         'msg': text,
         'time': time()
     })
-    key_exists = True
+    receiver_key_exists = True
+    sender_key_exists = True
     receiver_key = REDIS_MESSAGES_KEY.format(receiver)
+    sender_key = REDIS_MESSAGES_KEY.format(sender)
     if not rds.exists(receiver_key):
         # 新key设置超时
-        key_exists = False
+        receiver_key_exists = False
+    if not rds.exists(sender_key):
+        sender_key_exists = False
     rds.incr(REDIS_MESSAGES_UNREAD_KEY.format(receiver), 1)
     rds.lpush(receiver_key, msg)
     rds.ltrim(receiver_key, 0, MAX_MESSAGES_COUNT)
-    if not key_exists:
+    rds.lpush(sender_key, msg)
+    rds.ltrim(sender_key, 0, MAX_MESSAGES_COUNT)
+    if not receiver_key_exists:
         rds.expire(receiver_key, MESSAGES_TIMEOUT)
+    if not sender_key_exists:
+        rds.expire(sender_key, MESSAGES_TIMEOUT)
     return True

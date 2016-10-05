@@ -107,10 +107,12 @@
             {% block content %}
             {% endblock content %}
         </div>
+    {% include 'user/chat.tpl' %}
     <script src="{% static 'js/vendors.js' %}"></script>
     <script src="{% static 'js/user_base.js' %}"></script>
     <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
     <script src="{% static 'js/csrf.js' %}"></script>
+    <script src="{% static 'js/chat.js' %}"></script>
     <script type="text/javascript">
         $(function(){
             $("#follow-btn").click(function(event) {
