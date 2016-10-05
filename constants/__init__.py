@@ -8,6 +8,7 @@ PROFILE_UPDATE_SUCCESS = '资料更新成功'
 PROFILE_UPDATE_FAIL = '资料更新失败'
 MAX_MESSAGE_LENGTH_REACH = '消息长度最大为200'
 MAX_CONTACT_COUNT_REACH = '超出最大联系人长度'
+INVALID_TIMESTAMP = '非法时间戳'
 
 SHARE = '分享了'
 POST = '发表了'

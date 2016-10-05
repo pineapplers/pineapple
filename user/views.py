@@ -20,6 +20,10 @@ from utils.decorators import ajax_required, tab
 
 provinces = Province.objects.values_list('name', flat=True)
 
+@login_required
+def get_user_id(request):
+    return JsonResponse(JSON_SUCCESS_WITH_DATA({'id': request.user.id}))
+
 # 用户主页
 @tab('home')
 def home(request, user_id):

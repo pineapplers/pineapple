@@ -4,10 +4,13 @@ from constants import *
 from ext import redis_db as rds
 from time import time
 
+import json
+
 @task
 def send_msg(sender, receiver, text):
     msg = json.dumps({
         'from': sender,
+        'to': receiver,
         'msg': text,
         'time': time()
     })

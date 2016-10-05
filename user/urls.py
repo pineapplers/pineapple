@@ -2,11 +2,12 @@ from django.conf.urls import url
 from django.contrib.auth.views import (password_change, password_change_done,
     password_reset, password_reset_done, password_reset_complete, password_reset_confirm)
 
-from .views import (home, user_login, user_logout, user_register, user_follow, user_followers, user_following, user_posts,
+from .views import (home, get_user_id, user_login, user_logout, user_register, user_follow, user_followers, user_following, user_posts,
     user_confirm, user_settings, user_profile, user_moments, user_shared, user_wants_to_eat, user_ate, topics_collection, get_cities)
 
 urlpatterns = [
     url(r'^(?P<user_id>[\d]+)/$', home, name='home'),
+    url(r'^whoami/$', get_user_id, name='userid'),
 
     url(r'^login/$', user_login, name='login'),
     url(r'^logout/$', user_logout, name='logout'),

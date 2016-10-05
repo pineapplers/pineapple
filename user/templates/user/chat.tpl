@@ -14,7 +14,7 @@
       </div>
 
       <div class="chat-sender">
-        <input type="text" name="sender" placeholder="按回车发送私信">
+        <input type="text" name="sender" id="send-msg" placeholder="按回车发送私信">
       </div>
     </div>
   </div>
