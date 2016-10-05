@@ -22,6 +22,7 @@ REDIS_FOOD_VIEWS_KEY = 'food:{}:views'
 REDIS_FOOD_RANKING_KEY = 'food_ranking'
 REDIS_MESSAGES_KEY = 'message:{}:store'
 REDIS_MESSAGES_UNREAD_KEY = 'message:{}:unread'
+REDIS_MESSAGE_USERS_KEY = 'message:users'
 REDIS_CONTACTS_KEY = 'contacts:{}:store'
 
 STATUS_INVALID_ARGUMENTS = '无效参数'
