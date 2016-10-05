@@ -26,10 +26,14 @@
         {% if request.user.is_authenticated %}
             <a href="{% url 'food:create' %}"><button type="button">分享</button></a>
             <div class="user-name">
-                <button type="button" name="user-name-btn" class="user-name-btn">{{ request.user.username }}</button>
+                <button type="button" name="user-name-btn" class="user-name-btn">{{ request.user.username }}
+                    <span class="redpoint" style="display: none;"></span>
+                </button>
                 <ul class="user-dropdown">
                     <a href="{% url 'user:home' user_id=request.user.id %}"><li>资料</li></a>
-                    <a href="#" id="message"><li>私信</li></a>
+                    <a href="#" id="message">
+                        <li>私信 (<span id="msg-count">0</span>)</li>
+                    </a>
                 </ul>
             </div>
         {% else %}

@@ -243,7 +243,6 @@ ul {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url('http://tva3.sinaimg.cn/crop.81.0.1934.1934.50/6d2c1e95jw1el4t4hx644j21kw1hze75.jpg');
 }
 .chat-container .chat-right .chat-record .record-item .record {
   display: inline-block;
@@ -282,7 +281,6 @@ ul {
 }
 .navbar .user-name:hover {
   border-radius: 0;
-  background-color: rgba(158, 158, 158, 0.3);
 }
 .navbar .user-name:hover .user-dropdown {
   display: block;
@@ -294,6 +292,8 @@ ul {
   left: 0;
 }
 .navbar .user-name .user-dropdown a {
+  background-color: #40a3c2;
+  border: 1px solid white;
   display: inline-block;
 }
 .navbar .user-name .user-dropdown li {
@@ -301,4 +301,22 @@ ul {
 }
 .navbar .user-name .user-dropdown li:hover {
   background-color: rgba(158, 158, 158, 0.3);
+}
+.redpoint {
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  text-align: center;
+  font-size: 0.1em;
+  color: #fff;
+  background: red;
+}
+#private {
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background-color: #fff;
+  cursor: pointer;
 }

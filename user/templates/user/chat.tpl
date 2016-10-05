@@ -9,10 +9,7 @@
       </ul>
     </div>
     <div class="chat-right">
-      <div class="chat-record">
-        
-      </div>
-
+      <div class="chat-record"></div>
       <div class="chat-sender">
         <input type="text" name="sender" id="send-msg" placeholder="按回车发送私信">
       </div>

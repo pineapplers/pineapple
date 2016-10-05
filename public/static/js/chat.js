@@ -1,10 +1,11 @@
-$(function(){
+$(function() {
     var messages = {};
     var contacts = {};
     var lastTime = 0;
     var openBox = false;
-    var curerntContact = -1;
+    var currentContact = -1;
     var userId = -1;
+    var unReadCount = 0;
 
     function getUserId() {
         $.ajax({
@@ -31,9 +32,7 @@ $(function(){
     function recordAppend(side, msg) {
         $('.chat-record').append(
             '<div class="record-item ' + side +' clearfix">' +
-              '<div class="record">' +
-               msg +
-              '</div>' +
+              '<div class="record">' + msg + '</div>' +
             '</div>'
         );
     }
@@ -42,15 +41,13 @@ $(function(){
         $(".chat-record *").remove();
         var msgs = messages[contactId];
         $(".chat-title").text(contacts[contactId]['name']);
-        if (msgs) {
-            msgs.forEach(function(msg, index) {
-                var side = 'sender';
-                if (msg.from == getCurrentUser()) {
-                    side = 'receiver';
-                }
-                recordAppend(side, msg.msg);
-            });
-        }
+        msgs.forEach(function(msg, index) {
+            var side = 'sender';
+            if (msg.from == getCurrentUser()) {
+                side = 'receiver';
+            }
+            recordAppend(side, msg.msg);
+        });
     }
 
     function handleNewMessages(data, push) {
@@ -81,11 +78,12 @@ $(function(){
                 lastTime = msg.time;
             }
         });
-        $(".char-record").last().focus();
-        if (curerntContact > 0) {
-            freshChatBox(curerntContact);
-        }
-        loadContacts();
+        
+        loadContacts(function(){
+            if (currentContact > 0) {
+                freshChatBox(currentContact);
+            }
+        });
     }
 
     function pullAttention() {
@@ -93,7 +91,14 @@ $(function(){
             url: "/message/attention/",
             method: "GET",
         }).success(function(resp) {
-            var count = resp.count;
+            unReadCount = resp.count;
+            if (unReadCount > 0 && openBox == false) {
+                $(".redpoint").show();
+                $("#msg-count").text(unReadCount.toString());
+            } else {
+                $(".redpoint").hide();
+                $("#msg-count").text("0");
+            }
         }).done(function(){
             if (openBox == false) {
                 setTimeout(pullAttention, 10000);
@@ -120,7 +125,7 @@ $(function(){
     }
 
     function sendMessage(text) {
-        if (curerntContact < 0) {
+        if (currentContact < 0) {
             alert('请选择联系人');
             return;
         }
@@ -129,7 +134,7 @@ $(function(){
             method: "POST",
             data: {
                 'msg': text,
-                'user': curerntContact
+                'user': currentContact
             }
         }).success(function(resp) {
             if (resp.status == true) {
@@ -144,7 +149,7 @@ $(function(){
         });
     }
 
-    function loadContacts(user_ids) {
+    function loadContacts(callback) {
         var user_ids = [];
         for (var id in messages) {
             if (!contacts.hasOwnProperty(id)) {
@@ -175,7 +180,7 @@ $(function(){
                         $(".current").removeClass("current");
                         $(this).addClass("current");
                         var contactId = $(this).attr('data-id');
-                        curerntContact = contactId;
+                        currentContact = contactId;
                         freshChatBox(contactId);
                     });
 
@@ -185,18 +190,26 @@ $(function(){
                             sendMessage(text);
                         }
                     });
+                    callback();
                 }
             });
+        } else {
+            callback();
         }
     }
 
-    $("#message").click(function() {
-        if ($.isEmptyObject(messages)) {
+    function openChatBar(newsession, forceRefresh) {
+        if ($.isEmptyObject(messages) || forceRefresh == true) {
             $.ajax({
-                url: "/message/pull",
+                url: "/message/pull/",
                 method: "GET",
             }).success(function(resp) {
+                unReadCount = 0;
                 if (resp.status == true) {
+                    if (newsession != undefined) {
+                        messages[newsession] = [];
+                    }
+                    currentContact = newsession;
                     handleNewMessages(resp.data);
                 }
             }).error(function(error) {
@@ -208,11 +221,22 @@ $(function(){
 
         openBox = true;
         $("#chat-container").show(200);
+    }
+
+    window.openChatBar = openChatBar;
+
+    $("#message").click(function() {
+        if (unReadCount > 0) {
+            openChatBar(undefined, true);
+        } else {
+            openChatBar();
+        }
     });
 
     $("#chat-close").click(function() {
         openBox = false;
         $("#chat-container").hide(200);
+        pullAttention();
     });
 
     pullAttention();

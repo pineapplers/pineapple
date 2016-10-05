@@ -39,6 +39,9 @@
                     <h2 class="user-name"><i class="fa {% if profile.gender == "f" %}fa-venus{% else %}fa-mars{% endif %}"></i>{{ user.username }}</h2>
                     <h4 class="user-area"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ profile.location | default:"外星" }}</h4>
                     <h4 class="user-desc">{{ profile.introduction | default:"这个人什么也没写" }}</h4>
+                    {% if user.id != request.user.id %}
+                    <span><button id="private">私信</button></span>
+                    {% endif %}
                 </div>
                 <a href="{% url 'user:followers' user.id %}">
                     <div class="user-follower">
@@ -110,11 +113,15 @@
     {% include 'user/chat.tpl' %}
     <script src="{% static 'js/vendors.js' %}"></script>
     <script src="{% static 'js/user_base.js' %}"></script>
-    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="{% static 'js/csrf.js' %}"></script>
     <script src="{% static 'js/chat.js' %}"></script>
     <script type="text/javascript">
         $(function(){
+            $("#private").click(function() {
+                var userId = $("#follow-btn").attr('data-id');
+                openChatBar(userId);
+            });
             $("#follow-btn").click(function(event) {
                 var that = $(this);
                 var id = that.attr('data-id');
