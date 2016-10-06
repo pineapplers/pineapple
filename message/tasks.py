@@ -34,8 +34,8 @@ def send_msg(sender, receiver, text):
 @periodic_task(run_every=datetime.timedelta(days=7))
 def clean_inactive_msg():
     now_time = time()
-    user_ids = rds.zrangebyscore(REDIS_MESSAGE_USERS_KEY, 0, now_time - 1)
+    user_ids = rds.zrangebyscore(REDIS_MESSAGE_USERS_KEY, 0, now_time - MESSAGES_TIMEOUT)
     for uid in user_ids:
         key = REDIS_MESSAGES_KEY.format(uid)
         rds.delete(key)
-    rds.zremrangebyscore(REDIS_MESSAGE_USERS_KEY, 0, now_time - 1)
+    rds.zremrangebyscore(REDIS_MESSAGE_USERS_KEY, 0, now_time - MESSAGES_TIMEOUT)
