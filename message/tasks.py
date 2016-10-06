@@ -10,11 +10,12 @@ import json
 
 @task
 def send_msg(sender, receiver, text):
+    t = time()
     msg = json.dumps({
         'from': sender,
         'to': receiver,
         'msg': text,
-        'time': time()
+        't': t
     })
     receiver_key = REDIS_MESSAGES_KEY.format(receiver)
     sender_key = REDIS_MESSAGES_KEY.format(sender)
@@ -24,8 +25,8 @@ def send_msg(sender, receiver, text):
     rds.lpush(sender_key, msg)
     rds.ltrim(sender_key, 0, MAX_MESSAGES_COUNT)
     # 添加到最近活动集合
-    rds.sadd(REDIS_MESSAGE_USERS_KEY, receiver)
-    rds.sadd(REDIS_MESSAGE_USERS_KEY, sender)
+    rds.zadd(REDIS_MESSAGE_USERS_KEY, t, receiver)
+    rds.zadd(REDIS_MESSAGE_USERS_KEY, t, sender)
     return True
 
 
@@ -33,17 +34,8 @@ def send_msg(sender, receiver, text):
 @periodic_task(run_every=datetime.timedelta(days=7))
 def clean_inactive_msg():
     now_time = time()
-    user_ids = rds.smembers(REDIS_MESSAGE_USERS_KEY)
+    user_ids = rds.zrangebyscore(REDIS_MESSAGE_USERS_KEY, 0, now_time - 1)
     for uid in user_ids:
-        key = REDIS_MESSAGES_KEY.format(uid.decode())
-        msg = rds.lindex(key, 0)
-        if not msg:
-            rds.srem(REDIS_MESSAGE_USERS_KEY, uid)
-            continue
-        try:
-            msg = json.loads(msg)
-        except:
-            continue
-        if now_time - float(msg['time']) > MESSAGES_TIMEOUT:
-            rds.srem(REDIS_MESSAGE_USERS_KEY, uid)
-            rds.delete(key)
+        key = REDIS_MESSAGES_KEY.format(uid)
+        rds.delete(key)
+    rds.zremrangebyscore(REDIS_MESSAGE_USERS_KEY, 0, now_time - 1)

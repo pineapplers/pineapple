@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.db.models import F
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 from constants import *
 from ext import redis_db as rds
@@ -28,7 +28,8 @@ def pull(request):
     receiver = request.user.id
     rds.set(REDIS_MESSAGES_UNREAD_KEY.format(receiver), 0)
     messages = rds.lrange(REDIS_MESSAGES_KEY.format(receiver), 0, MAX_MESSAGES_COUNT)
-    messages = [json.loads(msg.decode()) for msg in messages]
+    messages = [json.loads(msg) for msg in messages]
+    # return HttpResponse(str(messages), content_type='application/json')
     return JsonResponse(JSON_SUCCESS_WITH_DATA({'data': messages}), safe=False)
 
 @login_required
@@ -48,8 +49,8 @@ def pull_new_msgs(request):
     messages = rds.lrange(REDIS_MESSAGES_KEY.format(receiver), 0, MAX_MESSAGES_COUNT)
     new_msgs = []
     for msg in messages:
-        msg = json.loads(msg.decode())
-        if float(msg['time']) <= float(last_time):
+        msg = json.loads(msg)
+        if float(msg['t']) <= float(last_time):
             break
         new_msgs.append(msg)
     return JsonResponse(JSON_SUCCESS_WITH_DATA({'data': new_msgs}), safe=False)

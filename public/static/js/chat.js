@@ -73,8 +73,8 @@ $(function() {
                         messages[msg.from].unshift(msg);
                     }
                 }
-                if (msg.time > lastTime) {
-                    lastTime = msg.time;
+                if (msg.t > lastTime) {
+                    lastTime = msg.t;
                 }
             });
         }
