@@ -13,7 +13,11 @@
                 <label class="form-item-label" for="">设置头像</label>
                 <div class="img-preview">
                     <span class="table-vertical" id="preview-span">
+                    {% if profile.avatar %}
                         <img src="{{ MEDIA_URL }}{{ profile.avatar }}" alt="背景预览">
+                    {% else %}
+                        <img alt="背景预览">
+                    {% endif %}
                     </span>
                 </div>
                 {{ form.avatar | attr:"id:preview-input"}}

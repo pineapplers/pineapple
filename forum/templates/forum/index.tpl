@@ -4,6 +4,7 @@
 {% block head %}
 <title>讨论区</title>
 <link href="{% static 'css/forum_list.css' %}" rel="stylesheet">
+<link href="{% static 'css/wangEditor.css' %}" rel="stylesheet">
 {% endblock head %}
 {% block content %}
 <div class="list-container">
@@ -51,4 +52,38 @@
 </div>
 {% endblock content %}
 {% block js %}
+<script src="{% static 'js/wangEditor.js' %}"></script>
+<script type="text/javascript">
+$(function () {
+    var editor = new wangEditor('id_content');
+    editor.config.menus = [
+        'bold',
+        'underline',
+        'italic',
+        'strikethrough',
+        'eraser',
+        'forecolor',
+        '|',
+        'quote',
+        'fontsize',
+        'head',
+        'unorderlist',
+        'orderlist',
+        'alignleft',
+        'aligncenter',
+        'alignright',
+        '|',
+        'link',
+        'unlink',
+        'table',
+        '|',
+        'img',
+        'video',
+        'insertcode',
+        '|',
+        'fullscreen'
+    ];
+    editor.create();
+});
+</script>
 {% endblock js %}

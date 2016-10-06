@@ -7,3 +7,4 @@ __pycache__/
 *.hot-update.js
 *.hot-update.json
 public/static/js/main.js
+media/

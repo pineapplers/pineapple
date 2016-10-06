@@ -30,7 +30,7 @@
         <div class="user-container">
             <div class="user-container-title">
                 <h2>注册</h2>
-                <h3>注册，加入我们的大家庭</h3>
+                <h3>注册，打开一个新的世界</h3>
             </div>
             <div class="form-container" id="form-container">
                 {% for err, desc in form.errors.items %}
@@ -65,7 +65,7 @@
             </div>
         </div>
         <script src="{% static 'js/vendors.js' %}"></script>
-        <script src="http://cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+        <script src="http://cdn.staticfile.org/particles.js/2.0.0/particles.min.js"></script>
         <script src="{% static 'js/user_register.js' %}"></script>
         <script type="text/javascript">
             particlesJS.load("particles-js", "/public/static/assets/particles.json", function() {

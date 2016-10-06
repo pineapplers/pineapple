@@ -56,7 +56,9 @@ def user_login(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('home:index'))
+    resp = HttpResponseRedirect(reverse('home:index'))
+    resp.delete_cookie('userId')
+    return resp
 
 # 注册
 def user_register(request):

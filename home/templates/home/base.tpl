@@ -15,6 +15,7 @@
         {% endblock content %}
         {% include 'user/chat.tpl' %}
     <script src="{% static 'js/vendors.js' %}"></script>
+    <script src="{% static 'js/js.cookie.js' %}"></script>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="{% static 'js/csrf.js' %}"></script>
     <script src="{% static 'js/chat.js' %}"></script>

@@ -144,6 +144,7 @@ ul {
   clear: both;
 }
 .chat-container {
+  z-index: 9999;
   position: fixed;
   right: 0;
   bottom: 0;
@@ -311,7 +312,11 @@ ul {
   color: #fff;
   background: red;
 }
+#message {
+  cursor: pointer;
+}
 #private {
+  outline: none;
   width: 50px;
   height: 30px;
   border-radius: 5px;

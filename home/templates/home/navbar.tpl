@@ -31,7 +31,7 @@
                 </button>
                 <ul class="user-dropdown">
                     <a href="{% url 'user:home' user_id=request.user.id %}"><li>资料</li></a>
-                    <a href="#" id="message">
+                    <a id="message">
                         <li>私信 (<span id="msg-count">0</span>)</li>
                     </a>
                 </ul>

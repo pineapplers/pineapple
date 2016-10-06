@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, JsonResponse
 from django.core.urlresolvers import reverse
 
+from actions.utils import create_action
 from constants import *
 from comments.forms import ForumPostCommentForm
 from .forms import ForumPostForm
@@ -24,7 +25,7 @@ def post_index(request):
             return HttpResponseRedirect(reverse('user:login'))
     else:
         form = ForumPostForm()
-        posts = make_paginator(request, ForumPost.objects.all(), per_page=20)
+        posts = make_paginator(request, ForumPost.objects.order_by('-created'), per_page=20)
         return render(request, 'forum/index.tpl', {
             'form': form,
             'posts': posts
@@ -35,6 +36,7 @@ def post_index(request):
 
 def post_detail(request, post_id):
     post = get_object_or_404(ForumPost.objects.prefetch_related('comments__user__profile'), pk=post_id)
+    comments = make_paginator(request, post.comments.all())
     if request.method == 'POST':
         if request.user.is_authenticated():
             form = ForumPostCommentForm(request.POST)
@@ -50,6 +52,7 @@ def post_detail(request, post_id):
         form = ForumPostCommentForm()
     return render(request, 'forum/detail.tpl', {
             'post': post,
+            'comments': comments,
             'form': form
         })
 
@@ -77,3 +80,13 @@ def query_post(request):
         'form': form,
         'posts': posts
     })
+
+@login_required
+def post_like(request, post_id):
+    post = get_object_or_404(ForumPost.objects, pk=post_id)
+    post.users_like.add(request.user)
+    if post.users_like.count() <= post.total_likes:
+        return JsonResponse(JSON_FAIL(POST_ALREADY_LIKE))
+    post.total_likes += 1
+    post.save()
+    return JsonResponse(JSON_SUCCESS)

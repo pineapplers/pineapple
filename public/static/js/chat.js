@@ -14,17 +14,21 @@ $(function() {
         }).success(function(resp) {
             if (resp.status == true) {
                 userId = resp.id;
-            } else {
-                getUserId();
+                Cookies.set('userId', userId);
             }
+        }).error(function() {
+            alert('网络错误，请刷新页面')
         });
     }
 
-    getUserId();
-
     function getCurrentUser() {
         if (userId < 0) {
-            alert('服务器错误');
+            var id = Cookies.get('userId');
+            if (id != undefined) {
+                return id;
+            } else {
+                getUserId();
+            }
         }
         return userId;
     }
@@ -167,10 +171,11 @@ $(function() {
                 if (resp.status == true) {
                     $(".chat-users *").remove();
                     resp.data.forEach(function(contact, index){
+                    console.log(contact.avatar);
                         contacts[contact.user] = contact;
                         $(".chat-users").prepend(
                             '<li class="users-list-item clearfix" data-id=' + contact.user + '>' +
-                              '<div class="portrait" background-image: url('+ contact.avatar +')"></div>' +
+                              '<div class="portrait" style="background-image: url(/media/'+ contact.avatar.toString() +')"></div>' +
                               '<p class="name">' + contact.name + '</p>' +
                             '</li>'
                         );
@@ -199,28 +204,30 @@ $(function() {
     }
 
     function openChatBar(newsession, forceRefresh) {
-        if ($.isEmptyObject(messages) || forceRefresh == true) {
-            $.ajax({
-                url: "/message/pull/",
-                method: "GET",
-            }).success(function(resp) {
-                unReadCount = 0;
-                if (resp.status == true) {
-                    if (newsession != undefined) {
-                        messages[newsession] = [];
-                        currentContact = newsession;
+        if (getCurrentUser() > 0) {
+            if ($.isEmptyObject(messages) || forceRefresh == true) {
+                $.ajax({
+                    url: "/message/pull/",
+                    method: "GET",
+                }).success(function(resp) {
+                    unReadCount = 0;
+                    if (resp.status == true) {
+                        if (newsession > 0) {
+                            messages[newsession] = [];
+                            currentContact = newsession;
+                        }
+                        handleNewMessages(resp.data);
                     }
-                    handleNewMessages(resp.data);
-                }
-            }).error(function(error) {
-                alert("网络异常");
-            }).done(function() {
-                pullMessages();
-            });
-        }
+                }).error(function(error) {
+                    alert("网络异常");
+                }).done(function() {
+                    pullMessages();
+                });
+            }
 
-        openBox = true;
-        $("#chat-container").show(200);
+            openBox = true;
+            $("#chat-container").show(200);
+        }
     }
 
     window.openChatBar = openChatBar;

@@ -18,7 +18,6 @@ body {
 }
 .post-bar {
   background-color: #fff;
-  min-height: 300px;
   margin-bottom: 20px;
 }
 .post-title {
@@ -27,6 +26,9 @@ body {
   color: #fff;
   font-size: 20px;
   line-height: 15px;
+  text-overflow : ellipsis; 
+  white-space : nowrap; 
+  overflow : hidden; 
 }
 #reply-btn {
   float: right;
@@ -56,7 +58,22 @@ table {
   width: 15%;
 }
 .content {
-  width: 85%;
+  width: 70%;
+  padding: 20px 20px 0 0;
+}
+.info {
+  width: 15%;
+  padding: 10px;
+  color: #ccc;
+  font-size: 10px;
+}
+.info-detail {
+  text-align: center;
+}
+.info-detail a {
+  text-decoration: none;
+  color: #ccc;
+  display: block;
 }
 .body {
   min-height: 100px;
@@ -79,4 +96,31 @@ table {
   white-space : nowrap; 
   overflow : hidden; 
   margin-bottom: 5px;
+}
+.page {
+  padding: 10px;
+}
+.switch-page {
+  padding: 0 5px;
+  float: right;
+  text-decoration: none;
+  color: #40a3c2;
+}
+blockquote {
+background:#f9f9f9;
+border-left:10px solid #ccc;
+margin:1.5em 10px;
+padding:.5em 10px;
+quotes:"\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+color:#ccc;
+content:open-quote;
+font-size:2em;
+line-height:.1em;
+margin-right:.25em;
+vertical-align:-.4em;
+}
+blockquote p {
+display:inline;
 }
