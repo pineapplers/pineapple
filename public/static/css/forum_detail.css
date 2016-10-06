@@ -1,0 +1,82 @@
+body {
+  margin-top: 80px;
+  min-width: 1100px;
+  background-color: #f1f1f1;
+}
+.navbar {
+  background-image: url("/public/static/images/home-header-bg-563ac1688e.png");
+  transition: background-color ease-in-out 0.2s;
+  -o-transition: background-color ease-in-out 0.2s;
+  -ms-transition: background-color ease-in-out 0.2s;
+  -moz-transition: background-color ease-in-out 0.2s;
+  -webkit-transition: background-color ease-in-out 0.2s;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0);
+}
+.list-container {
+  width: 1020px;
+  margin: 0 auto;
+}
+.post-bar {
+  background-color: #fff;
+  min-height: 300px;
+  margin-bottom: 20px;
+}
+.post-title {
+  padding: 20px;
+  background-color: #40a3c2;
+  color: #fff;
+  font-size: 20px;
+  line-height: 15px;
+}
+#reply-btn {
+  float: right;
+  width: 50px;
+  height: 20px;
+}
+.comment-content {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.comment-submit {
+  float: right;
+  width: 100px;
+  height: 30px;
+  background-color: #40a3c2;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.user {
+  width: 15%;
+}
+.content {
+  width: 85%;
+}
+.body {
+  min-height: 100px;
+  border-bottom: 1px solid #ccc;
+  margin: 10px;
+}
+.avatar {
+  padding: 5px;
+  height: 100px;
+  width: 100px;
+}
+.username {
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  color: #000;
+  height: 20px;
+  width: 100px;
+  text-overflow : ellipsis; 
+  white-space : nowrap; 
+  overflow : hidden; 
+  margin-bottom: 5px;
+}

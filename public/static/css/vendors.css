@@ -133,7 +133,6 @@ ul {
   background-color: #f2f2f2;
 }
 .clearfix {
-  clear: both;
   *zoom: 1;
 }
 .clearfix:before,

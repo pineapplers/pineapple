@@ -16,3 +16,91 @@ body {
   width: 1020px;
   margin: 0 auto;
 }
+.post-bar {
+  background-color: #fff;
+  min-height: 300px;
+  max-height: 1000px;
+  margin-bottom: 20px;
+}
+.post-title {
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.post-content {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.post-submit {
+  float: right;
+  width: 100px;
+  height: 30px;
+  background-color: #40a3c2;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+}
+table {
+  width: 100%;
+}
+.post-board {
+  margin-left: 30px;
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+  font-size: 20px;
+  color: #778087;
+}
+.post-search {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 200px;
+  height: 30px;
+  margin-left: 20px;
+}
+.post-search-btn {
+  height: 30px;
+  width: 50px;
+  background-color: #40a3c2;
+  color: #fff;
+  border: none;
+  margin: auto 10px;
+}
+.post-order {
+  text-align: right;
+  padding: 0 10px 0px;
+}
+.post-order a {
+  text-decoration: none;
+  color: #40a3c2;
+}
+.post-order .active {
+  color: #000;
+  cursor: default;
+}
+.post {
+  padding: 10px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgb(246, 246, 246);
+}
+.post a {
+  color: #778087;
+  text-decoration: none;
+  cursor: pointer;
+}
+.rating {
+  width: 5%;
+}
+.board {
+  width: 10%;
+}
+.title {
+  font-size: 16px;
+  width: 75%;
+}
+.creator {
+  width: 10%;
+}

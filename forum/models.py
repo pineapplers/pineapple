@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 
 from user.models import User
@@ -7,6 +8,10 @@ class Board(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='创建者')
     name = models.CharField(max_length=32, verbose_name='名称')
     created = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
+
+    class Meta:
+        verbose_name = '板块'
+        verbose_name_plural = '板块'
 
     def __str__(self):
         return self.name
@@ -22,5 +27,12 @@ class ForumPost(models.Model):
     users_like = models.ManyToManyField(User, related_name='forumposts_liked', blank=True, verbose_name='推荐的用户')
     total_likes = models.PositiveIntegerField(default=0, verbose_name='推荐数')
 
+    class Meta:
+        verbose_name = '帖子'
+        verbose_name_plural = '帖子'
+
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('forum:detail', kwargs={'post_id': self.id})

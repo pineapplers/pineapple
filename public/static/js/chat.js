@@ -31,7 +31,7 @@ $(function() {
 
     function recordAppend(side, msg) {
         $('.chat-record').append(
-            '<div class="record-item ' + side +' clearfix">' +
+            '<div class="record-item ' + side +' "style="clear:both;">' + 
               '<div class="record">' + msg + '</div>' +
             '</div>'
         );

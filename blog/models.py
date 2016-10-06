@@ -10,5 +10,5 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='创建日期')
 
     class Meta:
-        verbose_name = '帖子'
-        verbose_name_plural = '帖子'
+        verbose_name = '博客'
+        verbose_name_plural = '博客'
