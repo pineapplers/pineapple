@@ -53,12 +53,6 @@
             </div>
         </div>
     <script src="{% static 'js/vendors.js' %}"></script>
-    <script src="http://cdn.staticfile.org/particles.js/2.0.0/particles.min.js"></script>
     <script src="{% static 'js/user_login.js' %}"></script>
-    <script type="text/javascript">
-        particlesJS.load("particles-js", "/public/static/assets/particles.json", function() {
-          console.log('callback - particles.js config loaded');
-        });
-    </script>
     </body>
 </html>
