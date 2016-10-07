@@ -18,6 +18,7 @@ WTA = '想吃'
 ATE = '吃过'
 FOLLOW = '关注了'
 COLLECT = '收藏了'
+COMMENT = '评论了'
 
 REDIS_FOOD_VIEWS_KEY = 'food:{}:views'
 REDIS_FOOD_RANKING_KEY = 'food_ranking'
@@ -25,6 +26,7 @@ REDIS_MESSAGES_KEY = 'message:{}:store'
 REDIS_MESSAGES_UNREAD_KEY = 'message:{}:unread'
 REDIS_MESSAGE_USERS_KEY = 'message:users'
 REDIS_CONTACTS_KEY = 'contacts:{}:store'
+REDIS_POSTS_KEY = 'posts:{}:store'
 
 STATUS_INVALID_ARGUMENTS = '无效参数'
 
@@ -36,3 +38,4 @@ MAX_MESSAGE_LENGTH = 200
 MAX_MESSAGES_COUNT = 100
 MESSAGES_TIMEOUT = 3600 * 24 * 7 # 私信缓存一周
 MAX_CONTACT_COUNT = 20
+POSTS_CACHE_TIME = 30 # 30秒更新一次

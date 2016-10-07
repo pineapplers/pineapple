@@ -163,6 +163,9 @@
 .tab-container .timeline-container .timeline-item-main .timeline-item .fa-eye {
   background-color: #4e55b9;
 }
+.tab-container .timeline-container .timeline-item-main .timeline-item .fa-send {
+  background-color: #0C4B33;
+}
 .tab-container .timeline-container .timeline-item-main .timeline-item .fa-comment {
   background-color: #9b50ba;
 }

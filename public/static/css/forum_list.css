@@ -108,3 +108,9 @@ table {
 .creator {
   width: 10%;
 }
+.switch-page {
+  padding: 5px 5px;
+  float: right;
+  text-decoration: none;
+  color: #40a3c2;
+}

@@ -1,18 +1,20 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from constants import *
 
 from user.models import User
 
 
 action_classes = {
-  '分享了': 'fa-share-alt',
-  '喜欢了': 'fa-thumbs-up',
-  '收藏了': 'fa-bookmark',
-  '关注了': 'fa-eye',
-  '评论了': 'fa-comment',
-  '想吃': 'fa-cutlery',
-  '吃过': 'fa-hand-peace-o',
+  SHARE: 'fa-share-alt',
+  LIKE: 'fa-thumbs-up',
+  COLLECT: 'fa-bookmark',
+  FOLLOW: 'fa-eye',
+  COMMENT: 'fa-comment',
+  WTA: 'fa-cutlery',
+  ATE: 'fa-hand-peace-o',
+  POST: 'fa-send'
 }
 
 # Create your models here.

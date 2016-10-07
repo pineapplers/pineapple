@@ -28,7 +28,7 @@
                 <td valign="top" class="content">{{ post.content|safe }}</td>
                 <td valign="bottom" class="info">
                     <p class="info-detail">
-                        <a id="post-like" href="#">🍍 推荐</a>
+                        <a id="post-like" href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABVlBMVEUAAAAOuJsAqY0NuJoQtJxEREAPs5UUq4xEREARu5kMtpoSq5EQsJVEREAMspREREAYoogQsZQOsJMNt5gNtZpEREAVookSrJEQsZMLuJoNtpoMt5kPt5dEREBEREBEREAUp4wTtZQ0tog5s4Y6tIUAqqpEREB1Wj3wozz2qTv1pzv1pzn3qDv1oz/QhDb0pzn2pzv2qTr4qTb3pTT3qDv1pjvnoDvupD31pzv4qTv4qTn2qTv3qTr0pTfinjvpoDu8hz7+rTn3qTn2qTnqojvfnD3uoDn2qTv0pjn2qTr3pzz4rTr4qTn0qDvroTnyqDr4qDn3pzv2qDz1qDvhnTvalzrbmT70pzr1pzn1qDnzqDvnoTvUlD3mnjv1pzvzrDz3pzn1qTvqojrvpTv1qTv3qDrOlTr2qTn3qTn3qTn3qDvvrz8Nt5n3qTv2qDvupDvsozv2qTvZwaGBAAAAbHRSTlMAJAleHwFXKQQPy1XBCRoCRPf1vyYBTZfkxr6hIAUND1zhyMd+AwoSJ7X+/KscB5TwfioigfCVIttvS7CvSnjdKRZi0M5kFFbzV0NObtzgclBAO9NtWltp1TW+o06KhUSguYv6+oIWhsjHhBAHDtvAAAAAr0lEQVQYGQXBu0rEQABA0Xszj0wECSpTSLSxjOAH7b+Jn2SljaBgsU1k2XUKA8uq5wAAIAAg0Knq6QggwKDqN0CKAFlVgNo6YOz7fpPzdMO4VqEOqurbOJZPSeWyqKp7d2skXK9FVfWvNLndz6qqPh+ILOdnOqMveoCO05J3M+p9CEDkSJg+vPPdIhCBMm3dOli/IAmwUVWfqC0A9fUhXuTf8EhdryKkVqM/ZkmtLv96OCeBHzvVWAAAAABJRU5ErkJggg=="> 推荐</a>
                     </p>
                     <p>{{ post.created }}</p>
                 </td>
