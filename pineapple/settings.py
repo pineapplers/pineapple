@@ -215,3 +215,13 @@ CELERY_RESULT_SERIALIZER = 'json'
 
 TAGGIT_TAGS_FROM_STRING = 'utils.taggit.comma_splitter'
 
+# XSS
+BLEACH_VALID_TAGS = ['p', 'b', 'i', 'strike', 'ul', 'li', 'ol', 'br',
+                     'span', 'blockquote', 'hr', 'a', 'img']
+BLEACH_VALID_ATTRS = {
+    'span': ['style', ],
+    'p': ['align', ],
+    'a': ['href', 'rel'],
+    'img': ['src', 'alt', 'style'],
+}
+BLEACH_VALID_STYLES = ['color', 'cursor', 'float', 'margin']

@@ -45,7 +45,7 @@
                 </td>
                 <td valign="top" class="content">{{ comment.content|safe }}</td>
                 <td valign="bottom" class="info">
-                    <p class="info-detail"><a href="#reply">引用</a></p>
+                    <p class="info-detail reply"><a href="#reply">引用</a></p>
                     <p>{{ comment.created }}</p>
                 </td>
             </tr>

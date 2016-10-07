@@ -58,6 +58,7 @@ table {
   width: 15%;
 }
 .content {
+  word-break: break-all;
   width: 70%;
   padding: 20px 20px 0 0;
 }
