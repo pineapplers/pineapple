@@ -42,8 +42,6 @@ def post_index(request):
                                 },
                                 order_by = ['-score']
                             ), per_page=20,  cache_key=cache_key, cache_time=POSTS_CACHE_TIME)
-            for p in posts:
-                print (p.title, p.score)
         else:
             posts = make_paginator(request, query_set.order_by('-id'), per_page=20, cache_key=cache_key, cache_time=POSTS_CACHE_TIME)
         form = ForumPostForm()
