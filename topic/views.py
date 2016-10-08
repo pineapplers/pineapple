@@ -46,7 +46,7 @@ def topic_collect(request):
             topic.users_collect.remove(request.user)
             topic.total_collects -= 1
         else:
-            return JsonResponse({'status': False})
+            return JsonResponse(JSON_FAIL(STATUS_INVALID_ARGUMENTS))
         topic.save()
-        return JsonResponse({'status': True})
-    return JsonResponse({'status': False}, status=400)
+        return JsonResponse(JSON_SUCCESS)
+    return JsonResponse(JSON_FAIL(STATUS_INVALID_ARGUMENTS), status=400)

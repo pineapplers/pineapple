@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, JsonResponse
 from django.core.urlresolvers import reverse
+from django.views.decorators.http import require_POST
 from django.db.models import F
 from django.core.cache import cache
 
@@ -83,8 +84,14 @@ def delete_post(request, post_id):
     return HttpResponseRedirect(reverse('forum:index'))
 
 @login_required
-def update_post(request):
-    pass
+@require_POST
+def update_post(request, post_id):
+    post = get_object_or_404(ForumPost.objects, pk=post_id)
+    content = request.POST.get('content', '')
+    if content:
+        post.content = content
+        post.save()
+    return HttpResponseRedirect(reverse('forum:detail', kwargs={'post_id': post.id})) 
 
 @login_required
 def query_post(request):

@@ -36,6 +36,6 @@ def clean_inactive_msg():
     now_time = time()
     user_ids = rds.zrangebyscore(REDIS_MESSAGE_USERS_KEY, 0, now_time - MESSAGES_TIMEOUT)
     for uid in user_ids:
-        key = REDIS_MESSAGES_KEY.format(uid)
-        rds.delete(key)
+        rds.delete(REDIS_MESSAGES_KEY.format(uid))
+        rds.delete(REDIS_MESSAGES_UNREAD_KEY.format(uid))
     rds.zremrangebyscore(REDIS_MESSAGE_USERS_KEY, 0, now_time - MESSAGES_TIMEOUT)

@@ -79,20 +79,18 @@ def food_detail(request, food_id):
     similar_foods = similar_foods.annotate(same_tags=Count('tags')).order_by('-same_tags')[:4]
     total_views = rds.incr(REDIS_FOOD_VIEWS_KEY.format(food.id))
     rds.zincrby(REDIS_FOOD_RANKING_KEY, food.id, 1)
-    score = 0
     context = {
         'food': food,
         'comments': comments,
         'comment_form': comment_form,
         'similar_foods': similar_foods,
         'total_views': total_views,
-        'score': score
+        'score': 0
     }
     if user_authenticated:
         rating = Vote.objects.filter(user=user, object_id=food.id, 
             content_type=ContentType.objects.get_for_model(model=Food)).only('score').first()
-        score = rating.score if rating else score
-        context['score'] = score
+        context['score'] = rating.score if rating else 0
         context['is_wta'] = user.foods_wta.filter(pk=food.id).exists()
         context['is_ate'] = user.foods_ate.filter(pk=food.id).exists()
     return render(request, 'food/detail.tpl', context)
@@ -121,11 +119,10 @@ def explore(request):
 
 @tab('explore', sub_tab='hot')
 def hot(request):
-    food_ranking = rds.zrange(REDIS_FOOD_RANKING_KEY, 0, -1, desc=True)[:10]
+    food_ranking = rds.zrange(REDIS_FOOD_RANKING_KEY, 0, MAX_HOT_DISPLAY_COUNT, desc=True)
     food_ranking_ids = [int(id) for id in food_ranking]
 
     most_viewed = list(Food.objects.filter(id__in=food_ranking_ids))
-    most_viewed.sort(key=lambda x: food_ranking_ids.index(x.id))
 
     return render(request, 'food/explore.tpl', {
                    'foods': most_viewed
@@ -138,12 +135,13 @@ def food_rate(request):
     food_id = request.POST.get('id')
     action = request.POST.get('action')
     view = AddRatingFromModel()
-    score = -1
     if action == 'like':
         score = 1
         food = Food.objects.get(pk=food_id)
         if food:
             create_action(request.user, LIKE, food)
+    else:
+        score = -1
     resp = view(request,
         app_label='food',
         model='Food',
