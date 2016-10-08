@@ -35,8 +35,15 @@ def post_index(request):
         if order == 'time':
             posts = make_paginator(request, query_set.order_by('-created'), per_page=20, cache_key=cache_key, cache_time=POSTS_CACHE_TIME)
         elif order == 'all':
-            # 待写排名方法
-            posts = make_paginator(request, query_set.annotate(points=F('total_likes')).order_by('-points'), per_page=20,  cache_key=cache_key, cache_time=POSTS_CACHE_TIME)
+            # 待写排名方法,参考了HackerNews的排名算法
+            posts = make_paginator(request, query_set.extra(
+                                select = {
+                                    'score': '(total_likes + 1) / POW(day(timediff(NOW(), created)) - 6, 1.6)'
+                                },
+                                order_by = ['-score']
+                            ), per_page=20,  cache_key=cache_key, cache_time=POSTS_CACHE_TIME)
+            for p in posts:
+                print (p.title, p.score)
         else:
             posts = make_paginator(request, query_set.order_by('-id'), per_page=20, cache_key=cache_key, cache_time=POSTS_CACHE_TIME)
         form = ForumPostForm()
@@ -73,10 +80,9 @@ def post_detail(request, post_id):
 @login_required
 def delete_post(request, post_id):
     post = get_object_or_404(ForumPost.objects, pk=post_id)
-    if post:
-        if post.creator == request.user:
-            post.delete()
-            return HttpResponseRedirect(reverse('forum:index'))
+    if post.creator == request.user:
+        post.delete()
+    return HttpResponseRedirect(reverse('forum:index'))
 
 @login_required
 def update_post(request):

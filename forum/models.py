@@ -25,7 +25,7 @@ class ForumPost(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     updated = models.DateTimeField(auto_now=True, verbose_name='更新时间')
     users_like = models.ManyToManyField(User, related_name='forumposts_liked', blank=True, verbose_name='推荐的用户')
-    total_likes = models.PositiveIntegerField(default=0, verbose_name='推荐数')
+    total_likes = models.IntegerField(default=0, verbose_name='推荐数')
 
     class Meta:
         verbose_name = '帖子'
