@@ -38,7 +38,7 @@ def post_index(request):
             # 待写排名方法,参考了HackerNews的排名算法
             posts = make_paginator(request, query_set.extra(
                                 select = {
-                                    'score': '(total_likes + 1) / POW(day(timediff(NOW(), created)) - 6, 1.6)'
+                                    'score': '(total_likes + 1) / POW(datediff(NOW(), created) + 1, 1.3)'
                                 },
                                 order_by = ['-score']
                             ), per_page=20,  cache_key=cache_key, cache_time=POSTS_CACHE_TIME)
